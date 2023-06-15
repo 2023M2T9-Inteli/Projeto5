@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização-Campos</title>
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importação da biblioteca alpine para o funcionamento da sidebar -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Configuração do tailwind-->
+    <script>
+        /** @type {import('tailwindcss').Config} */
+        tailwind.config = {
+            content: ["./src/frontend/*.{html,js}"],
+            theme: {
+                extend: {
+                    colors: {
+                        cinza: '#C5C5C5',
+                        corTexto: '#686868',
+                        white: {
+                            50: "#F2F2F2",
+                            100: "#E8E8E8"
+                        },
+                        colorDark: {
+                            50: "#02042E",
+                            100: "#323243",
+                            200: "#454551"
+                        },
+                        status: {
+                            blue: "#00C5FF",
+                            green: "#0F950C",
+                            yellow: "#F1B519",
+                            red: "#D01D1D"
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 10px 0 rgba(0, 0, 0, 0.11)',
+                        'divVisual': '0px 4px 10px rgba(0, 0, 0, 0.11)',
+                    },
+                }
+            },
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body class="w-full h-full">
+    <!-- Funcionamento da sidebar, verifica se esta aberta ou fechada -->
+    <div x-data="{ sidebarOpen: false }" class="fixed top-0 z-50 overflow-x-hidden min-h-screen">
+        <aside class="w-52 border-r ease-in-out" :class="{ 'w-20': !sidebarOpen}">
+            <nav style="transition: 0.8s;"
+                class="bg-[#02042E] w-52 h-screen fixed text-white py-3 pl-5 pr-6 rounded-r-xl  font-light cursor-pointer overflow-y-auto transition text-center"
+                :class="{ 'w-20 overflow-hidden': !sidebarOpen}" id="nav">
+                <!--Lista com os itens da side bar-->
+                <ul class="text-xl">
+                    <div class="flex" :class="{'justify-center': !sidebarOpen}"
+                        :class="{'justify-around': sidebarOpen}">
+                        <!-- Lista com as imagens da sidebar-->
+                        <div>
+                            <div class=" mt-1  mb-5 flex items-center hover:text-[#00C5FF]"
+                                @click="sidebarOpen = !sidebarOpen">
+                                <img src="assets/menu.svg" class="flex flex-col ml-1 mt-2 w-8" id="btn-exp" alt="">
+                            </div>
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#home" class="flex items-center">
+                                    <img src="assets/home.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#fav" class="flex items-center">
+                                    <img src="assets/fav.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#library" class="flex items-center">
+                                    <img src="assets/lib.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#ticket" class="flex items-center">
+                                    <img src="assets/ticket.svg" class="w-6 h-7 " alt="">
+                                    <span class="icon"><i class="uil uil-ticket text-3xl"></i></span>
+                                </a>
+                            </li>
+
+                            <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                                <a href="" class="flex">
+                                    <img src="assets/logout.svg" class="w-6 h-7" alt="">
+                                    <i class="uil uil-sign-out-alt -rotate-180 text-3xl"></i>
+                                </a>
+                            </li>
+                        </div>
+                        <!-- Lista com os textos da sidebar -->
+                        <div class="pt-14 text-white-50" :class="{ 'collapse w-0': !sidebarOpen}">
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#home" class="flex items-center">
+                                    <span class="txt-link ml-2">Home</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#fav" class="flex items-center">
+                                    <span class="txt-link ml-2">Favoritos</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#library" class="flex items-center">
+                                    <span class="txt-link ml-2">Biblioteca</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#ticket" class="flex items-center">
+                                    <span class="txt-link ml-2">Tickets</span>
+                                </a>
+                            </li>
+
+                            <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                                <a href="" class="flex">
+                                    <span class="txt-link ml-2">Sair</span>
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+    <section class="flex flex-col ml-28 pt-8 justify-center w-[90%]">
+        <!-- header -->
+        <header class="w-full flex flex-row border border-[#F2F2F2] shadow-divVisual p-5 rounded-xl">
+            <div class="flex flex-col w-full space-y-4">
+                <div class="flex flex-row w-full justify-between">
+                    <h3 id="headerTitulo" class="text-colorDark-50 text-3xl">Favoritos</h3>
+                    <div class="flex justify-evenly">
+                        <img class="px-1 w-[38px]" src="assets/ajuda.svg" alt="">
+                        <img class="px-1 w-[36px]" src="assets/sino.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            </div>
+        </header>
+
+        <!--Div com todos os cards-->
+        <div class="py-10 px-8 w-full h-full">
+
+            <!--Div 1º Coluna de Cards-->
+            <div class="flex justify-center space-x-7 mb-6">
+
+                <!--Card 1-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 2-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 3-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--Div 2º Coluna de Cards-->
+            <div class="flex justify-center space-x-7 mb-6">
+
+                <!--Card 4-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 5-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 6-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Div 3º Coluna de Cards-->
+            <div class="flex justify-center space-x-7 mb-6">
+
+                <!--Card 7-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 8-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--Card 9-->
+                <div class="w-1/3 p-4 border rounded-xl shadow-divVisual">
+
+                    <div>
+                        <!--Header do Card-->
+                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
+                            <div class="flex justify-between">
+                                <img src="assets/iconCardFav.svg" alt="" class="w-10 h-10">
+                                <h2
+                                    class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/fav_full.svg" alt="" class="w-5 h-5">
+                            </div>
+                        </div>
+
+                        <div class="flex">
+                            <!--Paragráfo do Card-->
+                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400">View
+                                baseada na tb_adquirencia_adiq _brand_list tabela que filtra a partição mais recente.
+                                Contém tabela
+                                de/para com todas as bandeiras de cartões disponíveis para pagamentos.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+</body>
+
+<div class="h-full w-54 bg-[#02042E] text-white-50 p-4">
+    <div class="flex mx-20 justify-evenly items-center">
+        <img class="w-16 h-16" src="assets/logoFooterPanPedia.svg" alt="">
+        <p class="text-center">
+            © Projeto desenvolvido pelo Grupo 05 - Turma 09 <br> Versão 1.0
+        </p>
+
+        <a href="https://www.inteli.edu.br/">
+            <img class="w-16 h-16" src="assets/inteliLogo.png" alt="">
+        </a>
+    </div>
+</div>
+
+</html>

@@ -1,0 +1,192 @@
+<!--Div que engloba todo o conteúdo do header para que ele esteja no lugar certo-->
+<div class="flex-1">
+  <header class="flex items-center p-4 text-semibold ">
+
+    <div class="flex mx-auto my-8 justify-end w-full">
+      <!--Ícone-->
+      <div class="w-1/12">
+        <img src="/public/assets/logoPanpediaReduzida.svg" class="w-8 h-8">
+      </div>
+      <!--Formulário o qual executa a pesquisa-->
+      <form method="get" action="/tabelas/pesquisa" class="w-10/12">
+        <div class="relative">
+          <input type="text" name="pesquisa" id="pesquisa"
+            class="w-11/12 bg-white-50 rounded-xl h-10 -mt-2 shadow-neomorphic_inset pl-2 pr-36" required>
+
+          <input type="hidden" id="formCat" name="formCat" value="">
+          <input type="hidden" id="formDb" name="formDb" value="">
+          <input type="hidden" id="formOwn" name="formOwn" value="">
+          <input type="hidden" id="formCri" name="formCri" value="">
+
+          <button data-modal-toggle="defaultModal" type="button"><img src="/public/assets/filtro.svg"
+              class="dark:grayscale dark:invert absolute right-40 bottom-1.5 w-7 h-7 "></button>
+          <button type="submit"><img src="/public/assets/pesquisa.svg"
+              class="dark:grayscale dark:invert absolute right-28 bottom-1.5 w-7 h-7 "></button>
+        </div>
+      </form>
+      <div class="flex justify-center w-1/12">
+        <img src="/public/assets/Group.svg" class="dark:grayscale dark:invert w-8 h-8 lg:-ml-16 sm:ml-4">
+        <img src="/public/assets/Group 45.svg" class="dark:grayscale dark:invert w-8 h-8 ml-4"
+          onclick="darkModeOnOff()">
+      </div>
+    </div>
+  </header>
+  <script>
+
+  </script>
+
+  <!-- Filtros -->
+  <div id="defaultModal"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black bg-opacity-50">
+    <!-- Modal -->
+    <div class="bg-[#F2F2F2] rounded-3xl shadow-lg w-[40%] h-[65%]">
+      <div class="px-10 pt-4 pb-2 flex justify-end">
+        <button class="text-black" data-modal-hide="defaultModal">&cross;</button>
+      </div>
+
+      <div class="pb-5 pl-8">
+        <h3 class="font-semibold text-3xl text-[#02042E]">Filtrar por:</h3>
+      </div>
+
+      <div class="flex flex-col px-6 pb-6 gap-8">
+        <div class="flex justify-around gap-4">
+          <div class="relative text-center text-[#02042E]">
+            <h5 class="text-[16px] pb-2">Categoria</h5>
+            <select id="cat" onchange="atualizarEstilo(this)"
+              class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+              <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="relative text-center text-[#02042E]">
+            <h5 class="text-[16px] pb-2">Database</h5>
+            <select id="dat" onchange="atualizarEstilo(this)"
+              class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+              <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex justify-around gap-4">
+          <div class="relative text-center text-[#02042E]">
+            <h5 class="text-[16px] pb-2">Owner</h5>
+            <select id="own" onchange="atualizarEstilo(this)"
+              class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+              <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+            </select>
+          </div>
+
+          <div class="relative text-center text-[#02042E]">
+            <h5 class="text-[16px] pb-2">Criticidade</h5>
+            <select id="cri" onchange="atualizarEstilo(this)"
+              class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+              <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-around items-center pb-4">
+        <button
+          class="bg-[#F2F2F2] font-semibold hover:bg-[#F2F2F2] hover:text-[#00C5FF] px-3 py-1 rounded text-[#02042E]"
+          onclick="apagarCampos()">Limpar filtros</button>
+        <button data-modal-hide="defaultModal"
+          class="bg-[#F2F2F2] font-semibold hover:bg-[#F2F2F2] hover:text-[#00C5FF] px-3 py-1 rounded text-[#02042E]"
+          onclick="aplicarFiltro()">Aplicar
+          filtros</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const url = '/filtro';
+    // Select dentro do modal
+    let cat = document.getElementById('cat');
+    let dat = document.getElementById('dat');
+    let own = document.getElementById('own');
+    let cri = document.getElementById('cri');
+    // Input hidden dentro do form
+    let formCat = document.getElementById('formCat');
+    let formDb = document.getElementById('formDb');
+    let formOwn = document.getElementById('formOwn');
+    let formCri = document.getElementById('formCri');
+
+    function aplicarFiltro() {
+      formCat.value = cat.selectedIndex != 0 ? cat.options[cat.selectedIndex].text : '';
+      formDb.value = dat.selectedIndex != 0 ? dat.options[dat.selectedIndex].text : '';
+      formOwn.value = own.selectedIndex != 0 ? own.options[own.selectedIndex].text : '';
+      formCri.value = cri.selectedIndex != 0 ? cri.options[cri.selectedIndex].text : '';
+
+      console.log(`${formCat.value}-${formDb.value}-${formOwn.value}-${formCri.value}`);
+    }
+
+    function apagarCampos() {
+      cat.value = 'Selecione uma opção';
+      dat.value = 'Selecione uma opção';
+      own.value = 'Selecione uma opção';
+      cri.value = 'Selecione uma opção';
+    }
+    //Essa função ativa e desativa o modo escuro ao adicionar e excluir a classe dark na tag <html>
+    function darkModeOnOff() {
+      const html = document.getElementsByTagName("html")[0];
+      const isDarkModeEnabled = html.classList.contains('dark');
+
+      if (!isDarkModeEnabled) {
+        html.classList.add('dark');
+        localStorage.setItem('darkModeEnabled', 'true');
+      } else {
+        html.classList.remove('dark');
+        localStorage.setItem('darkModeEnabled', 'false');
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const isDarkModeEnabled = localStorage.getItem('darkModeEnabled');
+      const html = document.getElementsByTagName("html")[0];
+
+      if (isDarkModeEnabled === 'true') {
+        html.classList.add('dark');
+      }
+    });
+
+    // Fetch para pegar as informação do filtro que está no banco de dados
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        // Select da categoria
+        let categoria = data.categoria;
+        for (let i = 0; i < categoria.length; i++) {
+          cat.innerHTML += `<option value="${i}">${categoria[i].CONJUNTODADOS_PRODUTO}</option>`;
+        };
+
+        // Select da database
+        let database = data.database;
+        for (let i = 0; i < database.length; i++) {
+          dat.innerHTML += `<option value="${i}">${database[i].DATABASE}</option>`;
+        };
+        // Select da owner
+        let owner = data.owner;
+        for (let i = 0; i < owner.length; i++) {
+          own.innerHTML += `<option value="${i}">${owner[i].OWNER}</option>`;
+        };
+
+        // Select da criticidade
+        let criticidade = data.criticidade;
+        for (let i = 0; i < criticidade.length; i++) {
+          cri.innerHTML += `<option value="${i}">${criticidade[i].CRITICIDADE_TABELA}</option>`;
+        };
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
+    function apagarCampos() {
+      cat.value = 'Selecione uma opção';
+      dat.value = 'Selecione uma opção';
+      own.value = 'Selecione uma opção';
+      cri.value = 'Selecione uma opção';
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>

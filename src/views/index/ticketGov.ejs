@@ -1,0 +1,110 @@
+<%- include("../sidebar") %>
+
+        
+<div class="flex-1">
+    <header class="flex items-center p-4 text-semibold shadow-md mx-8 mt-8 rounded-lg">
+        <div class="flex flex-row w-full">
+            <h3 id="headerTitulo" class="text-colorDark-50 text-2xl font w-10/12">Tickets - Governança</h3>
+            <div class="flex flex-row space-x-4 justify-end mr-6 w-2/12">
+                <img src="./assets/sino.svg" alt="Sino de notificações" class="w-6">
+                <img src="./assets/ajuda.svg" alt="Símbolo de Ajuda" class="w-6">
+            </div>
+        </div>
+    </header>
+
+<div class="flex flex-col px-8 w-full justify-center">
+    <!--Content-->
+    <section class="flex flex-col items-center justify-center w-full">
+        <!-- 3 descrições das colunas do Kanban -->
+        <section class=" w-full h-[648px] m-16 flex flex-row justify-evenly">
+            <div class="h-full w-72 flex flex-col">
+                <div class="bg-colorDark-50 h-10 p-2 text-center rounded-lg">
+                    <p class="text-white-50">Abertos</p>
+                </div>
+                <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
+                    <!--Tickets-->
+                    <% for (var tick in ticket) { %>
+                        <% if(tick.status == 0) { %>
+                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
+                            <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                            <div>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
+                                <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="h-full w-72 flex flex-col">
+                <div class="bg-status-yellow h-10 p-2 text-center rounded-lg">
+                    <p class="text-white-50">Em Análise <%=tick.ID_TICKET%> </p>
+                </div>
+                <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
+                    <!-- Tickets -->
+                    <% for (var tick in ticket) { %>
+                        <% if(tick.status == 1) { %>
+                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
+                            <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                            <div>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
+                                <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% } %>
+                </div>
+            </div>
+            <div class="h-full w-72 flex flex-col">    
+                    <div class="bg-status-green h-10 p-2 text-center rounded-lg">
+                        <p class="text-white-50">Analisado <%=tick.ID_TICKET%> </p>
+                    </div>
+                    <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
+                        <!-- Tickets -->
+                        <% for (var tick in ticket) { %>
+                            <% if(tick.status == 2) { %>
+                            <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
+                                <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                                <div>
+                                    <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
+                                    <!--Negado-->
+                                    <div class="px-2 py-1 bg-status-red rounded-lg"><p class="text-xs text-white-50">Negado</p></div>
+                                    <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                                </div>
+                            </div>
+                            <% } %>
+                        <% } %>
+                    </div>
+                </div>
+            <div class="h-full w-72 flex flex-col">
+                <div class="bg-status-green h-10 p-2 text-center rounded-lg ">
+                    <p class="text-white-50">Analisado</p>
+                </div>
+                <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
+                    <!--Tickets-->
+                    <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
+                        <div>
+                            <img src="assets/euro.svg" alt="Simbolo de Euro Ticket"
+                                class="min-h-fit min-w-fit mr-6">
+                        </div>
+                        <div>
+                            <div class="flex flex-row justify-between mb-2">
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900">
+                                    Ticket001
+                                </p>
+                                <!--Negado-->
+                                <div class="px-2 py-1 bg-status-red rounded-lg"><p class="text-xs text-white-50">Negado</p></div>
+                            </div>
+                            <p class="text-xs flex items-center break-all">
+                                TB_ADIQUIRENCIA_WHITE_CD_CLIENTE
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </section>
+</div>
+</div>
+</body>

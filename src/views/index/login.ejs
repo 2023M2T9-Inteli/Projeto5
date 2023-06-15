@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/public/assets/logoPanpediaReduzida.svg">
+    <title>Login</title>
+    <!-- Link para o arquivo de estilização-->
+    <!--link href="index.css"  rel="stylesheet"-->
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div class="flex flex-row">
+      <!-- Div contendo um retângulo azul com a logo do site -->
+      <div class="col-lg-6 min-h-screen bg-[#02042E] w-[50%] flex items-center justify-center">
+        <img class="w-[35vw]" src="public/assets/logo.svg"  id="imgLogo">
+      </div>
+      <!-- Div contendo inputs de login e senha -->
+      <div class="lg:col-span-6 min-h-screen w-[50%] flex items-center justify-center">
+          <!--Form, o qual executa um endpoint de autenticação -->
+          <form class="flex flex-col items-center" method="post" action="/fazer-login">
+              <p class="text-center text-[48px] tracking-tighter text-[#02042E]">login</p><br>
+              <input type="text" class="inputLogin mb-4 border border-gray-500 shadow-neomorphic rounded-md py-3 w-[35vw] pl-6 text-lg" placeholder="email" id="email_user" name="email_user">
+              <input type="password" class="inputLogin mb-4 border border-gray-500 shadow-neomorphic rounded-md py-3 w-[35vw] pl-6 text-lg" placeholder="senha" id="password" name="password">
+              <!--Botão de envio da verificação de login-->
+              <button type="submit" class="btn btn-primary items-center py-3 w-[35vw] border-[#02042E] bg-[#02042E] shadow-neomorphic rounded-md text-white text-lg mt-5" type="button" id="loginButton">Entrar</button>
+          </form>
+      </div>
+    </div>
+</body>
+</html>

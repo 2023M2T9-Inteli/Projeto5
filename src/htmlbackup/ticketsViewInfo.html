@@ -1,0 +1,125 @@
+<!--Código do modal de visualização pela governança do ticket de alteração em informações-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização-Campos</title>
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importação da biblioteca alpine para o funcionamento da sidebar -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Configuração do tailwind-->
+    <script>
+        /** @type {import('tailwindcss').Config} */
+        tailwind.config = {
+            content: ["./src/frontend/*.{html,js}"],
+            theme: {
+                extend: {
+                    colors: {
+                        cinza: '#C5C5C5',
+                        corTexto: '#686868',
+                        white: {
+                            50: "#F2F2F2",
+                            100: "#E8E8E8"
+                        },
+                        colorDark: {
+                            50: "#02042E",
+                            100: "#323243",
+                            200: "#454551"
+                        },
+                        status: {
+                            blue: "#00C5FF",
+                            green: "#0F950C",
+                            yellow: "#F1B519",
+                            red: "#D01D1D"
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 10px 0 rgba(0, 0, 0, 0.11)',
+                        'divVisual': '0px 4px 10px rgba(0, 0, 0, 0.11)',
+                    },
+                }
+            },
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body class="h-screen w-full">
+    <div class="bg-black bg-opacity-50 fixed flex w-[100%] h-[100%] items-center justify-center">
+        <div
+            class="flex flex-col bg-white-50 pt-4 pb-10 px-20 border border-1 rounded-xl shadow-divVisual h-[85%] w-[80%]">
+
+            <!--Seção das sugestões-->
+            <section
+                class="flex flex-col bg-white-100 rounded-2xl mt-8 mb-8 items-center px-8 py-4 h-[55%] overflow-y-scroll">
+                <h5 class="text-[24px] font-semibold rounded-2xl self-start">Alterações sugeridas:</h5>
+                <div class="w-full px-28">
+                    <!--Sugestão de alteração 1-->
+                    <div
+                        class="grid grid-cols-3 border-1 border-white-50 bg-white-50 my-4 py-9 px-5 w-full shadow-divVisual rounded-2xl">
+                        <h6 class="text-[20px] font-semibold flex justify-center items-center">Caminho da tabela</h6>
+                        <p class="text-[16px] text-corTexto line-through flex justify-center items-center">
+                            TB_TESTE_TESTE_PAN</p>
+                        <p class="text-[16px] text-status-blue flex justify-center items-center">TB_TESTE_PAN</p>
+                    </div>
+
+                    <!--Sugestão de alteração 2-->
+                    <div
+                        class="grid grid-cols-3 border-1 border-white-50 bg-white-50 my-4 py-9 px-5 w-full shadow-divVisual rounded-2xl">
+                        <h6 class="text-[20px] font-semibold flex justify-center items-center">Caminho da tabela</h6>
+                        <p class="text-[16px] text-corTexto line-through flex justify-center items-center">
+                            TB_TESTE_TESTE_PAN</p>
+                        <p class="text-[16px] text-status-blue flex justify-center items-center">TB_TESTE_PAN</p>
+                    </div>
+
+                    <!--Sugestão de alteração 3-->
+                    <div
+                        class="grid grid-cols-3 border-1 border-white-50 bg-white-50 my-4 py-9 px-5 w-full shadow-divVisual rounded-2xl">
+                        <h6 class="text-[20px] font-semibold flex justify-center items-center">Caminho da tabela</h6>
+                        <p class="text-[16px] text-corTexto line-through flex justify-center items-center">
+                            TB_TESTE_TESTE_PAN</p>
+                        <p class="text-[16px] text-status-blue flex justify-center items-center">TB_TESTE_PAN</p>
+                    </div>
+            </section>
+
+            <!--Seção das informações-->
+            <section class="flex flex-row border-1 border-white-50 bg-white-50 shadow-divVisual rounded-2xl px-8 py-4">
+
+                <!--Divisão das infos-->
+                <div class="flex flex-col w-[40%]">
+                    <h5 class="text-[24px] font-semibold rounded-2xl self-start">Informações</h5>
+                    <div class="flex flex-row">
+                        <div class="grid grid-cols-2 w-full">
+                            <p class="text-[18px] font-semibold">Usuário:</p>
+                            <p class="text-[18px] font-semibold">Tipo de alteração:</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-row mb-8">
+                        <div class="grid grid-cols-2 w-full">
+                            <p class="text-[18px]">Bruna Pinheiro</p>
+                            <p class="text-[18px]">Informações</p>
+                        </div>
+                    </div>
+                    <p class="text-[18px] font-semibold">Tabela</p>
+                    <p class="text-[18px]">TB_ADQUIRENCIA_WHITE_CD_CLIENTE</p>
+                </div>
+
+                <!--Divisão do status-->
+                <div class="flex flex-col w-[60%]">
+                    <h5 class="text-[24px] font-semibold rounded-2xl self-center mt-8 mb-4">Mudar status para:</h5>
+                    <div class="flex flex-row gap-4 items-center justify-center">
+                        <button href="#" class="bg-colorDark-50 rounded-2xl shadow-divVisual text-white-50 px-6 py-2 w-[20%]">Aberto</button>
+                        <button href="#" class="bg-status-yellow rounded-2xl shadow-divVisual text-white-50 px-6 py-2 w-[20%]">Em análise</button>
+                        <button href="#" class="bg-status-green rounded-2xl shadow-divVisual text-white-50 px-6 py-2 w-[20%]">Aceito</button>
+                        <button href="#" class="bg-status-red rounded-2xl shadow-divVisual text-white-50 px-6 py-2 w-[20%]">Negado</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

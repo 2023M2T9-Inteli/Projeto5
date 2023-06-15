@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização-Campos</title>
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importação da biblioteca alpine para o funcionamento da sidebar -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Configuração do tailwind-->
+    <script>
+        /** @type {import('tailwindcss').Config} */
+        tailwind.config = {
+            content: ["./src/frontend/*.{html,js}"],
+            theme: {
+                extend: {
+                    colors: {
+                        cinza: '#C5C5C5',
+                        corTexto: '#686868',
+                        white: {
+                            50: "#F2F2F2",
+                            100: "#E8E8E8"
+                        },
+                        colorDark: {
+                            50: "#02042E",
+                            100: "#323243",
+                            200: "#454551"
+                        },
+                        status: {
+                            blue: "#00C5FF",
+                            green: "#0F950C",
+                            yellow: "#F1B519",
+                            red: "#D01D1D"
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 10px 0 rgba(0, 0, 0, 0.11)',
+                        'divVisual': '0px 4px 10px rgba(0, 0, 0, 0.11)',
+                    },
+                }
+            },
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+<footer class="h-full w-54 bg-[#02042E] text-white-50 p-4">
+    <div class="flex mx-20 justify-evenly items-center">
+        <img class="w-16 h-16" src="assets/logoFooterPanPedia.svg" alt="">
+        <p class="text-center">
+            © Projeto desenvolvido pelo Grupo 05 - Turma 09 <br> Versão 0.8
+        </p>
+
+        <a href="https://www.inteli.edu.br/">
+            <img class="w-16 h-16" src="assets/inteliLogo.png" alt="">
+        </a>
+    </div>
+</footer>
+
+</html>

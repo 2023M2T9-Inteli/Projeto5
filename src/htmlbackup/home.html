@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Importa o Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importa o FLowbite -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Configuração do tailwind-->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#323243',
+                    }
+                }
+            }
+        }
+    </script>
+    <title>Tela de pesquisa</title>
+
+</head>
+
+<body class="bg-gray-200 bg- dark:bg-dark">
+    <!-- Funcionamento da sidebar, verifica se esta aberta ou fechada -->
+    <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
+        <aside class="flex-shrink-0 w-52 flex flex-col border-r transition-all duration-300"
+            :class="{ 'w-20': !sidebarOpen}">
+            <nav class="bg-[#02042E] w-52 h-screen fixed text-white p-3 rounded-r-xl  font-light cursor-pointer overflow-y-auto text-center"
+                :class="{ 'w-20 overflow-hidden': !sidebarOpen}" id="nav">
+                <!--Lista com os itens da side bar-->
+                <ul class="text-xl">
+                    <div class="flex" :class="{'justify-center': !sidebarOpen}"
+                        :class="{'justify-around': sidebarOpen}">
+                        <!-- Lista com as imagens da sidebar-->
+                        <div>
+                            <div class=" mt-1  mb-5 flex items-center hover:text-[#00C5FF]"
+                                @click="sidebarOpen = !sidebarOpen">
+                                <img src="assets/menu.svg" class="flex flex-col ml-1 mt-2 w-8" id="btn-exp" alt="">
+                            </div>
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#home" class="flex items-center">
+                                    <img src="assets/home.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#fav" class="flex items-center">
+                                    <img src="assets/fav.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#library" class="flex items-center">
+                                    <img src="assets/lib.svg" class="w-6 h-7 " alt="">
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#ticket" class="flex items-center">
+                                    <img src="assets/ticket.svg" class="w-6 h-7 " alt="">
+                                    <span class="icon"><i class="uil uil-ticket text-3xl"></i></span>
+                                </a>
+                            </li>
+
+                            <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                                <a href="" class="flex">
+                                    <img src="assets/logout.svg" class="w-6 h-7" alt="">
+                                    <i class="uil uil-sign-out-alt -rotate-180 text-3xl"></i>
+                                </a>
+                            </li>
+                        </div>
+                        <!-- Lista com os textos da sidebar -->
+                        <div class="pt-14 text-white-50" :class="{ 'collapse w-0': !sidebarOpen}">
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#home" class="flex items-center">
+                                    <span class="txt-link ml-2">Home</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#fav" class="flex items-center">
+                                    <span class="txt-link ml-2">Favoritos</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#library" class="flex items-center">
+                                    <span class="txt-link ml-2">Biblioteca</span>
+                                </a>
+                            </li>
+
+                            <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                                <a href="#ticket" class="flex items-center">
+                                    <span class="txt-link ml-2">Tickets</span>
+                                </a>
+                            </li>
+
+                            <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                                <a href="" class="flex">
+                                    <span class="txt-link ml-2">Sair</span>
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+            </nav>
+        </aside>
+
+        <!--Header -->
+        <div class="flex-1">
+            <header class="flex items-center p-4 text-semibold ">
+                <div class="flex my-8 justify-end w-4/5">
+                    <!--Logo-->
+                    <div class="w-1/12">
+                        <img src="assets/logoPanpediaReduzida.svg" class="w-8 h-8">
+                    </div>
+                    <!--Barra de busca -->
+                    <form class="w-10/12">
+                        <div class="relative">
+                            <input class="w-11/12 bg-white rounded-xl h-10 -mt-2 shadow-md pl-2 pr-36" type="search">
+                            <button><img src="assets/filtro.svg" class="absolute right-40 bottom-1.5 w-7 h-7 show-modal"></button>                     
+                            <button><img src="assets/pesquisa.svg" class="absolute right-28 bottom-1.5 w-7 h-7 "></button>
+                        </div>
+                    </form>
+                    <div class="flex justify-center w-1/12">
+                        <img src="assets/Group.svg" class="w-8 h-8 lg:-ml-16 sm:ml-4">
+                        <img src="assets/Group 45.svg" class="w-8 h-8 ml-4">
+                    </div>
+                </div>
+            </header>
+            <!-- Retângulo principal da tela home  -->
+            <div
+                class="my-10 mr-16 flex flex-col items-center bg-white  border-gray-200 rounded-r-3xl shadow-2xl lg:flex-row lg:max-w-[90%] min-h-[310px] dark:border-gray-700 dark:bg-gray-800">
+                <!-- Mensagem de boas-vindas ao usuário  -->
+                <div class="p-10 pr-5 flex-col justify-center h-auto lg:w-1/2 lg:rounded-none lg:rounded-l-lg">
+                    <h1 class="text-6xl font-bolt tracking-tight text-slate-900 dark:text-white">
+                        Olá,
+                        <span id="userName">
+                            Bruna
+                        </span>
+                    </h1>
+                    <p class="text-4xl font-normal text-slate-900 dark:text-white">
+                        Bem-vinda ao Panpedia ;) <br>
+                        O que deseja fazer hoje?
+                    </p>
+                </div>
+                <!-- Card que fica do lado direito do retângulo -->
+                <div class="flex flex-col p-3 m-auto">
+                    <a href="#" id="cardAtalho"
+                        class="items-end bg-white w-[270px] h-[180px] border-white rounded-2xl shadow-2xl hover:bg-gray-200 dark:bg-slate-900 dark:border-slate-900 dark:hover:bg-slate-600 ">
+                        <h2 class="text-xl font-normal  text-slate-900 pt-6 pl-6 dark:text-gray-200">
+                            Minha Biblioteca
+                        </h2>
+                        <img class="pt-10 pl-6 items-end" src="/src/Frontend/assets/iconBiblioteca.svg" alt="">
+                    </a>
+                </div>
+                <!-- Card que fica do lado direito do retângulo -->
+                <div class="flex flex-col p-3 m-auto">
+                    <a href="#" id="cardAtalho"
+                        class="items-end bg-white w-[270px] h-[180px] border-white rounded-2xl shadow-2xl hover:bg-gray-200 dark:bg-slate-900 dark:border-slate-900 dark:hover:bg-slate-600">
+                        <h2 class="text-xl  font-normal  text-slate-900 pt-10 pl-6 dark:text-gray-200">
+                            Minha Biblioteca
+                        </h2>
+                        <img class="pt-10 pl-6 items-end" src="/src/Frontend/assets/ticket.svg" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Favoritos -->
+            <div class="mt-10 pl-10">
+                <div class="flex flex-row ">
+                    <img class="w-7 h-6" src="/src/Frontend/assets/coracao.svg" alt="">
+                    <p class="ml-5 text-slate-900 italic text-xl dark:text-gray-200">Favoritos</p>
+                </div>
+                <div
+                    class="overflow-auto mt-5 mr-16 flex flex-col bg-white border-gray-200 rounded-3xl shadow-2xl lg:flex-row lg:max-w-[90%] dark:border-gray-700 dark:bg-gray-800">
+                    <div class="flex scroll mx-5 my-5 justify-between w-auto h-[230px]">
+                        <a href="#"
+                            class="m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200">
+                            <div class="flex flex-row justify-between">
+                                <img src="assets/iconCard.svg" alt=""
+                                    class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                <h2
+                                    class="text-[18px] tracking-tight text-[#02042E] dark:text-white  mx-1 break-words w-9/12 text-center justify-center">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/3Pontos.svg" class="relative w-5 h-6 mt-2 ml-2">
+                            </div>
+                            <p class="my-3 font-extralight text-gray-500 dark:text-gray-400">Tabela contém os códigos e
+                                descrições dos combos dos clientes. Um combo é o conjunto de taxas que serão aplicadas
+                                ao cliente referente a data de pagamento escolhida pelo cliente</p>
+                        </a>
+                        <a href="#"
+                            class="m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200">
+                            <div class="flex flex-row justify-between">
+                                <img src="assets/iconCard.svg" alt=""
+                                    class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                <h2
+                                    class="text-[18px] tracking-tight text-[#02042E] dark:text-white  mx-1 break-words w-9/12 text-center justify-center">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/3Pontos.svg" class="relative w-5 h-6 mt-2 ml-2">
+                            </div>
+                            <p class="my-3 font-extralight text-gray-500 dark:text-gray-400">Tabela contém os códigos e
+                                descrições dos combos dos clientes. Um combo é o conjunto de taxas que serão aplicadas
+                                ao cliente referente a data de pagamento escolhida pelo cliente</p>
+                        </a>
+                        <a href="#"
+                            class="m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white border border-gray-200 rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-200">
+                            <div class="flex flex-row justify-between">
+                                <img src="assets/iconCard.svg" alt=""
+                                    class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                <h2
+                                    class="text-[18px] tracking-tight text-[#02042E] dark:text-white  mx-1 break-words w-9/12 text-center justify-center">
+                                    TB_ADIQUIRENCIA_WHITE_CD_CLIENTE</h2>
+                                <img src="assets/3Pontos.svg" class="relative w-5 h-6 mt-2 ml-2">
+                            </div>
+                            <p class="my-3 font-extralight text-gray-500 dark:text-gray-400">Tabela contém os códigos e
+                                descrições dos combos dos clientes. Um combo é o conjunto de taxas que serão aplicadas
+                                ao cliente referente a data de pagamento escolhida pelo cliente</p>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+            </main>
+  
+            <!-- Filtros -->
+            <div class="modal h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black bg-opacity-50">
+                <!-- Modal -->
+                <div class="bg-[#F2F2F2] rounded-3xl shadow-lg w-[38%] h-[53%]">
+                    <div class="px-10 py-8 flex justify-between">
+                        <h3 class="font-semibold text-3xl text-[#02042E]">Filtrar por:</h3>
+                        <button class="text-black close-modal">&cross;</button>
+                    </div>
+                    <div class="p-10">
+                        <div class="flex justify-around">                                               
+                            <div class="relative text-center text-[#02042E]"> 
+                                Categoria  
+                                <select id="cat" class="#F2F2F2 border border-[#C5C5C5] text-[#02042E] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full p-2.5 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+                                    <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+                                    <option>Créditos</option>
+                                    <option>Empréstimos</option>
+                                    <option>Seguros</option>
+                                  </select>                                                          
+                            </div>
+                            <div class="relative text-center text-[#02042E]">
+                                Database  
+                                <select id="dat" class="#F2F2F2 border border-[#C5C5C5] text-[#02042E] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full p-2.5 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+                                    <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+                                    <option>DB_PAN_DL_LEGACY</option>
+                                    <option>DB_PAN_DL_LEGACY</option>
+                                    <option>DB_PAN_DL_LEGACY</option>
+                                  </select>                             
+                            </div>   
+                        </div> 
+                        <br><br> 
+                        <div class="flex justify-around">                                                               
+                            <div class="relative text-center text-[#02042E]">
+                                Owner
+                                <select id="own" class="#F2F2F2 border border-[#C5C5C5] text-[#02042E] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full p-2.5 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+                                    <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+                                    <option>Antonio G.</option>
+                                    <option>Antonio G.</option>
+                                    <option>Antoino G.</option>
+                                  </select>                                
+                            </div>
+                            <div class="relative text-center text-[#02042E]">
+                                Criticidade 
+                                <select id="cri" class="#F2F2F2 border border-[#C5C5C5] text-[#02042E] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full p-2.5 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
+                                    <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
+                                    <option>Melhores avaliadas</option>
+                                    <option>Melhores avaliadas</option>
+                                    <option>Melhores avaliadas</option>
+                                  </select>                               
+                            </div>
+                         </div>                        
+                    </div>
+                    <div class="flex justify-around items-center p-12">
+                        <button class="bg-[#F2F2F2] font-semibold hover:bg-[#F2F2F2] hover:text-[#00C5FF] px-3 py-1 rounded text-[#02042E]" onclick="apagarCampos()">Limpar filtros</button>
+                        <button class="bg-[#F2F2F2] font-semibold hover:bg-[#F2F2F2] hover:text-[#00C5FF] px-3 py-1 rounded text-[#02042E]">Aplicar filtros</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Script do Modal de Filtros -->
+            <script>
+                const modal = document.querySelector('.modal');
+                const showModal = document.querySelector('.show-modal');
+                const closeModal = document.querySelector('.close-modal');
+                showModal.addEventListener('click', function (){
+                    modal.classList.remove('hidden')
+                });
+                closeModal.addEventListener('click', function (){
+                    modal.classList.add('hidden')
+                })
+                function apagarCampos() {
+                    document.getElementById('cat').value = 'Selecione uma opção';
+                    document.getElementById('dat').value = 'Selecione uma opção';
+                    document.getElementById('own').value = 'Selecione uma opção';
+                    document.getElementById('cri').value = 'Selecione uma opção';
+                }
+            </script>
+
+            <!-- Importa o JS do Flowbite -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+
+</html>

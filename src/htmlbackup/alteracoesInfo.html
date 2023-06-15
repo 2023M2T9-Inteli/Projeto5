@@ -1,0 +1,246 @@
+<!--Código do modal de sugestão de alteração das informações da tabela-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização-Campos</title>
+    <!-- Link para o funcionamento da biblioteca tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importação da biblioteca alpine para o funcionamento da sidebar -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Configuração do tailwind-->
+    <script>
+        /** @type {import('tailwindcss').Config} */
+        tailwind.config = {
+            content: ["./src/frontend/*.{html,js}"],
+            theme: {
+                extend: {
+                    colors: {
+                        cinza: '#C5C5C5',
+                        corTexto: '#686868',
+                        white: {
+                            50: "#F2F2F2",
+                            100: "#E8E8E8"
+                        },
+                        colorDark: {
+                            50: "#02042E",
+                            100: "#323243",
+                            200: "#454551"
+                        },
+                        status: {
+                            blue: "#00C5FF",
+                            green: "#0F950C",
+                            yellow: "#F1B519",
+                            red: "#D01D1D"
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 10px 0 rgba(0, 0, 0, 0.11)',
+                        'divVisual': '0px 4px 10px rgba(0, 0, 0, 0.11)',
+                    },
+                }
+            },
+            plugins: [],
+        }
+    </script>
+</head>
+
+<body class="h-screen w-full">
+    <div class="bg-black bg-opacity-50 fixed flex w-[100%] h-[100%] items-center justify-center">
+        <div class="flex flex-col bg-white-50 pt-4 pb-10 px-5 border border-1 rounded-xl shadow-divVisual overflow-y-scroll h-[80%] w-[84%]">
+            
+            <!--Header-->
+            <header>
+                <div class="flex flex-row justify-between">
+                    <h3 class="text-[28px] font-bold rounded-2xl">Sugerir alterações em:</h3>
+                    <img src="assets/fechar.svg">
+                </div>
+    
+                <!--Botões-->
+                <div class="flex flex-row pt-8 pb-12 w-full gap-4">
+                    <button id="btnInfo" href="#" class="text-[20px] border-status-blue border-2 rounded-xl text-status-blue px-4 font-semibold shadow-xl">Informações</button>
+                    <button id="btnCampo" href="#" class="text-[20px] border-colorDark-50 border-2 rounded-xl text-colorDark-50 px-4 font-semibold shadow-xl">Campos</button>
+                </div>
+            </header>
+    
+            <!--Conteúdo-->
+            <main>
+                <!--Bloco de detalhes-->
+                <section class="flex flex-col items-center pt-4 pb-10 px-5 mb-10 w-full border border-1 border-cinza rounded-xl">
+                    <h5 class="text-[20px] font-bold border-2 border-colorDark-50 rounded-2xl px-2 ">Detalhes</h5>
+        
+                    <!--Item 1-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Database</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">DB_PAN_DL_LEGACY</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+
+                    <!--Item 2-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Tipo do ativo</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">tabela</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 3-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Caminho da tabela</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">s3://pan-dl-prd-legacy/interfaces/cli-rcz-hist/</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>                    
+                    </div>
+                    
+                    <!--Item 4-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Ativo</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">DB_PAN_DL_LEGACY.TB_INTERFACES_CLI_RCZ_HIST</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                </section>
+        
+                <!--Bloco de Informações de Origem-->
+                <section
+                    class="flex flex-col items-center pt-4 pb-10 px-5 mb-10 w-full border border-1 border-cinza rounded-xl">
+                    <h5 class="text-[20px] font-bold border-2 border-colorDark-50 rounded-2xl px-2 ">Informações na Origem</h5>
+
+                    <!--Item 1-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Database da Origem</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">BI_ODS</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 2-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Schema da Origem</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2"> - </p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 3-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Sistema da Origem</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">SQL Server</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 4-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Servidor da Origem</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">PANVDBP420D</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 5-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Frequência de atualização
+                        </h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">Diário</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 6-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Defasagem</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">D-30</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+        
+                    
+                    <!--Item 7-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Data de criação</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">23 de janeiro de 2021</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                </section>
+        
+                <!--Bloco da Sustentação-->
+                <section class="flex flex-col items-center pt-4 pb-10 px-5 mb-10 w-full border border-1 border-cinza rounded-xl">
+                    <h5 class="text-[20px] font-bold border-2 border-colorDark-50 rounded-2xl px-2 ">Sustentação</h5>
+
+                    <!--Item 1-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Engenheiro responsável</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">-</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+        
+                    <!--Item 2-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Mecânica</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">Automática</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                </section>
+        
+                <!--Bloco do Responsável pelos dados-->
+                <section class="flex flex-col items-center pt-4 pb-10 px-5 mb-7 w-full border border-1 border-cinza rounded-xl">
+                    <h5 class="text-[20px] font-bold border-2 border-colorDark-50 rounded-2xl px-2 ">Responsável pelos dados</h5>
+
+                    <!--Item 1-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Conjunto de dados</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">Informações Estratégicas</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+        
+                    <!--Item 2-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Owner</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">Rodolfo Cerezer</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                    
+                    <!--Item 3-->
+                    <div class="grid grid-cols-4 border-1 border-white-50 mt-4 pl-4 py-2 w-full shadow-divVisual rounded-2xl">
+                        <h5 class="text-[20px] font-semibold text-colorDark-50 justify-self-start">Steward</h5>
+                        <p class="text-corTexto text-[18px] justify-self-center col-span-2">Leonídio Amorim Fonseca</p>
+                        <a href="#" class="justify-self-end mr-6">
+                            <img src="assets/lapisEdicao.svg"/>
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <!--Botão de enviar-->
+            <footer class="flex flex-row justify-end">
+                <button href="#" class="bg-status-green rounded-xl px-8 py-3 text-white-50 text-[20px] hover:bg-green-600">Enviar</button>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>

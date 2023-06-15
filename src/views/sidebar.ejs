@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title%></title>
+    <link rel="icon" href="<%= iconeTitulo %>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        //Configurações de cores e sombreamento para o tailwind
+        /** @type {import('tailwindcss').Config} */
+        tailwind.config = {
+            content: ["./src/frontend/*.{html,js}"],
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cinza: '#C5C5C5',
+                        corTexto: '#686868',
+                        white: {
+                            50: "#F2F2F2",
+                            100: "#E8E8E8"
+                        },
+                        colorDark: {
+                            50: "#02042E",
+                            fundo: "#323243",
+                            cinzaclaro: "#454551"
+                        },
+                        status: {
+                            blue: "#00C5FF",
+                            green: "#0F950C",
+                            yellow: "#F1B519",
+                            red: "#D01D1D"
+                        }
+                    },
+                    boxShadow: {
+                        neomorphic: '6px 6px 14px #d7d7d7, -6px -6px 14px #ffffff',
+                        neomorphic_inset: 'inset 5px 5px 8px #dadada, inset -5px -5px 8px #ffffff',
+                        neomorphic_dark: '5px 5px 14px #22222e, -5px -5px 14px #424258',
+                        neomorphic_dark_inset: ' inset 5px 5px 8px #272734, inset -5px -5px 8px #424258',
+                    },
+                }
+            },
+            plugins: [],
+        }
+    </script>
+    <!--Biblioteca utilizada para o funcionamento da sidebar, permite a alteração de classes se uma condição for atendida-->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!--Estilo específico para a Fonte Montserrat-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="dark:bg-colorDark-fundo bg-white-50 font-montserrat">
+    <div x-data="{ sidebarOpen: false }" class="flex overflow-x-hidden h-screen">
+        <aside class="flex-shrink-0 w-52 flex flex-col border-r transition-all duration-300" :class="{ 'w-20': !sidebarOpen}" >
+            <nav class="bg-[#02042E] w-52 h-screen fixed text-white p-3 rounded-r-xl  font-light cursor-pointer overflow-y-auto text-center" :class="{ 'w-20 overflow-hidden': !sidebarOpen}"  id="nav" >
+
+                <ul class="text-xl">
+                    <div class="flex" :class="{'justify-center': !sidebarOpen}" :class="{'justify-around': sidebarOpen}">
+                        
+                        <div>
+                        <div class=" mt-1  mb-5 flex items-center hover:text-[#00C5FF]" @click="sidebarOpen = !sidebarOpen">
+                            <img src="/public/assets/menu.svg" class="flex flex-col ml-1 mt-2 w-8" id="btn-exp" alt="">
+                        </div>
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/home" class="flex items-center">
+                                <img src="/public/assets/home.svg" class="w-6 h-7 " alt="">
+                            </a>
+                        </li>
+            
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/fav" class="flex items-center">
+                                <img src="/public/assets/fav.svg" class="w-6 h-7 " alt="">
+                            </a>
+                        </li>
+            
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/tickets" class="flex items-center">
+                                <img src="/public/assets/ticket.svg" class="w-6 h-7 " alt="">
+                                <span class="icon"><i class="uil uil-ticket text-3xl"></i></span>
+                            </a>
+                        </li>
+            
+                        <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                            <a href="" class="flex">
+                                <img src="/public/assets/logout.svg" class="w-6 h-7" alt="">
+                                <i class="uil uil-sign-out-alt -rotate-180 text-3xl"></i>
+                            </a>
+                        </li>
+                    </div>
+
+                    <div class="pt-14 text-white-50" :class="{ 'collapse w-0': !sidebarOpen}">
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/home" class="flex items-center">
+                                <span class="txt-link ml-2">Home</span>
+                            </a>
+                        </li>
+            
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/fav" class="flex items-center">
+                                <span class="txt-link ml-2">Favoritos</span>
+                            </a>
+                        </li>
+        
+            
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="/tickets" class="flex items-center">
+                                <span class="txt-link ml-2">Tickets</span>
+                            </a>
+                        </li>
+            
+                        <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                            <a href="" class="flex">
+                                <span class="txt-link ml-2">Sair</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+                </ul>
+            </nav>
+        </aside>
+
+        
