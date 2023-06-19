@@ -105,6 +105,7 @@
     let dat = document.getElementById('dat');
     let own = document.getElementById('own');
     let cri = document.getElementById('cri');
+
     // Input hidden dentro do form
     let formCat = document.getElementById('formCat');
     let formDb = document.getElementById('formDb');
@@ -119,13 +120,19 @@
 
       console.log(`${formCat.value}-${formDb.value}-${formOwn.value}-${formCri.value}`);
     }
-
+    
+    //função para limpar os filtros
     function apagarCampos() {
       cat.value = 'Selecione uma opção';
       dat.value = 'Selecione uma opção';
       own.value = 'Selecione uma opção';
       cri.value = 'Selecione uma opção';
+      cat.classList.remove('texto-azul');
+      dat.classList.remove('texto-azul');
+      own.classList.remove('texto-azul');
+      cri.classList.remove('texto-azul');
     }
+
     //Essa função ativa e desativa o modo escuro ao adicionar e excluir a classe dark na tag <html>
     function darkModeOnOff() {
       const html = document.getElementsByTagName("html")[0];
@@ -181,12 +188,25 @@
       .catch(function (error) {
         console.log(error);
       });
+    
+    //Função para trocar as cores ao selecionar um filtro
+    function atualizarEstilo(selectElement) {
+      var selectedIndex = selectElement.selectedIndex;
+      var selectedOption = selectElement.options[selectedIndex];
 
-    function apagarCampos() {
-      cat.value = 'Selecione uma opção';
-      dat.value = 'Selecione uma opção';
-      own.value = 'Selecione uma opção';
-      cri.value = 'Selecione uma opção';
+      if (selectedIndex === 0) {
+        selectElement.classList.remove('texto-azul');
+      } else {
+        selectElement.classList.add('texto-azul');
+      }
     }
+
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+
+  <style>
+    /*Style utilizado na função de filtros*/
+    .texto-azul {
+      color: #02042E;
+    }
+  </style>
