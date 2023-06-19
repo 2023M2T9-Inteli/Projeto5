@@ -44,18 +44,18 @@ router.post('/adicionar-pasta',urlencodedParser,(req,res)=>{
     //Inicializa o banco de dados
     var db = new sqlite3.Database(DBPATH); 
     //Varíavel para a definição da sentença SQl
-    var sql = `INSERT INTO Tabelas_Salvas (id_tabela,id_pasta) VALUES("` +req.body.id_tabela + `","` +req.body.id_pasta + `")`;
+    var sql = `INSERT INTO Tabelas_Salvas (ID_TABELA, ID_PASTA) VALUES ('${req.body.id_tabela}', ${req.body.id_pasta})`;
     console.log(sql);
     db.run(sql, [], (err) => {
         if (err) {
           //Joga o erro pro console, impedindo acontecer um travamento geral
           throw err;
         }
-        res.write("Adicionado à pasta com sucesso!");
-        res.end(); // Send the response to the client
-        db.close(); // Close the database connection
     });
-});    
+    res.write("Adicionado à pasta com sucesso!");
+    res.end(); // Send the response to the client
+    db.close();
+});  
 
 // Endpoint para deletar uma tabela do favoritos
 router.get('/deletar-info-pasta',(req,res)=>{

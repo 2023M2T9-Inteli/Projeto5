@@ -33,6 +33,16 @@
             document.getElementById('conteudoInfo').classList.add('hidden');
         }
     </script>
+    <style>
+        .custom-submit {
+            background-image: url('/public/assets/fav.svg');
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 
     <!--Conteúdo-->
     <section class="flex flex-col ml-24 pr-16 pt-8 items-center w-full">
@@ -69,9 +79,11 @@
                         onclick="closeConteudoInfo(), openConteudoCampos()">Campos</button>
                 </div>
                 <div class="flex flex-row">
-                    <a href="">
-                        <img src="/public/assets/fav.svg" class="my-3 mx-5">
-                    </a>
+                    <form action="/tabelas_salvas/adicionar-pasta" method="post">
+                        <input type="submit" value="" class="custom-submit">
+                        <input type="hidden" name="id_pasta" value="<%= idPasta %>">
+                        <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
+                    </form>
                     <img src="/public/assets/stars.svg" alt="">
                 </div>
 
