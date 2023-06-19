@@ -47,6 +47,30 @@
     </script>
     <!--Biblioteca utilizada para o funcionamento da sidebar, permite a alteração de classes se uma condição for atendida-->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <script>
+        function darkModeOnOff() {
+            const html = document.getElementsByTagName("html")[0];
+            const isDarkModeEnabled = html.classList.contains('dark');
+      
+            if (!isDarkModeEnabled) {
+              html.classList.add('dark');
+              localStorage.setItem('darkModeEnabled', 'true');
+            } else {
+              html.classList.remove('dark');
+              localStorage.setItem('darkModeEnabled', 'false');
+            }
+          }
+          
+          document.addEventListener('DOMContentLoaded', function () {
+            const isDarkModeEnabled = localStorage.getItem('darkModeEnabled');
+            const html = document.getElementsByTagName("html")[0];
+      
+            if (isDarkModeEnabled === 'true') {
+              html.classList.add('dark');
+            }
+          });
+    </script>
     <!--Estilo específico para a Fonte Montserrat-->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
@@ -86,6 +110,14 @@
                                 <span class="icon"><i class="uil uil-ticket text-3xl"></i></span>
                             </a>
                         </li>
+                        
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="#" class="flex items-center" onclick="darkModeOnOff()">
+                                <img src="/public/assets/lua.svg" class="w-6 h-7 dark:hidden" alt="">
+                                <img src="/public/assets/lua_dark.svg" class="w-5 h-7 hidden dark:block" alt="">
+                                <span class="icon"><i class="uil uil-ticket text-3xl"></i></span>
+                            </a>
+                        </li>
             
                         <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
                             <a href="/" class="flex">
@@ -114,8 +146,14 @@
                                 <span class="txt-link ml-2">Tickets</span>
                             </a>
                         </li>
+
+                        <li class="ml-1.5 mb-3 hover:text-[#00C5FF]">
+                            <a href="#" class="flex items-center">
+                                <span class="txt-link ml-2" onclick="darkModeOnOff()" >Tema</span>
+                            </a>
+                        </li>
             
-                        <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
+                        <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF] ">
                             <a href="/" class="flex">
                                 <span class="txt-link ml-2">Sair</span>
                             </a>

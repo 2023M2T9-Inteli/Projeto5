@@ -11,7 +11,7 @@
       <form method="get" action="/tabelas/pesquisa" class="w-10/12">
         <div class="relative">
           <input type="text" name="pesquisa" id="pesquisa"
-            class="w-11/12 bg-white-50 rounded-xl h-10 -mt-2 shadow-neomorphic_inset pl-2 pr-36" required>
+            class="w-11/12 bg-white-50 rounded-xl h-10 -mt-2 shadow-neomorphic_inset pl-2 pr-36 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark_inset dark:text-white-50" required>
 
           <input type="hidden" id="formCat" name="formCat" value="">
           <input type="hidden" id="formDb" name="formDb" value="">
@@ -19,15 +19,14 @@
           <input type="hidden" id="formCri" name="formCri" value="">
 
           <button data-modal-toggle="defaultModal" type="button"><img src="/public/assets/filtro.svg"
-              class="dark:grayscale dark:invert absolute right-40 bottom-1.5 w-7 h-7 "></button>
+              class="dark:grayscale dark:invert absolute right-40 bottom-1.5 w-7 h-7"></button>
           <button type="submit"><img src="/public/assets/pesquisa.svg"
-              class="dark:grayscale dark:invert absolute right-28 bottom-1.5 w-7 h-7 "></button>
+              class="dark:grayscale dark:invert absolute right-28 bottom-1.5 w-7 h-7"></button>
         </div>
       </form>
       <div class="flex justify-center w-1/12">
         <img src="/public/assets/Group.svg" class="dark:grayscale dark:invert w-8 h-8 lg:-ml-16 sm:ml-4">
-        <img src="/public/assets/Group 45.svg" class="dark:grayscale dark:invert w-8 h-8 ml-4"
-          onclick="darkModeOnOff()">
+        <img src="/public/assets/Group 45.svg" class="dark:grayscale dark:invert w-8 h-8 ml-4">
       </div>
     </div>
   </header>
@@ -132,28 +131,6 @@
       own.classList.remove('texto-azul');
       cri.classList.remove('texto-azul');
     }
-
-    //Essa função ativa e desativa o modo escuro ao adicionar e excluir a classe dark na tag <html>
-    function darkModeOnOff() {
-      const html = document.getElementsByTagName("html")[0];
-      const isDarkModeEnabled = html.classList.contains('dark');
-
-      if (!isDarkModeEnabled) {
-        html.classList.add('dark');
-        localStorage.setItem('darkModeEnabled', 'true');
-      } else {
-        html.classList.remove('dark');
-        localStorage.setItem('darkModeEnabled', 'false');
-      }
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      const isDarkModeEnabled = localStorage.getItem('darkModeEnabled');
-      const html = document.getElementsByTagName("html")[0];
-
-      if (isDarkModeEnabled === 'true') {
-        html.classList.add('dark');
-      }
-    });
 
     // Fetch para pegar as informação do filtro que está no banco de dados
     fetch(url)
