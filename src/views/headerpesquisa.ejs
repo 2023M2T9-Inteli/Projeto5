@@ -30,27 +30,25 @@
       </div>
     </div>
   </header>
-  <script>
 
-  </script>
 
   <!-- Filtros -->
   <div id="defaultModal"
-    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black bg-opacity-50">
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-black bg-opacity-20 dark:bg-white-50 dark:bg-opacity-5">
     <!-- Modal -->
-    <div class="bg-[#F2F2F2] rounded-3xl shadow-lg w-[40%] h-[65%]">
+    <div class="bg-[#F2F2F2] rounded-3xl shadow-lg w-[40%] h-[65%] dark:bg-colorDark-fundo bg:shadow-neomorphic_dark">
       <div class="px-10 pt-4 pb-2 flex justify-end">
-        <button class="text-black" data-modal-hide="defaultModal">&cross;</button>
+        <button class="text-black dark:text-white-50" data-modal-hide="defaultModal"><img class="w-6 dark:grayscale dark:invert" src="/public/assets/fechar.svg"></button>
       </div>
 
       <div class="pb-5 pl-8">
-        <h3 class="font-semibold text-3xl text-[#02042E]">Filtrar por:</h3>
+        <h3 class="font-semibold text-3xl text-[#02042E] dark:text-white-50">Filtrar por:</h3>
       </div>
 
       <div class="flex flex-col px-6 pb-6 gap-8">
         <div class="flex justify-around gap-4">
           <div class="relative text-center text-[#02042E]">
-            <h5 class="text-[16px] pb-2">Categoria</h5>
+            <h5 class="text-[16px] pb-2 dark:text-white-50">Categoria</h5>
             <select id="cat" onchange="atualizarEstilo(this)"
               class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
               <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
@@ -58,7 +56,7 @@
           </div>
 
           <div class="relative text-center text-[#02042E]">
-            <h5 class="text-[16px] pb-2">Database</h5>
+            <h5 class="text-[16px] pb-2 dark:text-white-50">Database</h5>
             <select id="dat" onchange="atualizarEstilo(this)"
               class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
               <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
@@ -68,7 +66,7 @@
 
         <div class="flex justify-around gap-4">
           <div class="relative text-center text-[#02042E]">
-            <h5 class="text-[16px] pb-2">Owner</h5>
+            <h5 class="text-[16px] pb-2 dark:text-white-50">Owner</h5>
             <select id="own" onchange="atualizarEstilo(this)"
               class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
               <option class="text-[#ACACAC]" selected>Selecione uma opção</option>
@@ -76,7 +74,7 @@
           </div>
 
           <div class="relative text-center text-[#02042E]">
-            <h5 class="text-[16px] pb-2">Criticidade</h5>
+            <h5 class="text-[16px] pb-2 dark:text-white-50">Criticidade</h5>
             <select id="cri" onchange="atualizarEstilo(this)"
               class="#F2F2F2 border border-[#C5C5C5] text-[#ACACAC] text-sm rounded-full focus:ring-[#00C5FF] focus:border-[#00C5FF] block w-full py-1 px-4 dark:bg-[#F2F2F2] dark:border-[#C5C5C5] dark:placeholder-[#ACACAC] dark:text-[#02042E] dark:focus:ring-[#00C5FF] dark:focus:border-[#00C5FF]">
               <option class="text-[#ACACAC]" selected>Selecione uma opção</option>

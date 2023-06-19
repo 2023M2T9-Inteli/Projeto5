@@ -10,7 +10,7 @@
 </script>
 <!--Classe que contém todo o conteúdo da página-->
 <main class="">
-    <h2 class="ml-14 font-montserrat italic font-medium text-2xl leading-7 text-blue-900">
+    <h2 class="ml-14 font-montserrat italic font-medium text-2xl leading-7 text-blue-900 dark:text-white-50">
         Resultados da busca
     </h2>
     <!--Variável que verifica o tamanho da resposta-->
@@ -21,30 +21,30 @@
         <!--Div que contém dois cards do resultado-->
         <div class="flex mx-auto my-8 justify-evenly w-11/12">
                 <!--Card 1-->
-                <div class="h-72 -ml-12 max-w-[35vw] px-6 py-4 hover:bg-primary bg-begeclaro rounded-2xl shadow-neomorphic w-1/2 overflow-hidden">
+                <div class="h-72 -ml-12 max-w-[35vw] px-6 py-4 hover:bg-primary bg-begeclaro rounded-2xl shadow-neomorphic w-1/2 overflow-hidden dark:shadow-neomorphic_dark">
                     <div class="flex justify-between">
                     <!--Ícone e título do card-->
                     <img src="/public/assets/logoPanpediaReduzida.svg" alt="" class="w-10 h-10 my-4">
-                        <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline">
+                        <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline dark:text-white-50">
                             <a href="/tabelas/informacoes?id_tabela=<%= tabelas[i].ID %>"><%= tabelas[i].ID %></a>
                         </h2>
                         <img src="/public/assets/3Pontos.svg">
                     </div>
-                    <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto"><%= tabelas[i].CONTEUDO_TABELA %></p>
+                    <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto dark:text-white-100"><%= tabelas[i].CONTEUDO_TABELA %></p>
                 </div>
                 <!--Verificação de caso o loop acabará em uma posição da resposta inexistente, assim parando o loop-->
                 <% if((tabelas.length % 2) == 1  && i+1 >= tabelas.length) {break;} %>
                 <!--Card 2-->
-                <div class="h-72 -ml-12 max-w-[35vw] px-6 py-4 hover:bg-primary bg-begeclaro rounded-2xl shadow-neomorphic  w-1/2 overflow-hidden" >
+                <div class="h-72 -ml-12 max-w-[35vw] px-6 py-4 hover:bg-primary bg-begeclaro rounded-2xl shadow-neomorphic  w-1/2 overflow-hidden dark:shadow-neomorphic_dark" >
                     <div class="flex justify-between">
                         <!--Ícone e título do card-->
                         <img src="/public/assets/logoPanpediaReduzida.svg" alt="" class="w-10 h-10 my-4">
-                        <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline">
+                        <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline dark:text-white-50">
                             <a href="/tabelas/informacoes?id_tabela=<%= tabelas[i].ID %>"><%= tabelas[i+1].ID %></a>
                         </h2>
                         <img src="/public/assets/3Pontos.svg" w-5 h-5 ml-2">
                     </div>
-                    <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto"><%= tabelas[i+1].CONTEUDO_TABELA %></p>
+                    <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto dark:text-white-100"><%= tabelas[i+1].CONTEUDO_TABELA %></p>
                 </div>
         </div>
     <!--Caso os resultados tenham menos de dez, será executado um loop com o tamanho do resultado-->
