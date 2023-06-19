@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
                     throw err;
                 }
                 //Renderiza a página de resultados, passando de parâmetro o resultado da busca no banco de dados
-                res.render("index/ticketsGov", {tickets:rows, title: titulo, iconeTitulo: icone });
+                res.render("index/ticketGov", {tickets:rows, title: titulo, iconeTitulo: icone });
             });
             db.close();   
         }

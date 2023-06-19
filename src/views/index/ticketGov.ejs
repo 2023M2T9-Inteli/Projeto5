@@ -23,7 +23,7 @@
                 </div>
                 <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
                     <!--Tickets-->
-                    <% for (var tick in ticket) { %>
+                    <% for (var tick in tickets) { %>
                         <% if(tick.status == 0) { %>
                         <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
                             <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
@@ -38,11 +38,11 @@
             </div>
             <div class="h-full w-72 flex flex-col">
                 <div class="bg-status-yellow h-10 p-2 text-center rounded-lg">
-                    <p class="text-white-50">Em Análise <%=tick.ID_TICKET%> </p>
+                    <p class="text-white-50">Em Análise  </p>
                 </div>
                 <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
                     <!-- Tickets -->
-                    <% for (var tick in ticket) { %>
+                    <% for (var tick in tickets) { %>
                         <% if(tick.status == 1) { %>
                         <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
                             <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
@@ -57,11 +57,11 @@
             </div>
             <div class="h-full w-72 flex flex-col">    
                     <div class="bg-status-green h-10 p-2 text-center rounded-lg">
-                        <p class="text-white-50">Analisado <%=tick.ID_TICKET%> </p>
+                        <p class="text-white-50">Analisado </p>
                     </div>
                     <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
                         <!-- Tickets -->
-                        <% for (var tick in ticket) { %>
+                        <% for (var tick in tickets) { %>
                             <% if(tick.status == 2) { %>
                             <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
                                 <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
@@ -76,32 +76,6 @@
                         <% } %>
                     </div>
                 </div>
-            <div class="h-full w-72 flex flex-col">
-                <div class="bg-status-green h-10 p-2 text-center rounded-lg ">
-                    <p class="text-white-50">Analisado</p>
-                </div>
-                <div class="bg-white-50 h-full mt-10 shadow-lg rounded-lg p-4">
-                    <!--Tickets-->
-                    <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
-                        <div>
-                            <img src="assets/euro.svg" alt="Simbolo de Euro Ticket"
-                                class="min-h-fit min-w-fit mr-6">
-                        </div>
-                        <div>
-                            <div class="flex flex-row justify-between mb-2">
-                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900">
-                                    Ticket001
-                                </p>
-                                <!--Negado-->
-                                <div class="px-2 py-1 bg-status-red rounded-lg"><p class="text-xs text-white-50">Negado</p></div>
-                            </div>
-                            <p class="text-xs flex items-center break-all">
-                                TB_ADIQUIRENCIA_WHITE_CD_CLIENTE
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
     </section>
