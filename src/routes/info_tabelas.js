@@ -38,9 +38,9 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
         //Varíavel para a definição da sentença SQl
         var sql = `SELECT * FROM Catalogo_Dados_Tabelas LEFT JOIN Catalogo_Dados_Variaveis
         ON Catalogo_Dados_Variaveis.TABELA = Catalogo_Dados_Tabelas.TABELA 
-        WHERE Catalogo_Dados_Tabelas.ID LIKE "%` + req.query.pesquisa + `%" 
-        AND Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%` + req.query.pesquisa + `%"  
-        AND  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%` + req.query.pesquisa + `%"`;
+        WHERE (Catalogo_Dados_Tabelas.ID LIKE "%` + req.query.pesquisa + `%" 
+        OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%` + req.query.pesquisa + `%"  
+        OR  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%` + req.query.pesquisa + `%")`;
 
         //Verifica se foram passados parâmetros de filtros e em caso positivo, adiciona-os a sentença sql
         if (categoria != undefined && categoria !== '') { sql += ` AND Catalogo_Dados_Tabelas.CONJUNTODADOS_PRODUTO = "${categoria}" ` }
@@ -60,6 +60,7 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
                 throw err;
             }
             //Renderiza a página de resultados, passando de parâmetro o resultado da busca no banco de dados
+            console.log(rows);
             res.render("tabelas/resultado", { pesquisa: pesquisa, tabelas: rows, title: titulo, iconeTitulo: icone });
         });
         db.close();
@@ -136,7 +137,7 @@ router.get('/informacoes', (req, res) => {
             }
             console.log(rows);
             //Renderiza a página visualização, passando de parâmetro o resultado da busca no banco de dados
-            res.render("tabelas/visualizacao", { tabela: rows, title: titulo, iconeTitulo: icone });
+            res.render("tabelas/visualizacao", { tabela: rows, title: titulo, iconeTitulo: icone, idPasta: req.session.id_pasta});
         });
         db.close();
     }

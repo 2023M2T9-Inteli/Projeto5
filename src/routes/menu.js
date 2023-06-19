@@ -44,10 +44,11 @@ router.get('/',(req,res)=>{
             var conteudo = rows;
             if(rows !== null){
                 //Renderiza a página home, passando de parâmetro o resultado da busca no banco de dados, além do nome do usuário 
-                res.render("index/home", {conteudo:conteudo, nome:req.session.nome, title:titulo, iconeTitulo:icone});}
-            else
-            {
+                req.session.id_pasta = rows[0].ID_PASTA;
+                res.render("index/home", {conteudo:conteudo, nome:req.session.nome, title:titulo, iconeTitulo:icone});
+            } else {
                 //Caso não tenha havido nenhum resultado, renderiza a página home só passando o nome como parãmtreo.
+                req.session.id_pasta = rows[0].ID_PASTA;
                 res.render("index/home",{nome:req.session.nome,title:titulo, iconeTitulo:icone});
             }
         })
