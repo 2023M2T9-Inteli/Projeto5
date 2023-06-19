@@ -24,10 +24,10 @@
 - <a href="https://www.linkedin.com/in/profclaudioandre/">Cláudio Fernando André</a>
   
 ## Professores: 
-- <a href="/">Fátima Toledo</a>
-- <a href="/">Francisco Escobar</a>
-- <a href="/">Flávio Marques Azevedo</a>
-- <a href="/">Henrique Mohallem Paiva</a>
+- <a href="https://www.linkedin.com/in/fatima-toledo/">Fátima Toledo</a>
+- <a href="https://www.linkedin.com/in/flaviomarquesazevedo/">Flávio Marques Azevedo</a>
+- <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>
+- <a href="https://www.linkedin.com/in/henrique-mohallem-paiva-6854b460/">Henrique Mohallem Paiva</a>
 
 
 
