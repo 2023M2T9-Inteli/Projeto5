@@ -36,6 +36,19 @@
                                 <p class="text-white-50">Em Análise</p>
                                 
                             </div>
+                            <% } else if(tick.status == 2) { %>
+                                <div class="bg-status-green h-10 p-2 text-center rounded-3xl px-4">
+                                
+                                    <p class="text-white-50">Analisado</p>
+                                    
+                                </div>
+                            
+                            <% } else if(tick.status == 0) { %>
+                                <div class="bg-colorDark-50 h-10 p-2 text-center rounded-3xl px-4">
+                                
+                                    <p class="text-white-50">Abertos</p>
+                                    
+                                </div>
                             <% } %>
                             <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
                         </div>
