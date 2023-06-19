@@ -57,8 +57,8 @@
     </style>
 </head>
 <body class="dark:bg-colorDark-fundo bg-white-50 font-montserrat">
-    <div x-data="{ sidebarOpen: false }" class="flex overflow-x-hidden h-screen">
-        <aside class="flex-shrink-0 w-52 flex flex-col border-r transition-all duration-300" :class="{ 'w-20': !sidebarOpen}" >
+        <div x-data="{ sidebarOpen: false }" class="flex overflow-x-hidden h-screen">
+            <aside class="flex-shrink-0 w-52 flex flex-col border-r transition-all duration-300" :class="{ 'w-20': !sidebarOpen}" >
             <nav class="bg-[#02042E] w-52 h-screen fixed text-white p-3 rounded-r-xl  font-light cursor-pointer overflow-y-auto text-center" :class="{ 'w-20 overflow-hidden': !sidebarOpen}"  id="nav" >
 
                 <ul class="text-xl">
@@ -88,7 +88,7 @@
                         </li>
             
                         <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
-                            <a href="" class="flex">
+                            <a href="/" class="flex">
                                 <img src="/public/assets/logout.svg" class="w-6 h-7" alt="">
                                 <i class="uil uil-sign-out-alt -rotate-180 text-3xl"></i>
                             </a>
@@ -116,7 +116,7 @@
                         </li>
             
                         <li class="absolute ml-1.5 bottom-5 hover:text-[#00C5FF]">
-                            <a href="" class="flex">
+                            <a href="/" class="flex">
                                 <span class="txt-link ml-2">Sair</span>
                             </a>
                         </li>
@@ -125,5 +125,3 @@
                 </ul>
             </nav>
         </aside>
-
-        

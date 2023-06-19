@@ -15,7 +15,7 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const router = express.Router();
 
 //Tela de Tickets
-router.get('/tickets', (req, res) => {
+router.get('/', (req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
         var titulo = "Tickets";
@@ -24,9 +24,11 @@ router.get('/tickets', (req, res) => {
         res.statusCode = 200;
         //Define o cabeçalho da requisição
         res.setHeader('Acess-Control-Allow-Origin', '*');
+        //Inicializa o banco de dados
+        var db = new sqlite3.Database(DBPATH); 
         //Comando sql a ser executado
         if (req.session.acesso == 0) {
-            var sql = `SELECT * FROM Tickets WHERE ID_USER = "` + req.session.id_user;
+            var sql = `SELECT * FROM Tickets WHERE ID_USER = ` + req.session.id_user;
             db.all(sql, [], (err, rows) => {
                 if (err) {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
@@ -55,3 +57,5 @@ router.get('/tickets', (req, res) => {
         res.redirect("/");
     }
 })
+
+module.exports = router;

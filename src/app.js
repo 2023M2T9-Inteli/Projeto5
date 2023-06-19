@@ -35,6 +35,7 @@ const tabelasRouter = require('./routes/info_tabelas.js');
 const pastasRouter = require('./routes/pastas.js');
 const tabelasSalvasRouter = require('./routes/favoritos.js');
 const paginasRouter = require('./routes/menu.js');
+const ticketsRouter = require('./routes/tickets.js');
 /* Definição dos endpoints */
 app.use(express.json());
 
@@ -50,6 +51,8 @@ app.use('/pastas', pastasRouter);
 //Endpoints das tabelas_Salvas
 app.use('/tabelas_salvas', tabelasSalvasRouter);
 
+//Endpoints das tabelas_Salvas
+app.use('/tickets', ticketsRouter);
 
 //Endpoints das tabelas_Salvas
 app.use('/menu', paginasRouter);
