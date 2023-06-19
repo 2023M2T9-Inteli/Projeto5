@@ -18,56 +18,76 @@
                     <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
 
                     <!-- Ticket será dividido em 3 colunas (ícone, info e status) -->
+                    <% for (var tick in tickets) { %>
+                    
                     <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
                         <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
                         <div class="flex flex-col w-2/4 px-4">
                             <div class="flex flex-row justify-around">
-                                <b>Ticket 01</b>
-                                <p class="italic">tb_catalogo_dados</p>
+                                <b>Ticket <%=tick.ID_TICKET%></b>
+                                <p class="italic"><%= tick.ID_TABELA %></p>
                             </div>
                             <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
                         </div>
                         <div class="w-1/4 flex flex-col items-center justify-center">
+                            <% if(tick.status == 1) { %>
                             <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">
+                                
                                 <p class="text-white-50">Em Análise</p>
+                                
                             </div>
-                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
-                        </div>
-                    </div>
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
-                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
-                        <div class="flex flex-col w-2/4 px-4">
-                            <div class="flex flex-row justify-around">
-                                <b>Ticket 01</b>
-                                <p class="italic">tb_catalogo_dados</p>
-                            </div>
-                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
-                        </div>
-                        <div class="w-1/4 flex flex-col items-center justify-center">
-                            <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">
-                                <p class="text-white-50">Em Análise</p>
-                            </div>
-                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
-                        </div>
-                    </div>
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
-                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
-                        <div class="flex flex-col w-2/4 px-4">
-                            <div class="flex flex-row justify-around">
-                                <b>Ticket 01</b>
-                                <p class="italic">tb_catalogo_dados</p>
-                            </div>
-                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
-                        </div>
-                        <div class="w-1/4 flex flex-col items-center justify-center">
-                            <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">
-                                <p class="text-white-50">Em Análise</p>
-                            </div>
+                            <% } %>
                             <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
                         </div>
                     </div>
                     
+                    <% } %>
 
+                    <% for (var tick in tickets) { %>
+
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
+                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
+                        <div class="flex flex-col w-2/4 px-4">
+                            <div class="flex flex-row justify-around">
+                                <b>Ticket <%=tick.ID_TICKET%></b>
+                                <p class="italic"><%= tick.ID_TABELA %></p>
+                            </div>
+                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
+                        </div>
+                        <div class="w-1/4 flex flex-col items-center justify-center">
+                            <% if(tick.status == 1) { %>
+                            <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">
+                                <p class="text-white-50">Em Análise</p>
+                            </div>
+                            <% } %>
+                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
+                        </div>
+                    </div>
+
+                    <% } %>
+                    <% for (var tick in tickets) { %>
+
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
+                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
+                        <div class="flex flex-col w-2/4 px-4">
+                            <div class="flex flex-row justify-around">
+                                <b>Ticket <%=tick.ID_TICKET%></b>
+                                <p class="italic"><%= tick.ID_TABELA %></p>
+                            </div>
+                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
+                        </div>
+                        <div class="w-1/4 flex flex-col items-center justify-center">
+                            <% if(tick.status == 1) { %>
+                            <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">
+                                <p class="text-white-50">Em Análise</p>
+                            </div>
+                            <% } %>
+                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
+                        </div>
+                    </div>
+
+                    <% } %>
+                    
                 </section>
                 
             </div>
