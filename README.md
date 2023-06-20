@@ -12,30 +12,32 @@
 
 --
 
-## Integrantes: 
-- <a href="https://github.com/ItsVasconcellos">Fernando Antonio Sampaio Cabral De Vasconcellos</a>
-- <a href="https://github.com/KalebIsaias">Kaleb Isaias Souza De Carvalho</a>
-- <a href="https://github.com/y2keylla">Keylla Cristina Oliveira Bispo</a> 
-- <a href="https://github.com/leonardoalves1">Leonardo Alves Nunes</a>
-- <a href="https://github.com/LuizFernandoLeao">Luiz Fernando Haddad Saad Villaça Leão</a> 
+## :student: Integrantes: 
+- <a href="https://www.linkedin.com/in/fernando-antonio-s-c-de-vasconcellos/">Fernando Antonio Sampaio Cabral De Vasconcellos</a>
+- <a href="https://www.linkedin.com/in/kaleb-carvalho/">Kaleb Isaias Souza De Carvalho</a>
+- <a href="https://www.linkedin.com/in/keylla-oliveira1206/">Keylla Cristina Oliveira Bispo</a> 
+- <a href="https://www.linkedin.com/in/leonardoalvesnunes/">Leonardo Alves Nunes</a>
+- <a href="https://www.linkedin.com/in/luiz-fernando-villa%C3%A7a-le%C3%A3o-930568271/">Luiz Fernando Haddad Saad Villaça Leão</a> 
 - <a href="https://github.com/Paula-zp">Paula Zanella Piva</a>
   
- ## Orientador: 
+## :teacher: Professores:
+### Orientador(a) 
 - <a href="https://www.linkedin.com/in/profclaudioandre/">Cláudio Fernando André</a>
   
-## Professores: 
-- <a href="https://www.linkedin.com/in/fatima-toledo/">Fátima Toledo</a>
+### Instrutores
+- <a href="https://www.linkedin.com/in/fatima-toledo/">Fátima Regina de Toledo Pinto</a>
 - <a href="https://www.linkedin.com/in/flaviomarquesazevedo/">Flávio Marques Azevedo</a>
 - <a href="https://www.linkedin.com/in/francisco-escobar/">Francisco Escobar</a>
 - <a href="https://www.linkedin.com/in/henrique-mohallem-paiva-6854b460/">Henrique Mohallem Paiva</a>
 
 
-
-  
-
 ## 📝 Descrição
 
 O Panpedia é um catálogo web para pesquisa de metadados do Banco Pan. Nosso projeto é melhorar este catálogo tornando-o mais amigável em termos de Design e útil quanto à novas features e melhorias nas já existentes. A solução proposta consiste de uma aplicação web, desenvolvida para que o usuário utilize principalmente através de um desktop. O site será desenvolvido utilizando de tecnologias comuns à web, como HTML, Tailwind CSS, Javascript e Node.js, sendo desenvolvida também um backend aliado ao site.
+
+## 📝 LINK
+
+Clique <a href="https://www.linkedin.com/in/victorbarq/">AQUI</a> para ver o projeto funcionando.
   
 ## 📁 Estrutura de pastas
 
@@ -47,14 +49,16 @@ O Panpedia é um catálogo web para pesquisa de metadados do Banco Pan. Nosso pr
 |--> imagens<br>
   
 |--> src<br>
-  &emsp;|--> Backend<br>
-  &emsp;|router<br>
-  
   &emsp;|--> database<br>
   
-  &emsp;|--> Frontend<br>
+  &emsp;|--> public<br>
   &emsp;|assets<br>
   &emsp;|css<br>
+  
+  &emsp;|--> routes<br>
+
+  &emsp;|--> views<br>
+
   
 | readme.md<br>
 | license.txt
