@@ -8,8 +8,6 @@
 
 ## Synapse
 
---
-
 ## :student: Integrantes: 
 - <a href="https://www.linkedin.com/in/fernando-antonio-s-c-de-vasconcellos/">Fernando Antonio Sampaio Cabral De Vasconcellos</a>
 - <a href="https://www.linkedin.com/in/kaleb-carvalho/">Kaleb Isaias Souza De Carvalho</a>
