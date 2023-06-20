@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
         var titulo = "Tickets";
-        var icone = "/public/assets/logoPanpediaReduzido.svg";
+        var icone = "/public/assets/logoPanpediaReduzida.svg";
         //Garantir que a requisição tem código inicial correto
         res.statusCode = 200;
         //Define o cabeçalho da requisição
