@@ -17,7 +17,7 @@
     <% var tamanho = tabelas.length %>
     <!--Loop for que percorre os resultados até o décimo, caso existam mais de dez resultados-->
     <!--Futuramente será implementado o esquema de paginação-->
-    <% if(tamanho > 10){ for(let i = 0; i< 10; i+=2){ %>
+    <% if(tamanho >= 1){ for(let i = 0; i< tamanho; i+=2){ %>
         <!--Div que contém dois cards do resultado-->
         <div class="flex mx-auto my-8 justify-evenly w-11/12">
                 <!--Card 1-->
@@ -33,7 +33,9 @@
                     <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto dark:text-white-100"><%= tabelas[i].CONTEUDO_TABELA %></p>
                 </div>
                 <!--Verificação de caso o loop acabará em uma posição da resposta inexistente, assim parando o loop-->
-                <% if((tabelas.length % 2) == 1  && i+1 >= tabelas.length) {break;} %>
+                <% if((tabelas.length % 2) == 1  && i+1 >= tabelas.length) {%>
+                </div> 
+                <% break;} %>
                 <!--Card 2-->
                 <div class="h-72 -ml-12 max-w-[35vw] px-6 py-4 hover:bg-primary bg-begeclaro rounded-2xl shadow-neomorphic  w-1/2 overflow-hidden dark:shadow-neomorphic_dark" >
                     <div class="flex justify-between">
@@ -48,39 +50,18 @@
                 </div>
         </div>
     <!--Caso os resultados tenham menos de dez, será executado um loop com o tamanho do resultado-->
-    <% } }else if(tamanho>0){ for(let i = 0; i < tabelas.length; i+=2) { %>
-        <!--Div que contém dois cards do resultado-->
-        <div class="flex mx-auto my-8 justify-evenly w-11/12">
-            <!--Card 1-->
-            <div class="h-64 -ml-12 max-w-lg px-3 hover:bg-primary bg-begeclaro border border-gray-200 rounded-2xl shadow-neomorphic w-1/2 overflow-hidden">
-                <div class="flex justify-between">
-                    <!--Ícone e título do card-->
-                    <img src="/public/assets/logoPanpediaReduzida.svg" alt="" class="w-10 h-10 my-4">
-                    <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline">
-                        <a href="/tabelas/informacoes?id_tabela=<%= tabelas[i].ID %>"><%= tabelas[i].ID %></a>
-                    </h2>
-                    <img src="/public/assets/3Pontos.svg" w-5 h-5 ml-2">
-                </div>
-                <p class="mb-3 font-extralight text-gray-500 text-clip h-4/6 overflow-hidden"><%= tabelas[i].CONTEUDO_TABELA %></p>
-            </div>
-            <!--Verificação de caso o loop acabará em uma posição da resposta inexistente, assim parando o loop-->
-            <% if((tabelas.length % 2) == 1  && i+1 >= tabelas.length) {break;} %>
-            <div class="h-64 -ml-12 max-w-lg px-3 hover:bg-primary bg-begeclaro border border-gray-200 rounded-2xl shadow-neomorphic w-1/2 overflow-hidden">
-                <div class="flex justify-between">
-                    <!--Ícone e título do card-->
-                    <img src="/public/assets/logoPanpediaReduzida.svg" alt="" class="w-10 h-10 my-4">
-                    <h2 class="text-lg tracking-tight text-gray-900 py-3 mx-1 break-words w-9/12 hover:underline">
-                        <a href="/tabelas/informacoes?id_tabela=<%= tabelas[i].ID %>"><%= tabelas[i].ID %></a>
-                    </h2>
-                    <img src="/public/assets/3Pontos.svg" w-5 h-5 ml-2">
-                </div>
-                <p class="mb-3 font-extralight text-gray-500 text-clip h-4/6 overflow-hidden"><%= tabelas[i+1].CONTEUDO_TABELA %></p>
-            </div>
-        </div>
-    <!--Caso não exista nenhum resultado-->
-    <% } } else{ %>
+    <% } if (atual > 1) { %>
+        <button class="border border-1 bottom-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]"><a href="/tabelas/pesquisa?<%= search %>&formPage=<%=  atual - 1 %>">Previous</a></button>
+        <% } %>
+
+        <% if (atual < total) { %>
+        <button class="border border-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]"><a href="/tabelas/pesquisa?<%= search %>&formPage=<%= parseInt(atual) + 1 %>">Next</a></button>
+        <% } %> 
+
+    <% } else{ %>
         <h4 class="ml-32 font-montserrat italic font-light text-xl leading-7 text-blue-900"> Não tem Resultados!</h4>
     <% } %>
+    </div></div>
 </main>
 </body>
 </html>

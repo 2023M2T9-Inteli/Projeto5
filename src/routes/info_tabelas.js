@@ -28,6 +28,8 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
         var owner       = req.query.formOwn;
         var criticidade = req.query.formCri;
         var pesquisa    = req.query.pesquisa;
+        var search = `pesquisa=${pesquisa}&formCat=${categoria}&formDb=${database}&formOwn=${owner}&formCri=${criticidade}`
+        var pagina = parseInt(req.query.formPage);
 
         console.log('Valores dos filtros:', categoria, database, owner, criticidade);
 
@@ -37,32 +39,59 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
         var db = new sqlite3.Database(DBPATH);
         //Varíavel para a definição da sentença SQl
         var sql = `SELECT * FROM Catalogo_Dados_Tabelas LEFT JOIN Catalogo_Dados_Variaveis
-        ON Catalogo_Dados_Variaveis.TABELA = Catalogo_Dados_Tabelas.TABELA 
-        WHERE (Catalogo_Dados_Tabelas.ID LIKE "%` + req.query.pesquisa + `%" 
-        OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%` + req.query.pesquisa + `%"  
-        OR  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%` + req.query.pesquisa + `%")`;
+        ON Catalogo_Dados_Variaveis.ID_VARIAVEL = Catalogo_Dados_Tabelas.ID 
+        WHERE (Catalogo_Dados_Tabelas.ID LIKE "%` + pesquisa + `%" 
+        OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%` + pesquisa + `%"  
+        OR  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%` + pesquisa + `%"
+        OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE "%` + pesquisa + `%")`;
+        //Variável para armazenar filtros
+        var auxiliar = ""
 
         //Verifica se foram passados parâmetros de filtros e em caso positivo, adiciona-os a sentença sql
-        if (categoria != undefined && categoria !== '') { sql += ` AND Catalogo_Dados_Tabelas.CONJUNTODADOS_PRODUTO = "${categoria}" ` }
+        if (categoria != undefined && categoria !== '') { auxiliar += ` AND Catalogo_Dados_Tabelas.CONJUNTODADOS_PRODUTO = "${categoria}" ` }
 
-        if (database != undefined && database !== '') { sql += ` AND Catalogo_Dados_Tabelas.DATABASE = "${database}" ` }
+        if (database != undefined && database !== '') { auxiliar += ` AND Catalogo_Dados_Tabelas.DATABASE = "${database}" ` }
 
-        if (owner != undefined && owner !== '') { sql += ` AND Catalogo_Dados_Tabelas.OWNER = "${owner}" ` }
+        if (owner != undefined && owner !== '') { auxiliar += ` AND Catalogo_Dados_Tabelas.OWNER = "${owner}" ` }
 
-        if (criticidade != undefined && criticidade !== '') { sql += ` AND Catalogo_Dados_Tabelas.CRITICIDADE_TABELA = "${criticidade}" ` }
+        if (criticidade != undefined && criticidade !== '') { auxiliar += ` AND Catalogo_Dados_Tabelas.CRITICIDADE_TABELA = "${criticidade}" ` }
 
-        //Evita duplicidade e trata de diferença de caixas nas letras
-        sql += " GROUP BY Catalogo_Dados_Tabelas.ID ORDER BY Catalogo_Dados_Tabelas.RANK_GOV COLLATE NOCASE";
-        console.log(sql);
-        db.all(sql, [], (err, rows) => {
+        //Constante query, a qual conta no banco quantas tabelas o resultado terá
+        const countQuery = `SELECT COUNT(*) AS total
+        FROM (
+            SELECT Catalogo_Dados_Tabelas.ID
+            FROM Catalogo_Dados_Tabelas
+            LEFT JOIN Catalogo_Dados_Variaveis ON Catalogo_Dados_Variaveis.ID_VARIAVEL = Catalogo_Dados_Tabelas.ID
+            WHERE (Catalogo_Dados_Tabelas.ID LIKE '%` + pesquisa + `%'
+                OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE '%` + pesquisa + `%'
+                OR Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE '%` + pesquisa + `%'
+                OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE '%` + pesquisa + `%')`+ auxiliar +` 
+            GROUP BY Catalogo_Dados_Tabelas.ID
+        ) AS subquery;`;
+        console.log(countQuery);
+        db.get(countQuery, [], (err, total ) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('Internal Server Error');
+                return;
+            }
+            const totalPages = Math.floor(total.total / 10)+1;
+            console.log(totalPages);
+            
+            let offset = (pagina-1)*10;
+            let max = 10;
+            sql += auxiliar + ` GROUP BY Catalogo_Dados_Tabelas.ID COLLATE NOCASE ORDER BY Catalogo_Dados_Tabelas.RANK_GOV LIMIT ${max} OFFSET ${offset}`
+            console.log(sql);
+            db.all(sql, [], (err, rows) => {
             if (err) {
                 //Joga o erro pro console, impedindo acontecer um travamento geral
                 throw err;
             }
             //Renderiza a página de resultados, passando de parâmetro o resultado da busca no banco de dados
-            console.log(rows);
-            res.render("tabelas/resultado", { pesquisa: pesquisa, tabelas: rows, title: titulo, iconeTitulo: icone });
-        });
+            //console.log(rows);
+            res.render("tabelas/resultado", { pesquisa: pesquisa, tabelas: rows, title: titulo, iconeTitulo: icone, total:totalPages, atual:pagina, search:search});
+            })
+        ;})
         db.close();
     }
     //Redireciona o usuário para a página de login, caso ele não esteja logado
