@@ -43,7 +43,7 @@ router.get('/',(req,res)=>{
             var conteudo = rows;
             if(rows !== null){
                 //Renderiza a página home, passando de parâmetro o resultado da busca no banco de dados, além do nome do usuário
-                res.render("index/favoritos", {fav:conteudo, title:titulo, iconeTitulo:icone});
+                res.render("index/favoritos", {fav:conteudo, title:titulo, iconeTitulo:icone, idPasta: req.session.id_pasta});
             } else {
                 //Caso não tenha havido nenhum resultado, renderiza a página home só passando o nome como parãmtreo.
                 res.render("index/favoritos",{title:titulo, iconeTitulo:icone});

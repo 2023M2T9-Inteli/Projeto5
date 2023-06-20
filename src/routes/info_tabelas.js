@@ -89,7 +89,7 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
             }
             //Renderiza a página de resultados, passando de parâmetro o resultado da busca no banco de dados
             //console.log(rows);
-            res.render("tabelas/resultado", { pesquisa: pesquisa, tabelas: rows, title: titulo, iconeTitulo: icone, total:totalPages, atual:pagina, search:search});
+            res.render("tabelas/resultado", { pesquisa: pesquisa, tabelas: rows, title: titulo, iconeTitulo: icone, total:totalPages, atual:pagina, search:search, idPasta: req.session.id_pasta});
             })
         ;})
         db.close();
