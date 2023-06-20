@@ -67,15 +67,15 @@ Dentre os arquivos presentes na raiz do projeto, definem-se:
 
 - <b>imagens</b>: imagens relacionadas ao projeto como um todo (por exemplo imagens do sistema, do grupo, logotipos e afins).
 
-- <b>src</b>: nesta pasta encontra-se todo o código fonte do sistema (existem duas subpastas <b>backend</b> e <b>frontend</b> que contêm, respectivamente, o código do servidor e o código da página web).
+- <b>src</b>: nesta pasta encontra-se todo o código fonte do sistema.
 
 ## 💻 Configuração para desenvolvimento
 
 Aqui encontram-se todas as instruções necessárias para a instalação de todos os programas, bibliotecas e ferramentas imprescindíveis para a configuração do ambiente de desenvolvimento.
 
 1.  Baixar e instalar o node.js:  [https://nodejs.org/pt-br/](https://nodejs.org/pt-br/) (versão 16.15.1 LTS)
-2. Clone o repositório em questão.
-3.  No modo administrador, abra o "prompt de comando" ou o "terminal" e, após,  abra a pasta "src/backend" no diretório raiz do repositório clonado e digite o segundo comando:
+2.  Clone o repositório em questão.
+3.  No modo administrador, abra o "prompt de comando" ou o "terminal" e, após,  abra a pasta "src/(nada aqui?)" no diretório raiz do repositório clonado e digite o segundo comando:
 
 ```sh
 npm install
@@ -84,7 +84,7 @@ npm install
 Isso instalará todas as dependências definidas no arquivo <b>package.json</b> que são necessárias para rodar o projeto. Agora o projeto já está pronto para ser modificado. Caso ainda deseje iniciar a aplicação, digite o comando abaixo no terminal:
 
 ```sh
-npm start
+node src/app.js
 ```
 5. Agora você pode acessar a aplicação através do link http://localhost:1234/
 6. O servidor está online.
@@ -103,18 +103,23 @@ deve possuir o valor "node app.js".
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 25/01/2022
+* 0.4.1 - 20/06/2023
+    * Desenvolvimento da seção 7, revisão dos documentos e finalização do projeto.
+      
+* 0.2.1 - 25/01/2023
     * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
-* 0.1.1 - 11/01/2022
+      
+* 0.2.0 - 15/01/2023
+    * Primeiro lançamento adequado
+      
+* 0.1.1 - 11/01/2023
     * Crash quando chama `baz()`
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+      
+* 0.2.3 - 27/04/2023
+    * Adição e revisão da seção 2 e 3
+      
+* 0.0.1 - 20/04/2023
+    * Trabalho em andamento, atualização das seções 1.1 e 1.2
 
 ## 📋 Licença/License
 
