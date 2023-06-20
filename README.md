@@ -4,7 +4,7 @@
 <a href= "https://www.inteli.edu.br/"><img src="/imagens/inteli.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
-## Panpedia
+# Panpedia
 
 ## Synapse
 
