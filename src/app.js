@@ -49,7 +49,7 @@ app.use('/', usersRouter);
 app.use('/pastas', pastasRouter);
 
 //Endpoints das tabelas_Salvas
-app.use('/tabelas_salvas', tabelasSalvasRouter);
+app.use('/fav', tabelasSalvasRouter);
 
 //Endpoints das tabelas_Salvas
 app.use('/tickets', ticketsRouter);

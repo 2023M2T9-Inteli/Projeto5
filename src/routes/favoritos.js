@@ -14,6 +14,48 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 //que pode ser exportado
 const router = express.Router();
 
+// Tela principal dos favoritos
+router.get('/',(req,res)=>{
+    //Verifica se o usuário está logado
+    if(req.session.autenticado){
+        var titulo = "Favoritos";
+        var icone = "/public/assets/logoPanpediaReduzida.svg";
+        //Garantir que a requisição tem código inicial correto
+        res.statusCode = 200;
+        //Define o cabeçalho da requisição
+        res.setHeader('Acess-Control-Allow-Origin','*');
+        //Inicializa o banco de dados
+        var db = new sqlite3.Database(DBPATH);
+        //Define a sentença sql a ser executada, nesse caso buscando na pasta de tabelas a tabela que está em uma pasta
+        var sql = `SELECT Catalogo_Dados_Tabelas.ID, Catalogo_Dados_Tabelas.CONTEUDO_TABELA, Tabelas_Salvas.ID_RELACIONAMENTO FROM Tabelas_Salvas
+        INNER JOIN Catalogo_Dados_Tabelas on Tabelas_Salvas.ID_TABELA = Catalogo_Dados_Tabelas.ID 
+        INNER JOIN Pastas on Tabelas_salvas.ID_PASTA = Pastas.ID_PASTA
+        INNER JOIN Usuarios on Pastas.ID_USER = Usuarios.ID_USER
+        WHERE Usuarios.ID_USER = ${req.session.id_user}`;
+        console.log(sql);
+        //Executa o sql, passando como parametros a sentença já definida, nenhum parametro para ser substituido na sentença sql, e duas variáveis, uma para
+        //erros e outra para resposta
+        db.all(sql,[],(err,rows)=>{
+            if(err){
+                console.log(err);
+            }
+            //Atribui a conteudo a resposta da sentença sql
+            var conteudo = rows;
+            if(rows !== null){
+                //Renderiza a página home, passando de parâmetro o resultado da busca no banco de dados, além do nome do usuário
+                res.render("index/favoritos", {fav:conteudo, title:titulo, iconeTitulo:icone});
+            } else {
+                //Caso não tenha havido nenhum resultado, renderiza a página home só passando o nome como parãmtreo.
+                res.render("index/favoritos",{title:titulo, iconeTitulo:icone});
+            }
+        })
+    }
+    //Redireciona o usuário para a página de login, caso ele não esteja logado
+    else{
+        res.redirect("/");
+    }
+})
+
 //TABELA Tabelas_salvas
 //Read
 router.get('/pastas-tabela',(req,res)=>{
@@ -52,7 +94,7 @@ router.post('/adicionar-pasta',urlencodedParser,(req,res)=>{
           throw err;
         }
     });
-    res.write("Adicionado à pasta com sucesso!");
+    res.redirect('/fav')
     res.end(); // Send the response to the client
     db.close();
 });  
@@ -72,10 +114,10 @@ router.get('/deletar-info-pasta',(req,res)=>{
         if (err) {
             throw err;
         }
-        res.write('<p>Tabela removida da pasta com sucesso!</p>');
-        res.end();
     });
-    db.close(); // Fecha o banco
+    res.redirect('/fav')
+    res.end(); // Send the response to the client
+    db.close();
 });
 
 //Serve para importar todos os endpoints realizados para o arquivo 

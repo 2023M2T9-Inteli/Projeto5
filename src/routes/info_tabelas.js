@@ -40,10 +40,10 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
         //Varíavel para a definição da sentença SQl
         var sql = `SELECT * FROM Catalogo_Dados_Tabelas LEFT JOIN Catalogo_Dados_Variaveis
         ON Catalogo_Dados_Variaveis.ID_VARIAVEL = Catalogo_Dados_Tabelas.ID 
-        WHERE (Catalogo_Dados_Tabelas.ID LIKE "%` + pesquisa + `%" 
-        OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%` + pesquisa + `%"  
-        OR  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%` + pesquisa + `%"
-        OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE "%` + pesquisa + `%")`;
+        WHERE (Catalogo_Dados_Tabelas.ID LIKE "%${pesquisa}%" 
+        OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE "%${pesquisa}%"  
+        OR  Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE "%${pesquisa}%"
+        OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE "%${pesquisa}%")`;
         //Variável para armazenar filtros
         var auxiliar = ""
 
@@ -62,10 +62,10 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
             SELECT Catalogo_Dados_Tabelas.ID
             FROM Catalogo_Dados_Tabelas
             LEFT JOIN Catalogo_Dados_Variaveis ON Catalogo_Dados_Variaveis.ID_VARIAVEL = Catalogo_Dados_Tabelas.ID
-            WHERE (Catalogo_Dados_Tabelas.ID LIKE '%` + pesquisa + `%'
-                OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE '%` + pesquisa + `%'
-                OR Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE '%` + pesquisa + `%'
-                OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE '%` + pesquisa + `%')`+ auxiliar +` 
+            WHERE (Catalogo_Dados_Tabelas.ID LIKE '%${pesquisa}%'
+                OR Catalogo_Dados_Tabelas.CONTEUDO_TABELA LIKE '%${pesquisa}%'
+                OR Catalogo_Dados_Variaveis.DESCRICAO_CAMPO LIKE '%${pesquisa}%'
+                OR Catalogo_Dados_Variaveis.NOME_CAMPO LIKE '%${pesquisa}%')${auxiliar} 
             GROUP BY Catalogo_Dados_Tabelas.ID
         ) AS subquery;`;
         console.log(countQuery);

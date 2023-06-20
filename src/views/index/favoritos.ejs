@@ -30,7 +30,9 @@
                             <div class="flex justify-between">
                                 <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
                                 <h2 class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12"><%= fav[i].ID %></h2>
-                                <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i].ID_RELACIONAMENTO %>">
+                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                </a>
                             </div>
                         </div>
 
@@ -52,15 +54,15 @@
                             <div class="flex justify-between">
                                 <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
                                 <h2 class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12"><%= fav[i+1].ID %></h2>
-                                <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+1].ID_RELACIONAMENTO %>">
+                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                </a>
                             </div>
                         </div>
-
                         <div class="flex">
                             <!--Paragráfo do Card-->
                             <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400"><%= fav[i+1].CONTEUDO_TABELA %></p>
                         </div>
-                        
                     </div>
                 </div>
                 
@@ -74,7 +76,9 @@
                             <div class="flex justify-between">
                                 <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
                                 <h2 class="text-lg tracking-tight text-gray-900 dark:text-white mx-1 break-words w-9/12"><%= fav[i+2].ID %></h2>
-                                <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+2].ID_RELACIONAMENTO %>">
+                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5">
+                                </a>
                             </div>
                         </div>
 
