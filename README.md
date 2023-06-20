@@ -1,12 +1,10 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://s3.amazonaws.com/gupy5/production/companies/26702/career/63484/images/2022-04-28_16-56_logo.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
+<a href= "https://www.inteli.edu.br/"><img src="/imagens/inteli.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
 ## Panpedia
-<p align="center">
-<a href= "https://www.bancopan.com.br/"><img src="https://cdn.cookielaw.org/logos/82b81c01-85cd-4ada-9c9d-656b3e5682dd/9be12e3b-5e10-436c-826d-d0dfc661f023/9c073e0c-345d-4dae-a9c4-b55a6c15e17f/banco-pan-logo-8.png alt="Banco Pan"></a></p>
 
 ## Synapse
 
