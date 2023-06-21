@@ -10,9 +10,22 @@
     <!--link href="index.css"  rel="stylesheet"-->
     <!-- Link para o funcionamento da biblioteca tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+      .font-montserrat {
+          font-family: 'Montserrat', sans-serif;
+      }
+  </style>
 </head>
-<body>
-  <div class="flex flex-row">
+<body class="max-md:bg-black">
+  <div class="md:hidden flex ">
+    <div class="flex flex-col items-center justify-center h-full py-44">
+      <img src="/public/assets/logoFooterPanPedia.svg"" alt="Logo do Panpedia" class="w-36 h-36">
+      <p class="text-center text-white text-2xl font-montserrat w-[90%]">Desculpe, este site não pode ser acessado em dispositivos móveis.</p>
+    </div>
+  </div>
+  <div class="flex flex-row max-md:hidden">
       <!-- Div contendo um retângulo azul com a logo do site -->
       <div class="col-lg-6 min-h-screen bg-[#02042E] w-[50%] flex items-center justify-center">
         <img class="w-[35vw]" src="public/assets/logo.svg"  id="imgLogo">
