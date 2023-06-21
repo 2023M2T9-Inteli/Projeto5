@@ -34,7 +34,7 @@
         }
     </script>
     <style>
-        .custom-submit {
+        /* .custom-submit {
             background-image: url('/public/assets/fav.svg');
             background-size: cover;
             width: 26px;
@@ -42,7 +42,8 @@
             border: none;
             cursor: pointer;
         }
-        </style>
+         */
+    </style>
     
     <!--Conteúdo-->
     <section class="flex flex-col ml-24 pr-16 pt-8 items-center w-full dark:bg-colorDark-fundo">
@@ -66,7 +67,11 @@
                 alterações</button>
             </div>
             <form action="/fav/adicionar-pasta" method="post" class="flex justify-end items-start">
-                <input type="submit" value="" class="custom-submit">
+                <button type="submit" class="custom-submit">
+                    <svg class="w-6 h-6" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path class="fav stroke-white-50 stroke-2 hover:fill-white-50" fill="none" d="M19.5389 6.56911C19.5389 8.03826 18.9885 9.44939 18.0056 10.4933C15.743 12.8968 13.5484 15.4032 11.2013 17.7197C10.6633 18.243 9.80987 18.2239 9.29505 17.677L2.53294 10.4933C0.489019 8.32184 0.489019 4.81637 2.53294 2.64499C4.59695 0.452277 7.95945 0.452277 10.0234 2.64499L10.2693 2.9061L10.5149 2.64514C11.5045 1.59328 12.8523 1 14.2602 1C15.6682 1 17.0159 1.59322 18.0056 2.64499C18.9886 3.68893 19.5389 5.09998 19.5389 6.56911Z"/>
+                    </svg>
+                  </button>
                 <input type="hidden" name="id_pasta" value="<%= idPasta %>">
                 <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
             </form>
@@ -434,7 +439,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza dark:text-cinza">DB_PAN_DL_LEGACY</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -447,7 +452,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">tabela</p>
                         <a href="#" class="justify-self-end mr-6 text-[#F2F2F2]" >
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -461,7 +466,7 @@
                             s3://pan-dl-prd-legacy/interfaces/cli-rcz-hist/</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -474,7 +479,7 @@
                             DB_PAN_DL_LEGACY.TB_INTERFACES_CLI_RCZ_HIST</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -494,7 +499,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">BI_ODS</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -507,7 +512,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza"> - </p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -520,7 +525,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">SQL Server</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -533,7 +538,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">PANVDBP420D</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -547,7 +552,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Diário</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -559,7 +564,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">D-30</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -573,7 +578,7 @@
                         </p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -593,7 +598,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">-</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -605,7 +610,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Automática</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -626,7 +631,7 @@
                         </p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -638,7 +643,7 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Rodolfo Cerezer</p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -651,7 +656,7 @@
                         </p>
                         <a href="#" class="justify-self-end mr-6">
                             <svg class="w-8 h-8 text-[#F2F2F2]">
-                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                             </svg>
                         </a>
                     </div>
@@ -727,7 +732,7 @@
                             </div>
                             <a href="#" class="pr-5 my-auto">
                                 <svg class="w-8 h-8 text-[#F2F2F2]">
-                                    <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                    <path class="fill-[#02042E] stroke-current stroke-2 hover:fill-status-blue dark:stroke-colorDark-fundo dark:hover:fill-status-blue dark:fill-[#F2F2F2]" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
                                 </svg>
                             </a>
                         </div>
