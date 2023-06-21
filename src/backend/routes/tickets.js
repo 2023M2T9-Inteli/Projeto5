@@ -58,4 +58,45 @@ router.get('/', (req, res) => {
     }
 })
 
+router.post("/criar-ticket", (req, res) => {
+        //Verifica se o usuário está logado
+        if (req.session.autenticado) {
+            //Garantir que a requisição tem código inicial correto
+            res.statusCode = 200;
+            //Define o cabeçalho da requisição
+            res.setHeader('Acess-Control-Allow-Origin', '*');
+            //Inicializa o banco de dados
+            var db = new sqlite3.Database(DBPATH); 
+            //Comando sql a ser executado
+            //Parâmetros de filtros passados na requisição de uma pesquisa
+            var database = req.query.database;
+            var idTabela = req.query.idTabela;
+            var caminho = req.query.caminhoTabela;
+            var id = req.query.id;
+            var sql = `INSERT INTO Tickets (ID_TABELA,ID_USER,STATUS,APROVADO,DATABASE,TABELA,CAMINHO) VALUES (${id},${req.session.id_user},0,0,${database},${idTabela},${caminho})`;
+            db.all(sql,[],(err,rows)=>{
+                if (err) {
+                    //Joga o erro pro console, impedindo acontecer um travamento geral
+                    throw err;
+                }
+                res.redirect("/ticket");
+                db.close();
+            });
+}});
+
+router.post("/criar-ticket", (req, res) => {
+    //Verifica se o usuário está logado
+    if (req.session.autenticado) {
+        if(req.session.id_user==1){
+            //Garantir que a requisição tem código inicial correto
+            res.statusCode = 200;
+            //Define o cabeçalho da requisição
+            res.setHeader('Acess-Control-Allow-Origin', '*');
+            //Inicializa o banco de dados
+            var db = new sqlite3.Database(DBPATH); 
+            //Comando sql a ser executado
+        }
+}});
+
+
 module.exports = router;
