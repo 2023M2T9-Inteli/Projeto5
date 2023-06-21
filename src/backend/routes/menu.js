@@ -40,16 +40,22 @@ router.get('/',(req,res)=>{
             if(err){
                 console.log(err);
             }
-            //Atribui a conteudo a resposta da sentença sql
             var conteudo = rows;
-            if(rows !== null){
+            //Atribui a conteudo a resposta da sentença sql
+            if(rows.length !== 0){
                 //Renderiza a página home, passando de parâmetro o resultado da busca no banco de dados, além do nome do usuário 
                 req.session.id_pasta = rows[0].ID_PASTA;
                 res.render("index/home", {conteudo:conteudo, nome:req.session.nome, title:titulo, iconeTitulo:icone});
             } else {
-                //Caso não tenha havido nenhum resultado, renderiza a página home só passando o nome como parãmtreo.
-                req.session.id_pasta = rows[0].ID_PASTA;
-                res.render("index/home",{nome:req.session.nome,title:titulo, iconeTitulo:icone});
+                console.log(req.session.id_user);
+                var acharPasta = `SELECT Pastas.ID_PASTA FROM Pastas WHERE Pastas.ID_USER = ${req.session.id_user}`
+                console.log(acharPasta);
+                db.all(acharPasta,[],(err,resultado)=>{
+                    //Caso não tenha havido nenhum resultado, renderiza a página home só passando o nome como parãmtreo.
+                    console.log(resultado);
+                    req.session.id_pasta = resultado[0].ID_PASTA;
+                    res.render("index/home",{nome:req.session.nome,title:titulo, iconeTitulo:icone, conteudo:0});
+                });
             }
         })
     }

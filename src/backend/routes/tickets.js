@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
         var db = new sqlite3.Database(DBPATH); 
         //Comando sql a ser executado
         if (req.session.acesso == 0) {
-            var sql = `SELECT * FROM Tickets WHERE ID_USER = ` + req.session.id_user;
+            var sql = `SELECT * FROM Tickets WHERE ID_USER = ${req.session.id_user}`;
             db.all(sql, [], (err, rows) => {
                 if (err) {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
@@ -69,17 +69,20 @@ router.post("/criar-ticket", (req, res) => {
             var db = new sqlite3.Database(DBPATH); 
             //Comando sql a ser executado
             //Parâmetros de filtros passados na requisição de uma pesquisa
-            var database = req.query.database;
-            var idTabela = req.query.idTabela;
-            var caminho = req.query.caminhoTabela;
-            var id = req.query.id;
+            console.log(req.body);
+            console.log(req.query);
+            var database    = req.body.formDb;
+            var idTabela    = req.body.formId;
+            var caminho     = req.body.formCa;
+            var id          = req.body.formTa;
             var sql = `INSERT INTO Tickets (ID_TABELA,ID_USER,STATUS,APROVADO,DATABASE,TABELA,CAMINHO) VALUES (${id},${req.session.id_user},0,0,${database},${idTabela},${caminho})`;
+            console.log(sql)
+
             db.all(sql,[],(err,rows)=>{
                 if (err) {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
-                res.redirect("/ticket");
                 db.close();
             });
 }});

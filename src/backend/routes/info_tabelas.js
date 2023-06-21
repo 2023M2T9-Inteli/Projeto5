@@ -76,7 +76,6 @@ router.get('/pesquisa', urlencodedParser, (req, res) => {
                 return;
             }
             const totalPages = Math.floor(total.total / 10)+1;
-            console.log(totalPages);
             
             let offset = (pagina-1)*10;
             let max = 10;
@@ -164,7 +163,6 @@ router.get('/informacoes', (req, res) => {
             if (err) {
                 throw err;
             }
-            console.log(rows);
             //Renderiza a página visualização, passando de parâmetro o resultado da busca no banco de dados
             res.render("tabelas/visualizacao", { tabela: rows, title: titulo, iconeTitulo: icone, idPasta: req.session.id_pasta});
         });

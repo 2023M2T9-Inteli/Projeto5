@@ -86,6 +86,7 @@ router.post('/adicionar-pasta',urlencodedParser,(req,res)=>{
     //Inicializa o banco de dados
     var db = new sqlite3.Database(DBPATH); 
     //Varíavel para a definição da sentença SQl
+    console.log(req.body.id_pasta);
     var sql = `INSERT INTO Tabelas_Salvas (ID_TABELA, ID_PASTA) VALUES ('${req.body.id_tabela}', ${req.body.id_pasta})`;
     console.log(sql);
     db.run(sql, [], (err) => {

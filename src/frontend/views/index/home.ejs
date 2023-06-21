@@ -1,85 +1,99 @@
 <!--Incluindo a sidebar e a header com o input de pesquisa-->
 <%- include("../sidebar") %>
-<%- include("../headerpesquisa") %>
-    <!-- Retângulo principal da tela home  -->
-    <div class="my-10 mr-16 flex flex-col items-center bg-white-50  border-gray-200 rounded-r-3xl shadow-neomorphic lg:flex-row lg:max-w-[90%] min-h-[310px] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
-        <!-- Mensagem de boas-vindas ao usuário  -->
-        <div class="p-10 pr-5 flex-col justify-center h-auto lg:w-1/2 lg:rounded-none lg:rounded-l-lg">
-            <h1 class="text-4xl font-bolt tracking-tight text-slate-900 dark:text-white-50">
-                    Olá, 
+    <%- include("../headerpesquisa") %>
+        <!-- Retângulo principal da tela home  -->
+        <div
+            class="my-10 mr-16 flex flex-col items-center bg-white-50  border-gray-200 rounded-r-3xl shadow-neomorphic lg:flex-row lg:max-w-[90%] min-h-[310px] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+            <!-- Mensagem de boas-vindas ao usuário  -->
+            <div class="p-10 pr-5 flex-col justify-center h-auto lg:w-1/2 lg:rounded-none lg:rounded-l-lg">
+                <h1 class="text-4xl font-bolt tracking-tight text-slate-900 dark:text-white-50">
+                    Olá,
                     <span id="userName">
-                            <%= nome %>
+                        <%= nome %>
                     </span>
                     !
-            </h1>
-            <p class="text-2xl font-normal text-slate-900 mt-2 dark:text-white-50">
-                Bem-vinda ao Panpedia ;) <br>
-                O que deseja fazer hoje?
-            </p>
-        </div>
-        <!--Div Pai da biblioteca e tickets-->
-        <div class="px-6 flex flex-row">
-        <!-- Card que fica do lado direito do retângulo -->
-            <div class="flex flex-col p-3">
-                <a href="/fav" id="cardAtalho" class="items-end bg-white-50 w-[250px] h-[180px] border-white rounded-2xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
-                    <h2 class="text-xl font-normal  text-slate-900 pt-10 pl-6 dark:text-white-50">
-                        Minha Biblioteca
-                    </h2>
-                    <img class="pt-10  pl-6 items-end dark:grayscale dark:invert" src="/public/assets/iconBiblioteca.svg" alt="">
-                </a>
+                </h1>
+                <p class="text-2xl font-normal text-slate-900 mt-2 dark:text-white-50">
+                    Bem-vinda ao Panpedia ;) <br>
+                    O que deseja fazer hoje?
+                </p>
             </div>
-            <!-- Card que fica do lado direito do retângulo -->        
-            <div class="flex flex-col p-3">
-                <a href="#" id="cardAtalho" class="items-end bg-white-50 w-[250px] h-[180px] border-white rounded-2xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark ">
-                    <h2 class="text-xl  font-normal  text-slate-900 pt-10 pl-6 dark:text-white-50 ">
-                        Meus Tickets
-                    </h2>
-                    <img class="pt-10 pl-6 items-end dark:grayscale dark:invert" src="/public/assets/cardTicket.svg" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Div contendo uma seção de favoritos, a qual é preenchida por cards -->
-    <div class="mt-10 pl-10">
-        <div class="flex flex-row ">
-            <img class="w-7 h-6 dark:grayscale dark:invert" src="/public/assets/coracao.svg" alt="">
-            <p class="ml-5 text-slate-900 italic text-xl dark:text-white-50 ">Favoritos</p>            
-        </div>
-        <!--Cards com scroll-->
-        <div class="overflow-x-scroll mt-5 mr-16 flex flex-col bg-white-50 border-gray-200 rounded-3xl shadow-neomorphic_inset lg:flex-row lg:max-w-[90%] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark_inset">
-            <div class="flex scroll mx-3 my-5 justify-between w-[900px] h-[230px]">
-                <!--Loop for o qual percorre todo o resultado de tabelas favoritadas -->
-                <% for (var i = 0; i < conteudo.length; i++){ %>
-                <div class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
-                    <div class="flex flex-row justify-between">
-                        <img src="/public/assets/iconCard.svg" alt="" class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
-                        <!-- Caminho que leva para a pagina de visualização da tabela -->
-                        <a href="/tabelas/informacoes?id_tabela=<%= conteudo[i].ID %>" class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
-                            <!-- Nome da tabela -->
-                            <h2 class="hover:underline dark:text-white-50">
-                                <%= conteudo[i].ID%>
-                            </h2>
-                        </a>
-                        <!-- Caminho para apagar a tabela dos favoritos -->
-                        <a href="/fav/deletar-info-pasta?id_relacionamento=<%= conteudo[i].ID_RELACIONAMENTO %>">
-                            <img src="/public/assets/fav_full.svg" class="min-w-[20px] my-2 dark:grayscale dark:invert">
-                        </a>
-                    </div>
-                    
-                    <div class="flex flex-row overflow-y-auto">
-                        <!-- Descrição da tabela -->
-                        <p class="my-3 font-extralight text-[16px] text-gray-500 "><%= conteudo[i].CONTEUDO_TABELA%></p>
-                    </div>
+            <!--Div Pai da biblioteca e tickets-->
+            <div class="px-6 flex flex-row">
+                <!-- Card que fica do lado direito do retângulo -->
+                <div class="flex flex-col p-3">
+                    <a href="/fav" id="cardAtalho"
+                        class="items-end bg-white-50 w-[250px] h-[180px] border-white rounded-2xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                        <h2 class="text-xl font-normal  text-slate-900 pt-10 pl-6 dark:text-white-50">
+                            Minha Biblioteca
+                        </h2>
+                        <img class="pt-10  pl-6 items-end dark:grayscale dark:invert"
+                            src="/public/assets/iconBiblioteca.svg" alt="">
+                    </a>
                 </div>
-                <% } %>
+                <!-- Card que fica do lado direito do retângulo -->
+                <div class="flex flex-col p-3">
+                    <a href="#" id="cardAtalho"
+                        class="items-end bg-white-50 w-[250px] h-[180px] border-white rounded-2xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark ">
+                        <h2 class="text-xl  font-normal  text-slate-900 pt-10 pl-6 dark:text-white-50 ">
+                            Meus Tickets
+                        </h2>
+                        <img class="pt-10 pl-6 items-end dark:grayscale dark:invert" src="/public/assets/cardTicket.svg"
+                            alt="">
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <br>
-    <%- include("../footer") %>
-</main>
-<!-- Importa o JS do Flowbite -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> 
-</body>
-</html>
+
+        <!-- Div contendo uma seção de favoritos, a qual é preenchida por cards -->
+        <div class="mt-10 pl-10">
+            <div class="flex flex-row ">
+                <img class="w-7 h-6 dark:grayscale dark:invert" src="/public/assets/coracao.svg" alt="">
+                <p class="ml-5 text-slate-900 italic text-xl dark:text-white-50 ">Favoritos</p>
+            </div>
+            <!--Cards com scroll-->
+            <div
+                class="overflow-x-scroll mt-5 mr-16 flex flex-col bg-white-50 border-gray-200 rounded-3xl shadow-neomorphic_inset lg:flex-row lg:max-w-[90%] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark_inset">
+                <div class="flex scroll mx-3 my-5 justify-between w-[900px] h-[230px]">
+                    <!--Loop for o qual percorre todo o resultado de tabelas favoritadas -->
+                    <% for (var i=0; i < conteudo.length; i++){ %>
+                        <div
+                            class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                            <div class="flex flex-row justify-between">
+                                <img src="/public/assets/iconCard.svg" alt=""
+                                    class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                <!-- Caminho que leva para a pagina de visualização da tabela -->
+                                <a href="/tabelas/informacoes?id_tabela=<%= conteudo[i].ID %>"
+                                    class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
+                                    <!-- Nome da tabela -->
+                                    <h2 class="hover:underline dark:text-white-50">
+                                        <%= conteudo[i].ID%>
+                                    </h2>
+                                </a>
+                                <!-- Caminho para apagar a tabela dos favoritos -->
+                                <a
+                                    href="/fav/deletar-info-pasta?id_relacionamento=<%= conteudo[i].ID_RELACIONAMENTO %>">
+                                    <img src="/public/assets/fav_full.svg"
+                                        class="min-w-[20px] my-2 dark:grayscale dark:invert">
+                                </a>
+                            </div>
+
+                            <div class="flex flex-row overflow-y-auto">
+                                <!-- Descrição da tabela -->
+                                <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                    <%= conteudo[i].CONTEUDO_TABELA%>
+                                </p>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+        <br>
+        <%- include("../footer") %>
+            </main>
+            <!-- Importa o JS do Flowbite -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+            </body>
+
+            </html>
