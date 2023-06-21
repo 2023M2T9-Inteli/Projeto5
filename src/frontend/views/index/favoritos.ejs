@@ -1,102 +1,127 @@
 <!--Inclui a sidebar na página-->
 <%- include("../sidebar") %>
     <div class="flex-1 w-[100%]">
-    <!--Seção destinada a abrigar o conteúdo de toda a página-->
-    <section class="flex flex-col ml-5 mt-4 pt-8 justify-center w-[90%]">
-        <!-- header -->
-        <header class="w-full flex flex-row shadow-neomorphic p-5 rounded-xl dark:shadow-neomorphic_dark">
-            <div class="flex flex-col w-full space-y-4">
-                <div class="flex flex-row w-full justify-between">
-                    <h3 id="headerTitulo" class="text-colorDark-50 text-3xl dark:text-white-50">Favoritos</h3>
-                    <div class="flex justify-evenly">
-                        <img class="px-1 w-[38px] dark:grayscale dark:invert" src="/public/assets/ajuda.svg" alt="">
-                        <img class="px-1 w-[36px] dark:grayscale dark:invert" src="/public/assets/sino.svg" alt="">
+        <!--Seção destinada a abrigar o conteúdo de toda a página-->
+        <section class="flex flex-col ml-5 mt-4 pt-8 justify-center w-[90%]">
+            <!-- header -->
+            <header class="w-full flex flex-row shadow-neomorphic p-5 rounded-xl dark:shadow-neomorphic_dark">
+                <div class="flex flex-col w-full space-y-4">
+                    <div class="flex flex-row w-full justify-between">
+                        <h3 id="headerTitulo" class="text-colorDark-50 text-3xl dark:text-white-50">Favoritos</h3>
+                        <div class="flex justify-evenly">
+                            <img class="px-1 w-[38px] dark:grayscale dark:invert" src="/public/assets/ajuda.svg" alt="">
+                            <img class="px-1 w-[36px] dark:grayscale dark:invert" src="/public/assets/sino.svg" alt="">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </header>
+            </header>
 
-        <!--Div com todos os cards-->
-        <div class="py-10 px-8 w-full h-full">
-            <!--Loop for o qual percorre todos os resultados, mostrando de 3 em 3-->
-            <% for(var i = 0; i < fav.length; i +=3) { %>
-            <!--Div contendo uma coluna de Cards-->
-            <div class="flex justify-center space-x-7 mb-6">
+            <!--Div com todos os cards-->
+            <div class="py-10 px-8 w-full h-full">
+                <!--Loop for o qual percorre todos os resultados, mostrando de 3 em 3-->
+                <% for(var i=0; i < fav.length; i +=3) { %>
+                    <!--Div contendo uma coluna de Cards-->
+                    <div class="flex justify-center space-x-7 mb-6">
 
-                <!--Card 1-->
-                <div class="w-1/3 p-4 rounded-xl shadow-neomorphic dark:shadow-neomorphic_dark">
-                    <div>
-                        <!--Header do Card-->
-                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
-                            <div class="flex justify-between">
-                                <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
-                                <h2 class="text-lg tracking-tight text-gray-900 dark:text-white-50 mx-1 break-words w-9/12"><%= fav[i].ID %></h2>
+                        <!--Card 1-->
+                        <div
+                            class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                            <div class="flex flex-row justify-between">
+                                <img src="/public/assets/iconCard.svg" alt=""
+                                    class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                <!-- Caminho que leva para a pagina de visualização da tabela -->
+                                <a href="/tabelas/informacoes?id_tabela= <%=fav[i].ID %>"
+                                    class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
+                                    <!-- Nome da tabela -->
+                                    <h2 class="hover:underline dark:text-white-50">
+                                        <%= fav[i+1].ID%>
+                                    </h2>
+                                </a>
+                                <!-- Caminho para apagar a tabela dos favoritos -->
                                 <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i].ID_RELACIONAMENTO %>">
-                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5 dark:grayscale dark:invert">
+                                    <img src="/public/assets/fav_full.svg"
+                                        class="min-w-[20px] my-2 dark:grayscale dark:invert">
                                 </a>
+                            </div>
+
+                            <div class="flex flex-row overflow-y-auto">
+                                <!-- Descrição da tabela -->
+                                <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                    <%= fav[i].CONTEUDO_TABELA%>
+                                </p>
                             </div>
                         </div>
 
-                        <div class="flex">
-                            <!--Paragráfo do Card-->
-                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400"><%= fav[i].CONTEUDO_TABELA %></p>
-                        </div>
-                        
-                    </div>
-                </div>
-                
-                <!--Verificação de caso o loop acabará em uma posição da resposta inexistente, assim parando o loop-->
-                <% if((fav.length % 3) == 1  && i+2 >= fav.length) {break;} %>
-                <!--Card 2-->
-                <div class="w-1/3 p-4 rounded-xl shadow-neomorphic dark:shadow-neomorphic_dark">
-                    <div>
-                        <!--Header do Card-->
-                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
-                            <div class="flex justify-between">
-                                <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
-                                <h2 class="text-lg tracking-tight text-gray-900 dark:text-white-50 mx-1 break-words w-9/12"><%= fav[i+1].ID %></h2>
-                                <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+1].ID_RELACIONAMENTO %>">
-                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5 dark:grayscale dark:invert">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="flex">
-                            <!--Paragráfo do Card-->
-                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400"><%= fav[i+1].CONTEUDO_TABELA %></p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!--Verificação de caso o loop acabará em uma posição da resposta inexistente, assim parando o loop-->
-                <% if((fav.length % 3) == 2  && i+2 >= fav.length ){break;} %>
-                <!--Card 3-->
-                <div class="w-1/3 p-4 rounded-xl shadow-neomorphic dark:shadow-neomorphic_dark">
-                    <div>
-                        <!--Header do Card-->
-                        <div class="px-3 hover:bg-primary bg-begeclaro rounded-2xl my-4">
-                            <div class="flex justify-between">
-                                <img src="/public/assets/iconCardFav.svg" alt="" class="w-10 h-10">
-                                <h2 class="text-lg tracking-tight text-gray-900 dark:text-white-50 mx-1 break-words w-9/12"><%= fav[i+2].ID %></h2>
-                                <a href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+2].ID_RELACIONAMENTO %>">
-                                    <img src="/public/assets/fav_full.svg" alt="" class="w-5 h-5 dark:grayscale dark:invert">
-                                </a>
-                            </div>
-                        </div>
+                        <!--Card 2-->
+                        <% if((fav.length % 3)==1 && i+2>= fav.length ){break;} %>
+                            <!--Header do Card-->
+                            <div
+                                class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                                <div class="flex flex-row justify-between">
+                                    <img src="/public/assets/iconCard.svg" alt=""
+                                        class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                    <!-- Caminho que leva para a pagina de visualização da tabela -->
+                                    <a href="/tabelas/informacoes?id_tabela= <%=fav[i+1].ID %>"
+                                        class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
+                                        <!-- Nome da tabela -->
+                                        <h2 class="hover:underline dark:text-white-50">
+                                            <%= fav[i+1].ID%>
+                                        </h2>
+                                    </a>
+                                    <!-- Caminho para apagar a tabela dos favoritos -->
+                                    <a
+                                        href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+1].ID_RELACIONAMENTO %>">
+                                        <img src="/public/assets/fav_full.svg"
+                                            class="min-w-[20px] my-2 dark:grayscale dark:invert">
+                                    </a>
+                                </div>
 
-                        <div class="flex">
-                            <!--Paragráfo do Card-->
-                            <p class="space-x-10 font-extralight text-gray-500 dark:text-gray-400"><%= fav[i+2].CONTEUDO_TABELA %></p>
-                        </div>
-                        
+                                <div class="flex flex-row overflow-y-auto">
+                                    <!-- Descrição da tabela -->
+                                    <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                        <%= fav[i+1].CONTEUDO_TABELA%>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!--Card 3-->
+                            <% if((fav.length % 3)==2 && i+2>= fav.length ){break;} %>
+                                <!--Header do Card-->
+                                <div
+                                    class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                                    <div class="flex flex-row justify-between">
+                                        <img src="/public/assets/iconCard.svg" alt=""
+                                            class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
+                                        <!-- Caminho que leva para a pagina de visualização da tabela -->
+                                        <a href="/tabelas/informacoes?id_tabela=<%= fav[i+2].ID %>"
+                                            class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
+                                            <!-- Nome da tabela -->
+                                            <h2 class="hover:underline dark:text-white-50">
+                                                <%= fav[i].ID%>
+                                            </h2>
+                                        </a>
+                                        <!-- Caminho para apagar a tabela dos favoritos -->
+                                        <a
+                                            href="/fav/deletar-info-pasta?id_relacionamento=<%= fav[i+2].ID_RELACIONAMENTO %>">
+                                            <img src="/public/assets/fav_full.svg"
+                                                class="min-w-[20px] my-2 dark:grayscale dark:invert">
+                                        </a>
+                                    </div>
+
+                                    <div class="flex flex-row overflow-y-auto">
+                                        <!-- Descrição da tabela -->
+                                        <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                            <%= fav[i+2].CONTEUDO_TABELA%>
+                                        </p>
+                                    </div>
+                                </div>
+                                <% } %>
                     </div>
-                </div>
-            </div>
-            <% } %>
-        </div>
-    </section>
-    
-</div>
-</div>
-<%- include("../footer") %> 
-</body>
-</html>
+        </section>
+
+    </div>
+    </div>
+    <%- include("../footer") %>
+        </body>
+
+        </html>
