@@ -103,23 +103,24 @@ deve possuir o valor "node app.js".
 
 ## 🗃 Histórico de lançamentos
 
-* 0.4.1 - 20/06/2023
-    * Desenvolvimento da seção 7, revisão dos documentos e finalização do projeto.
+* 0.5.1 - 20/06/2023
+    * Revisão do projeto e documentos.
       
-* 0.2.1 - 25/01/2023
-    * Atualização de documentos (código do módulo permanece inalterado).
+* 0.4.1 - 08/06/2023
+    * Desenvolvimento da seção 7: Testes de Software
       
-* 0.2.0 - 15/01/2023
-    * Primeiro lançamento adequado
+* 0.3.2 - 25/05/2023
+    * Desenvolvimento na seção 5.2: Design de Interface - Guia de Estilos
       
-* 0.1.1 - 11/01/2023
-    * Crash quando chama `baz()`
+* 0.2.7 - 12/05/2023
+    * Revisão geral e adição na seção 4: Arquitetura do Sistema, 5: UX e UI Design e 6: Projeto de Banco de Dados
       
-* 0.2.3 - 27/04/2023
-    * Adição e revisão da seção 2 e 3
+* 0.2.6 - 12/04/2023
+    * Adição da seção 4: Arquitetura do Sistema
       
 * 0.0.1 - 20/04/2023
-    * Trabalho em andamento, atualização das seções 1.1 e 1.2
+    * Trabalho em andamento, realização das seções 1.1: Parceiro de Negócios e 1.2: O Problema
+      
 
 ## 📋 Licença/License
 
