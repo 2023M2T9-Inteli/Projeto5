@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
             });
             db.close();
         }
-        else if(req.session.acesso ==1){
+        else if(req.session.acesso == 1){
             var sql = `SELECT * FROM Tickets` 
             db.all(sql, [], (err, rows) => {
                 if (err) {
