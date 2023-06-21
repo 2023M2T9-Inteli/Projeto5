@@ -6,7 +6,7 @@ const session = require('express-session');
 
 
 //Constante que define o local onde está o banco de dados
-const DBPATH = './src/database/dbPanpedia.db';
+const DBPATH = './backend/database/dbPanpedia.db';
 
 
 /*Texto para filtro melhorado
@@ -122,7 +122,7 @@ ejs.cache = new LRU({
 
 
 // Configura o diretório de onde tirar as views.
-app.set("views", path.join(__dirname, "/views"));
+app.set("views", path.join(__dirname, "../frontend/views"));
 // Define o view engine como o ejs.
 // https://ejs.co/
 app.set("view engine", "ejs");
@@ -133,7 +133,7 @@ app.set("view engine", "ejs");
 
 // Configura o middleware de arquivos estáticos para responder às
 // rotas iniciadas por "/public", servindo o conteúdo da pasta "../public".
-app.use("/public", express.static(path.join(__dirname, "../src/public"), {
+app.use("/public", express.static(path.join(__dirname, "../frontend/public"), {
 	// Aqui estamos configurando o cache dos arquivos estáticos... Muito
 	// útil em ambientes de produção, mas deve-se ter cuidado durante a
 	// fase de desenvolvimento.

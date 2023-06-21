@@ -5,7 +5,7 @@ const session = require('express-session');
 const sqlite3 = require('sqlite3').verbose();
 
 //Constante que define o local onde está o banco de dados
-const DBPATH = './src/database/dbPanpedia.db';
+const DBPATH = './backend/database/dbPanpedia.db';
 
 //Decodifica os dados e permite com que o servidor leia, deixando de ter %20 para espaços, por exemplo.
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
