@@ -37,19 +37,19 @@
         .custom-submit {
             background-image: url('/public/assets/fav.svg');
             background-size: cover;
-            width: 25px;
-            height: 25px;
+            width: 26px;
+            height: 24.5px;
             border: none;
             cursor: pointer;
         }
-    </style>
+        </style>
     
     <!--Conteúdo-->
     <section class="flex flex-col ml-24 pr-16 pt-8 items-center w-full dark:bg-colorDark-fundo">
         <!-- header -->
         <header class="flex flex-row bg-colorDark-50 p-7 rounded-xl">
             <img src="/public/assets/iconecredito.svg" />
-            <div class="flex flex-col space-y-2 px-6">
+            <div class="flex flex-col space-y-2 px-4">
                 <div class="flex flex-row">
                     <h3 id="headerTitulo" class="text-white-50 text-xl font break-all">
                         <%= tabela[0].ID %>
@@ -62,9 +62,14 @@
             <div class="flex flex-col py-8 gap-4 px-2">
                 <button id="btnAcesso" class="border border-1 rounded-xl text-white-50 text-[14px] py-2 w-[12vw]">Solicitar acesso</button>
                 <button id="btnReportar" onclick="openModalInfo()"
-                    class="rounded-xl bg-status-red text-white-50 text-[14px] py-2 w-[12vw]">Sugerir
-                    alterações</button>
+                class="rounded-xl bg-status-red text-white-50 text-[14px] py-2 w-[12vw]">Sugerir
+                alterações</button>
             </div>
+            <form action="/fav/adicionar-pasta" method="post" class="flex justify-end items-start">
+                <input type="submit" value="" class="custom-submit">
+                <input type="hidden" name="id_pasta" value="<%= idPasta %>">
+                <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
+            </form>
         </header>
 
         <!--Conteúdo de Informações da Tabela-->
@@ -79,11 +84,6 @@
                         onclick="closeConteudoInfo(), openConteudoCampos()">Campos</button>
                 </div>
                 <div class="flex flex-row">
-                    <form action="/fav/adicionar-pasta" method="post">
-                        <input type="submit" value="" class="custom-submit">
-                        <input type="hidden" name="id_pasta" value="<%= idPasta %>">
-                        <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
-                    </form>
                     <img src="/public/assets/stars.svg" alt="">
                 </div>
 
@@ -149,7 +149,7 @@
 
             <!--Bloco de Detalhes-->
             <section
-                class="flex flex-col items-center pt-4 pb-10 px-5 mb-10 w-full border border-1 border-cinza rounded-xl dark:border-colorDark-cinzaclaro dark:shadow-neomorphic_dark">
+                class="flex flex-col items-center pt-4 pb-10 px-5 mb-10 w-full border border-1 border-cinza rounded-xl dark:border-colorDark-cinzaclaro dark:shadow-dark">
                 <h5 class="text-xl font-bold border-2 border-colorDark-50 rounded-2xl px-4 dark:bg-colorDark-50 dark:text-white-50">Detalhes</h5>
 
                 <!--Item 1-->
@@ -351,7 +351,7 @@
                     <% console.log(tabela[0].NOME_CAMPO) %>
                         <% if(tabela[0].NOME_CAMPO !=null || tabela[0].TIPO_CAMPO !=null || tabela[0].DESCRICAO_CAMPO !=null){for(let i=0; i < tabela.length ;i++) { %>
                             <div
-                                class="flex flex-row w-full text-center border border-[#F2F2F2] rounded-2xl mb-4 mt-4 py-3 shadow-neomorphic items-center dark:shadow-neomorphic_dark dark:border-colorDark-fundo dark:bg-colorDark-fundo dark:text-cinza">
+                                class="flex flex-row w-full text-center border border-[#F2F2F2] rounded-2xl mb-4 mt-4 py-3 shadow-neomorphic items-center dark:shadow-dark dark:border-colorDark-fundo dark:bg-colorDark-fundo dark:text-cinza">
                                 <div class="w-1/5 p-2">
                                     <%= i %>
                                 </div>
@@ -384,15 +384,15 @@
 
 
     <!--Popup de confirmação-->
-    <div id="confirmacao" class="hidden flex items-center justify-center fixed w-full h-full bg-black bg-opacity-50 ">
-        <div class="bg-white-50 rounded-lg mx-auto my-auto p-4 w-1/2 py-4">
+    <div id="confirmacao" class="hidden flex items-center justify-center fixed w-full h-full bg-black bg-opacity-50">
+        <div class="bg-white-50 rounded-lg mx-auto my-auto p-4 w-1/2 py-4 dark:bg-colorDark-fundo">
             <div class="flex flex-col p-4 text-center">
-                <p class="text-2xl font text-colorDark-50">Sua solicitação foi enviada!</p>
-                <p class="text-colorDark-50 mt-4">Você pode acompanhar o status da sua solicitação na página Tickets
+                <p class="text-2xl font text-colorDark-50 dark:text-white-50">Sua solicitação foi enviada!</p>
+                <p class="text-colorDark-50 mt-4 dark:text-white-50">Você pode acompanhar o status da sua solicitação na página Tickets
                 </p>
             </div>
             <div class="flex flex-row justify-end">
-                <div class="bg-colorDark-50 px-4 py-2 rounded-lg">
+                <div class="bg-colorDark-50 px-4 py-2 rounded-lg hover:bg-opacity-70">
                     <span class="text-white-50 font-bold cursor-pointer" onclick="closeModalConfirma()">Entendi</span>
                 </div>
             </div>
@@ -407,12 +407,12 @@
                 <div class="flex flex-row justify-between">
                     <h3 class="text-[28px] font-bold rounded-2xl dark:text-white-50">Sugerir alterações em:</h3>
                     <a href="#">
-                        <img src="/public/assets/fechar.svg" onclick="closeModalInfo()">
+                        <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50" onclick="closeModalInfo()">
                     </a>
                 </div>
 
                 <!--Botões-->
-                <div class="flex flex-row pt-8 pb-4 w-full gap-4">
+                <div class="flex flex-row pt-8 pb-12 w-full gap-4">
                     <button id="btnInfo" href="#"
                         class="text-xl border-status-blue border-2 rounded-xl text-status-blue px-4 font-semibold shadow-neomorphic dark:shadow-neomorphic_dark">Informações</button>
                     <button onclick="closeModalInfo(), openModalCampos()" id="btnCampo" href="#"
@@ -433,7 +433,9 @@
                         <h5 class="text-xl font-semibold text-colorDark-50 justify-self-start dark:text-white-50">Database</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza dark:text-cinza">DB_PAN_DL_LEGACY</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -443,8 +445,10 @@
                         <h5 class="text-xl font-semibold text-colorDark-50 justify-self-start dark:text-white-50">Tipo do ativo
                         </h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">tabela</p>
-                        <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                        <a href="#" class="justify-self-end mr-6 text-[#F2F2F2]" >
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -456,7 +460,9 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">
                             s3://pan-dl-prd-legacy/interfaces/cli-rcz-hist/</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -467,7 +473,9 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">
                             DB_PAN_DL_LEGACY.TB_INTERFACES_CLI_RCZ_HIST</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
                 </section>
@@ -485,7 +493,9 @@
                             Origem</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">BI_ODS</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -496,7 +506,9 @@
                         </h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza"> - </p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -507,7 +519,9 @@
                         </h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">SQL Server</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -518,7 +532,9 @@
                             Origem</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">PANVDBP420D</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -530,7 +546,9 @@
                         </h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Diário</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -540,7 +558,9 @@
                         <h5 class="text-xl font-semibold text-colorDark-50 justify-self-start dark:text-white-50">Defasagem</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">D-30</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -552,7 +572,9 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">23 de janeiro de 2021
                         </p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
                 </section>
@@ -570,7 +592,9 @@
                             responsável</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">-</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -580,7 +604,9 @@
                         <h5 class="text-xl font-semibold text-colorDark-50 justify-self-start dark:text-white-50">Mecânica</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Automática</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
                 </section>
@@ -599,7 +625,9 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Informações Estratégicas
                         </p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -609,7 +637,9 @@
                         <h5 class="text-xl font-semibold text-colorDark-50 justify-self-start dark:text-white-50">Owner</h5>
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Rodolfo Cerezer</p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
 
@@ -620,7 +650,9 @@
                         <p class="text-corTexto text-lg justify-self-center col-span-2 dark:text-cinza">Leonídio Amorim Fonseca
                         </p>
                         <a href="#" class="justify-self-end mr-6">
-                            <img src="/public/assets/lapisEdicao.svg" class="dark:grayscale dark:invert" />
+                            <svg class="w-8 h-8 text-[#F2F2F2]">
+                                <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                            </svg>
                         </a>
                     </div>
                 </section>
@@ -646,7 +678,7 @@
                 <div class="flex flex-row justify-between">
                     <h3 class="text-[28px] font-bold rounded-2xl dark:text-white-50">Sugerir alterações em:</h3>
                     <a href="#">
-                        <img src="/public/assets/fechar.svg" onclick="closeModalCampos()">
+                        <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50" onclick="closeModalCampos()">
                     </a>
                 </div>
 
@@ -668,10 +700,10 @@
                     <div class="flex">
                         <div
                             class="flex flex-row text-[17px] bg-[#EBEBEB] shadow-neomorphicl border font-medium rounded-2xl mt-4 w-full text-center dark:border-white dark:shadow-none dark:bg-colorDark-fundo dark:text-white-50">
-                            <div class="w-1/6 p-2">Índice</div>
-                            <div class="w-1/6 p-2">Nome Campo</div>
-                            <div class="w-1/6 p-2">Tipo Campo</div>
-                            <div class="w-2/6 p-2">Descrição Campo</div>
+                            <div class="w-1/6 px-3 py-2 mx-3">Índice</div>
+                            <div class="w-1/6 px-3 py-2 mx-3">Nome Campo</div>
+                            <div class="w-1/6 px-3 py-2 mx-3">Tipo Campo</div>
+                            <div class="w-2/6 px-3 py-2 ml-3">Descrição Campo</div>
                         </div>
                     </div>
 
@@ -679,25 +711,25 @@
                     <% for(let i=0; i < tabela.length ;i++) { %>
                         <div
                             class="flex flex-row w-full text-center border border-[#F2F2F2] rounded-2xl mb-4 mt-4 py-3 shadow-neomorphic items-center dark:shadow-dark dark:border-colorDark-fundo dark:bg-colorDark-fundo dark:text-cinza">
-                            <div class="w-1/6 p-2">
+                            <div class="w-1/5 p-2">
                                 <%= i %>
                             </div>
-                            <div class="w-1/6 p-2">
+                            <div class="w-1/5 p-2">
                                 <%= tabela[i].NOME_CAMPO %>
                             </div>
-                            <div class="w-1/6 p-2">
+                            <div class="w-1/5 p-2">
                                 <%= tabela[i].TIPO_CAMPO %>
                             </div>
-                            <div class="w-2/6 p-2 text-left flex flex-row gap-14">
+                            <div class="w-2/5 p-2 text-left flex flex-row gap-14">
                                 <p>
                                     <%= tabela[i].DESCRICAO_CAMPO %>
                                 </p>
                             </div>
-                            <div class="w-1/6">
-                                <a href="#" class="pr-5 my-auto">
-                                    <img src="/public/assets/lapisEdicao.svg" class=" w-7 h-7 justify-self-end dark:grayscale dark:invert" />
-                                </a>
-                            </div>
+                            <a href="#" class="pr-5 my-auto">
+                                <svg class="w-8 h-8 text-[#F2F2F2]">
+                                    <path class="stroke-current stroke-2 hover:text-status-blue" fill="#323243" d="M14.7302 4.9229L18.6531 1L25.5181 7.86507L21.5952 11.7879M14.7302 4.9229L1.40622 18.2468C1.14613 18.5069 1 18.8597 1 19.2275V25.5181H7.29057C7.65842 25.5181 8.01119 25.372 8.2713 25.1118L21.5952 11.7879M14.7302 4.9229L21.5952 11.7879"/>
+                                </svg>
+                            </a>
                         </div>
                         <% } %>
                 </div>
