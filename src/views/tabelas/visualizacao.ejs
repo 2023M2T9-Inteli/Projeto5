@@ -353,6 +353,17 @@
                 <!--Tabela Campos-->
                 <div class="border border-cinza border-collapse w-full rounded-xl items-center px-5 dark:border-colorDark-cinzaclaro">
 
+                    <!--Colunas Tabela-->
+                    <div class="flex">
+                        <div
+                            class="flex flex-row text-[17px] bg-[#EBEBEB] shadow-neomorphic border font-medium rounded-2xl mt-4 w-full text-center dark:border-white dark:shadow-dark dark:bg-colorDark-fundo dark:text-white-50">
+                            <div class="w-1/5 p-2">Índice</div>
+                            <div class="w-1/5 p-2">Nome Campo</div>
+                            <div class="w-1/5 p-2">Tipo Campo</div>
+                            <div class="w-2/5 p-2">Descrição Campo</div>
+                        </div>
+                    </div>
+
                     <% console.log(tabela[0].NOME_CAMPO) %>
                         <% if(tabela[0].NOME_CAMPO !=null || tabela[0].TIPO_CAMPO !=null || tabela[0].DESCRICAO_CAMPO !=null){for(let i=0; i < tabela.length ;i++) { %>
                             <div
@@ -704,7 +715,7 @@
                     <!--Colunas Tabela-->
                     <div class="flex">
                         <div
-                            class="flex flex-row text-[17px] bg-[#EBEBEB] shadow-neomorphicl border font-medium rounded-2xl mt-4 w-full text-center dark:border-white dark:shadow-none dark:bg-colorDark-fundo dark:text-white-50">
+                            class="flex flex-row text-[17px] bg-[#EBEBEB] shadow-neomorphic border font-medium rounded-2xl mt-4 w-full text-center dark:border-white dark:shadow-dark dark:bg-colorDark-fundo dark:text-white-50">
                             <div class="w-1/6 px-3 py-2 mx-3">Índice</div>
                             <div class="w-1/6 px-3 py-2 mx-3">Nome Campo</div>
                             <div class="w-1/6 px-3 py-2 mx-3">Tipo Campo</div>
