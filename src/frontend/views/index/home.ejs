@@ -47,11 +47,11 @@
             <p class="ml-5 text-slate-900 italic text-xl dark:text-white-50 ">Favoritos</p>            
         </div>
         <!--Cards com scroll-->
-        <div class="overflow-auto mt-5 mr-16 flex flex-col bg-white-50 border-gray-200 rounded-3xl shadow-neomorphic_inset lg:flex-row lg:max-w-[90%] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark_inset">
+        <div class="overflow-x-scroll mt-5 mr-16 flex flex-col bg-white-50 border-gray-200 rounded-3xl shadow-neomorphic_inset lg:flex-row lg:max-w-[90%] dark:bg-colorDark-fundo dark:shadow-neomorphic_dark_inset">
             <div class="flex scroll mx-3 my-5 justify-between w-[900px] h-[230px]">
                 <!--Loop for o qual percorre todo o resultado de tabelas favoritadas -->
                 <% for (var i = 0; i < conteudo.length; i++){ %>
-                <div class="m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
+                <div class="flex flex-col m-1 mx-3 py-5 px-7 h-[230px] w-[350px] hover:bg-primary bg-white-50 rounded-3xl shadow-neomorphic hover:bg-gray-200 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
                     <div class="flex flex-row justify-between">
                         <img src="/public/assets/iconCard.svg" alt="" class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
                         <!-- Caminho que leva para a pagina de visualização da tabela -->
@@ -66,14 +66,18 @@
                             <img src="/public/assets/fav_full.svg" class="min-w-[20px] my-2 dark:grayscale dark:invert">
                         </a>
                     </div>
-                    <!-- Descrição da tabela -->
-                    <p class="my-3 font-extralight text-[16px] text-gray-500"><%= conteudo[i].CONTEUDO_TABELA%></p>
+                    
+                    <div class="flex flex-row overflow-y-auto">
+                        <!-- Descrição da tabela -->
+                        <p class="my-3 font-extralight text-[16px] text-gray-500 "><%= conteudo[i].CONTEUDO_TABELA%></p>
+                    </div>
                 </div>
                 <% } %>
             </div>
         </div>
     </div>
     <br>
+    <%- include("../footer") %>
 </main>
 <!-- Importa o JS do Flowbite -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> 

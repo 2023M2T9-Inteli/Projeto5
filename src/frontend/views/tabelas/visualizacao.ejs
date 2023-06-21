@@ -33,6 +33,7 @@
             document.getElementById('conteudoInfo').classList.add('hidden');
         }
     </script>
+    
     <style>
         /* .custom-submit {
             background-image: url('/public/assets/fav.svg');
@@ -46,39 +47,42 @@
     </style>
     
     <!--Conteúdo-->
-    <section class="flex flex-col ml-24 pr-16 pt-8 items-center w-full dark:bg-colorDark-fundo">
+    <section class="flex flex-col pt-8 items-center w-full dark:bg-colorDark-fundo">
         <!-- header -->
-        <header class="flex flex-row bg-colorDark-50 p-7 rounded-xl">
-            <img src="/public/assets/iconecredito.svg" />
-            <div class="flex flex-col space-y-2 px-4">
-                <div class="flex flex-row">
-                    <h3 id="headerTitulo" class="text-white-50 text-xl font break-all">
-                        <%= tabela[0].ID %>
-                    </h3>
+          <!-- header -->
+          <header class="ml-24 pr-16">
+            <div class="flex flex-row bg-colorDark-50 p-7 rounded-xl">
+                <img src="/public/assets/iconecredito.svg" />
+                <div class="flex flex-col space-y-2 px-4">
+                    <div class="flex flex-row">
+                        <h3 id="headerTitulo" class="text-white-50 text-xl font break-all">
+                            <%= tabela[0].ID %>
+                        </h3>
+                    </div>
+                    <p id="headerDescricao" class="text-white-50 text-[14px] text-clip leading-relaxed break-words">
+                        <%= tabela[0].CONTEUDO_TABELA %>
+                    </p>
                 </div>
-                <p id="headerDescricao" class="text-white-50 text-[14px] text-clip leading-relaxed break-words">
-                    <%= tabela[0].CONTEUDO_TABELA %>
-                </p>
+                <div class="flex flex-col py-8 gap-4 px-2">
+                    <button id="btnAcesso" class="border border-1 rounded-xl text-white-50 text-[14px] py-2 w-[12vw]">Solicitar acesso</button>
+                    <button id="btnReportar" onclick="openModalInfo()"
+                    class="rounded-xl bg-status-red text-white-50 text-[14px] py-2 w-[12vw] hover:opacit">Sugerir
+                    alterações</button>
+                </div>
+                <form action="/fav/adicionar-pasta" method="post" class="flex justify-end items-start">
+                    <button type="submit" class="custom-submit">
+                        <svg class="w-6 h-6" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path class="fav stroke-white-50 stroke-2 hover:fill-white-50" fill="none" d="M19.5389 6.56911C19.5389 8.03826 18.9885 9.44939 18.0056 10.4933C15.743 12.8968 13.5484 15.4032 11.2013 17.7197C10.6633 18.243 9.80987 18.2239 9.29505 17.677L2.53294 10.4933C0.489019 8.32184 0.489019 4.81637 2.53294 2.64499C4.59695 0.452277 7.95945 0.452277 10.0234 2.64499L10.2693 2.9061L10.5149 2.64514C11.5045 1.59328 12.8523 1 14.2602 1C15.6682 1 17.0159 1.59322 18.0056 2.64499C18.9886 3.68893 19.5389 5.09998 19.5389 6.56911Z"/>
+                        </svg>
+                      </button>
+                    <input type="hidden" name="id_pasta" value="<%= idPasta %>">
+                    <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
+                </form>
             </div>
-            <div class="flex flex-col py-8 gap-4 px-2">
-                <button id="btnAcesso" class="border border-1 rounded-xl text-white-50 text-[14px] py-2 w-[12vw]">Solicitar acesso</button>
-                <button id="btnReportar" onclick="openModalInfo()"
-                class="rounded-xl bg-status-red text-white-50 text-[14px] py-2 w-[12vw]">Sugerir
-                alterações</button>
-            </div>
-            <form action="/fav/adicionar-pasta" method="post" class="flex justify-end items-start">
-                <button type="submit" class="custom-submit">
-                    <svg class="w-6 h-6" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path class="fav stroke-white-50 stroke-2 hover:fill-white-50" fill="none" d="M19.5389 6.56911C19.5389 8.03826 18.9885 9.44939 18.0056 10.4933C15.743 12.8968 13.5484 15.4032 11.2013 17.7197C10.6633 18.243 9.80987 18.2239 9.29505 17.677L2.53294 10.4933C0.489019 8.32184 0.489019 4.81637 2.53294 2.64499C4.59695 0.452277 7.95945 0.452277 10.0234 2.64499L10.2693 2.9061L10.5149 2.64514C11.5045 1.59328 12.8523 1 14.2602 1C15.6682 1 17.0159 1.59322 18.0056 2.64499C18.9886 3.68893 19.5389 5.09998 19.5389 6.56911Z"/>
-                    </svg>
-                  </button>
-                <input type="hidden" name="id_pasta" value="<%= idPasta %>">
-                <input type="hidden" name="id_tabela" value="<%= tabela[0].ID %>">
-            </form>
         </header>
 
         <!--Conteúdo de Informações da Tabela-->
-        <section id="conteudoInfo" class="">
+        <section id="conteudoInfo" class="ml-24 pr-16">
             <!--Botões-->
             <div class="flex flex-row pt-4 pb-4 w-full gap-4 justify-between">
                 <div class="space-x-2">
@@ -336,7 +340,7 @@
         </section>
 
         <!--Conteúdo de campos da tabela-->
-        <section id="conteudoCampos" class="hidden w-full">
+        <section id="conteudoCampos" class="hidden w-full ml-24 pr-16">
             <!--Botões-->
             <div class="flex flex-row pt-4 pb-4 w-full gap-4 justify-between">
                 <div class="space-x-2">
@@ -396,6 +400,7 @@
                 </div>
             </main>
         </section>
+        <%- include("../footer") %>
     </section>
 
 
@@ -759,9 +764,6 @@
         </div>
     </div>
     
-    </div>
-    <%- include("../footer") %>
-
     </body>
 
     </html>
