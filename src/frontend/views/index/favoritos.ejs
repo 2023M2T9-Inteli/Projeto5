@@ -1,6 +1,6 @@
 <!--Inclui a sidebar na página-->
 <%- include("../sidebar") %>
-    <div class="flex-1 w-[100%]">
+    <div class="flex-1 w-[100%]  ">
         <!--Seção destinada a abrigar o conteúdo de toda a página-->
         <section class="flex flex-col ml-5 mt-4 pt-8 justify-center w-[90%]">
             <!-- header -->
@@ -17,7 +17,7 @@
             </header>
 
             <!--Div com todos os cards-->
-            <div class="py-10 px-8 w-full h-full">
+            <div class="py-10 px-8 w-full h-full ">
                 <!--Loop for o qual percorre todos os resultados, mostrando de 3 em 3-->
                 <% for(var i=0; i < fav.length; i +=3) { %>
                     <!--Div contendo uma coluna de Cards-->
@@ -30,7 +30,7 @@
                                 <img src="/public/assets/iconCard.svg" alt=""
                                     class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
                                 <!-- Caminho que leva para a pagina de visualização da tabela -->
-                                <a href="/tabelas/informacoes?id_tabela= <%=fav[i].ID %>"
+                                <a href="/tabelas/informacoes?id_tabela=<%=fav[i].ID %>"
                                     class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
                                     <!-- Nome da tabela -->
                                     <h2 class="hover:underline dark:text-white-50">
@@ -61,7 +61,7 @@
                                     <img src="/public/assets/iconCard.svg" alt=""
                                         class="object-scale-down w-12 h-12 rounded-full bg-[#0B1433]">
                                     <!-- Caminho que leva para a pagina de visualização da tabela -->
-                                    <a href="/tabelas/informacoes?id_tabela= <%=fav[i+1].ID %>"
+                                    <a href="/tabelas/informacoes?id_tabela=<%=fav[i+1].ID %>"
                                         class="text-[14px] tracking-tight text-[#02042E] mx-1 break-words w-8/12 text-center justify-center">
                                         <!-- Nome da tabela -->
                                         <h2 class="hover:underline dark:text-white-50">
@@ -115,13 +115,13 @@
                                         </p>
                                     </div>
                                 </div>
-                                <% } %>
                     </div>
+                    <% } %>
         </section>
-
     </div>
     </div>
     <%- include("../footer") %>
+
         </body>
 
         </html>
