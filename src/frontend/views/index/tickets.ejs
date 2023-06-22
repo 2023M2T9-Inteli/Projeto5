@@ -15,34 +15,41 @@
                 <section class="mt-8 p-8"><p class="text-3xl dark:text-white-50">Encontrou erros em alguma tabela?</p><br><p class="text-xl dark:text-white-50">Crie um ticket ou visualize abaixo os abertos ;)</p></section>
                 <section class="flex flex-col items-center justify-center w-full">
                     <!-- Demarcadores da Tabela -->
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2 dark:shadow-neomorphic_dark dark:bg-colorDark-fundo dark:text-white-50"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2 dark:shadow-neomorphic_dark dark:bg-colorDark-50 dark:text-white-50"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
                     <!-- Ticket será dividido em 3 colunas (ícone, info e status) -->
-                    <% for (var tick in tickets) { %>   
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
-                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
+                    <% for (var i=0; i < tickets.length; i++){ %>   
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4 dark:bg-colorDark-fundo dark:shadow-dark dark:text-white-50">
+                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/creditoAzul.svg"></div>
                         <div class="flex flex-col w-2/4 px-4">
-                            <div class="flex flex-row justify-around">
-                                <b>Ticket <%=tick.ID_TICKET%></b>
-                                <p class="italic"><%= tick.ID_TABELA %></p>
+                            <div class="text-colorDark-50 flex flex-col justify-between dark:text-white-50">  
+                                <b>Ticket <%=tickets[i].ID_TICKET%></b>
+                                <p class="italic"><%= tickets[i].ID_TABELA %></p>
                             </div>
-                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
+                            <p class="my-2 break-all text-colorDark-50 dark:text-white-50">
+                                <b>
+                                    Alterações: <br>
+                                </b>
+                                Database: <%= tickets[i].DATABASE %> <br>
+                                Id tabela: <%= tickets[i].TABELA %> <br>
+                                Caminho: <%= tickets[i].CAMINHO %>
+                            </p>
                         </div>
                         <div class="w-1/4 flex flex-col items-center justify-center">
                             <!-- Status dos Tickets -->
-                            <% if(tick.status == 1) { %>
+                            <% if(tickets[0].status == 1) { %>
                             <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">                
                                 <p class="text-white-50">Em Análise</p>                              
                             </div>
-                            <% } else if(tick.status == 2) { %>
+                            <% } else if(tickets[0].status == 2) { %>
                                 <div class="bg-status-green h-10 p-2 text-center rounded-3xl px-4">                              
                                     <p class="text-white-50">Analisado</p>                                  
                                 </div>                           
-                            <% } else if(tick.status == 0) { %>
+                            <% } else if(tickets[0].status == 0) { %>
                                 <div class="bg-colorDark-50 h-10 p-2 text-center rounded-3xl px-4">                               
                                     <p class="text-white-50">Abertos</p>                                    
                                 </div>
                             <% } %>
-                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
+                            <p class="italic text-colorDark-50 text-xs mt-2 dark:text-white-50">Solicitado em 20/04/23</p>
                         </div>
                     </div>                    
                     <% } %>                   
