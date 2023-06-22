@@ -46,7 +46,7 @@
 
                             <div class="flex flex-row overflow-y-auto">
                                 <!-- Descrição da tabela -->
-                                <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                <p class="my-3 font-extralight text-[16px] text-corTexto dark:text-cinza ">
                                     <%= fav[i].CONTEUDO_TABELA%>
                                 </p>
                             </div>
@@ -78,7 +78,7 @@
 
                                 <div class="flex flex-row overflow-y-auto">
                                     <!-- Descrição da tabela -->
-                                    <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                    <p class="my-3 font-extralight text-[16px] text-corTexto dark:text-cinza ">
                                         <%= fav[i+1].CONTEUDO_TABELA%>
                                     </p>
                                 </div>
@@ -110,7 +110,7 @@
 
                                     <div class="flex flex-row overflow-y-auto">
                                         <!-- Descrição da tabela -->
-                                        <p class="my-3 font-extralight text-[16px] text-gray-500 ">
+                                        <p class="my-3 font-extralight text-[16px] text-corTexto dark:text-cinza ">
                                             <%= fav[i+2].CONTEUDO_TABELA%>
                                         </p>
                                     </div>
@@ -118,10 +118,9 @@
                     </div>
                     <% } %>
         </section>
-        <%- include("../footer") %>
     </div>
-    </div>
+</div>
 
-        </body>
-
-        </html>
+<%- include("../footer") %>
+</body>
+</html>

@@ -49,7 +49,7 @@
                             <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6 dark:invert dark:grayscale"></div>
                             <div>
                                 <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900 dark:text-status-blue"> TICKET <%=tickets[i].ID_TICKET%> </p>
-                                <p class="text-xs flex items-center break-all dark:text-white-50"><a href="/tabelas/informacoes?id_tabela=<%= tickets[i].ID_TABELA %>"><%= tickets[i].ID_TABELA %></a></p>
+                                <p class="text-xs flex items-center break-all dark:text-white-50"><%= tickets[i].ID_TABELA %></p>
                             </div>
                         </div>
                         <% } %>
@@ -162,9 +162,9 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-sm font-semibold">Tabela:</p>
-                        <p id="tabelaTicket" class="text-sm w-[200px] break-words">
+                        <a href="" id="tabelaTicket" class="text-sm w-[200px] break-words cursor-pointer hover:underline">
                             TB_ADQUIRENCIA_WHITE_CD_CLIENTE
-                        </p>
+                        </a>
                     </div>
                     <div class="mt-4">
                         <p class="text-sm font-semibold">Tipo de alteração:</p>
@@ -202,11 +202,13 @@
             })
             .then(data => {
                 var tickets = data;
+                var link = tickets[0].ID_TABELA;
 
                 document.getElementById('tituloTicket').innerHTML = `Ticket ${tickets[0].ID_TICKET}`;
                 document.getElementById('databaseTicket').innerHTML = tickets[0].DATABASE;
                 document.getElementById('idTabelaTicket').innerHTML = tickets[0].TABELA;
                 document.getElementById('tabelaTicket').innerHTML = tickets[0].ID_TABELA;
+                document.getElementById('tabelaTicket').href = `/tabelas/informacoes?id_tabela=${link}`;
                 document.getElementById('caminhoTicket').innerHTML = tickets[0].CAMINHO;
                 
                 document.getElementById('ticketAberto').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=0&aprovado=0"><p class="text-white-50 text-xs">Aberto</p></a>`;
