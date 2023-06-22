@@ -58,7 +58,7 @@ router.get('/', (req, res) => {
     }
 })
 
-router.post("/criar-ticket", (req, res) => {
+router.post("/criar-ticket", urlencodedParser,(req, res) => {
         //Verifica se o usuário está logado
         if (req.session.autenticado) {
             //Garantir que a requisição tem código inicial correto
@@ -75,7 +75,7 @@ router.post("/criar-ticket", (req, res) => {
             var idTabela    = req.body.formId;
             var caminho     = req.body.formCa;
             var id          = req.body.formTa;
-            var sql = `INSERT INTO Tickets (ID_TABELA,ID_USER,STATUS,APROVADO,DATABASE,TABELA,CAMINHO) VALUES (${id},${req.session.id_user},0,0,${database},${idTabela},${caminho})`;
+            var sql = `INSERT INTO Tickets (ID_TABELA,ID_USER,STATUS,APROVADO,DATABASE,TABELA,CAMINHO) VALUES ("${id}",${req.session.id_user},0,0,"${database}","${idTabela}","${caminho}")`;
             console.log(sql)
 
             db.all(sql,[],(err,rows)=>{
@@ -87,7 +87,7 @@ router.post("/criar-ticket", (req, res) => {
             });
 }});
 
-router.post("/status", (req, res) => {
+router.post("/status", urlencodedParser,(req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
         if(req.session.id_user==1){
@@ -112,7 +112,7 @@ router.post("/status", (req, res) => {
         }
 }});
 
-router.post("/aprovado", (req, res) => {
+router.post("/aprovado",urlencodedParser, (req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
         if(req.session.id_user==1){
@@ -137,7 +137,7 @@ router.post("/aprovado", (req, res) => {
                         //Joga o erro pro console, impedindo acontecer um travamento geral
                         throw err;
                     }
-                    var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = ${rows[0].DATABASE}, TABELA = ${rows[0].TABELA}, CAMINHO = ${rows[0].CAMINHO}`
+                    var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"`
                     db.run(atualizar,[],err=>{
                         if (err) {
                             //Joga o erro pro console, impedindo acontecer um travamento geral
