@@ -34,10 +34,10 @@
       <div class="lg:col-span-6 min-h-screen w-[50%] flex items-center justify-center">
 
             <div class="lg:col-span-6 min-h-screen w-[50%] flex flex-col items-center justify-center">
-              <button class="btn btn-primary items-center py-3 w-[35vw] border-[#02042E] bg-[#02042E] shadow-neomorphic rounded-md text-white text-lg mt-5" onclick="logar(1)">
+              <button class="btn btn-primary items-center py-3 w-[35vw] border-[#02042E] bg-[#02042E] shadow-neomorphic rounded-md text-white text-lg mt-5" onclick="logar(0)">
                 Entrar como colaborador
               </button>
-              <button class="btn items-center py-3 w-[35vw] border-[#02042E] border-2 rounded-md text-blue-900 text-lg mt-5" onclick="logar(2)">
+              <button class="btn items-center py-3 w-[35vw] border-[#02042E] border-2 rounded-md text-blue-900 text-lg mt-5" onclick="logar(1)">
                 Entrar como governança
               </button>
             </div>
@@ -50,11 +50,13 @@
       </div>
     </div>
     <script>
+      // Declaração das variáveis
       let email = document.getElementById('email_user');
       let senha = document.getElementById('password');
 
-      function logar(x){
-        email.value = x === 1 ? 'bruna@email.com' : 'rafael@email.com';
+      // Função para logar
+      function logar(opcao){
+        email.value = opcao === 0 ? 'bruna@email.com' : 'rafael@email.com';
         console.log(`(${email.value})(${senha.value})`)
         submitLogin()
       } 

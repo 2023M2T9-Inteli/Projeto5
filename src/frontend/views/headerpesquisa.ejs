@@ -109,6 +109,7 @@
     let formOwn = document.getElementById('formOwn');
     let formCri = document.getElementById('formCri');
 
+    // Função para aplicar os filtros
     function aplicarFiltro() {
       formCat.value = cat.selectedIndex != 0 ? cat.options[cat.selectedIndex].text : '';
       formDb.value = dat.selectedIndex != 0 ? dat.options[dat.selectedIndex].text : '';
@@ -118,7 +119,7 @@
       console.log(`${formCat.value}-${formDb.value}-${formOwn.value}-${formCri.value}`);
     }
     
-    //função para limpar os filtros
+    //Função para limpar os filtros
     function apagarCampos() {
       cat.value = 'Selecione uma opção';
       dat.value = 'Selecione uma opção';

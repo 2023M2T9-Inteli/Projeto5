@@ -84,6 +84,7 @@ router.post("/criar-ticket", urlencodedParser,(req, res) => {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
+                res.end();
                 db.close();
             });
 }});
@@ -139,26 +140,27 @@ router.get("/status", urlencodedParser,(req, res) => {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
-                if(status == 2 && aprovado == 1){
+                if(status == 2 && req.query.aprovado == 1){
                     var sqlTicket = `SELECT * FROM Tickets WHERE ID_TICKET = ${id}`;
                     db.all(sqlTicket,[],(err,rows)=>{
                         if (err) {
                             //Joga o erro pro console, impedindo acontecer um travamento geral
                             throw err;
                         }
-                        var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"`
+                        var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"   WHERE ID ="${rows[0].ID_TABELA}"`
+                        console.log(atualizar);
                         db.run(atualizar,[],err=>{
                             if (err) {
                                 //Joga o erro pro console, impedindo acontecer um travamento geral
                                 throw err;
                             }  
-                            res.redirect("/ticket");
+                            res.redirect("/tickets");
                             db.close();
                         })
                     })
-                }
+                }else{
                 res.redirect("/tickets");
-                db.close();
+                db.close();}
             });
         }
 }});
