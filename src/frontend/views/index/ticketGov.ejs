@@ -1,5 +1,13 @@
 <%- include("../sidebar") %>
-        
+
+<script>
+    function verTicket() {
+        document.getElementById('infoticket').classList.remove('hidden');
+    }
+    function fecharTicket() {
+        document.getElementById('infoticket').classList.add('hidden');
+    }
+</script>
 <div class="flex-1">
     <header class="flex items-center p-4 text-semibold shadow-neomorphic mx-8 mt-8 rounded-lg">
         <div class="flex flex-row w-full">
@@ -22,13 +30,14 @@
                 </div>
                 <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
                     <!-- Tickets primeira coluna -->
-                    <% for (var tick in tickets) { %>
-                        <% if(tick.status == 0) { %>
-                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
-                            <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                    <% for (var i=0; i < tickets.length; i++){ %>
+                        <%console.log(tickets[i])%>
+                        <% if(tickets[i].STATUS == 0) { %>
+                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4" onclick="verTicket()">
+                            <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6" onclick="verTicket()"></div>
                             <div>
-                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
-                                <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900" onclick="verTicket()"> TICKET <%=tickets[i].ID_TICKET%> </p>
+                                <p onclick="verTicket()" class="text-xs flex items-center break-all"><%= tickets[i].ID_TABELA %></p>
                             </div>
                         </div>
                         <% } %>
@@ -41,13 +50,13 @@
                 </div>
                 <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
                     <!-- Tickets segunda coluna -->
-                    <% for (var tick in tickets) { %>
-                        <% if(tick.status == 1) { %>
+                    <% for (var i=0; i < tickets.length; i++){ %>
+                        <% if(tickets[i].STATUS == 1) { %>
                         <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
-                            <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                            <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
                             <div>
-                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
-                                <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tickets[i].ID_TICKET%> </p>
+                                <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tickets[i].ID_TABELA %>"><%= tickets[i].ID_TABELA %></a></p>
                             </div>
                         </div>
                         <% } %>
@@ -60,15 +69,15 @@
                     </div>
                     <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
                         <!-- Tickets terceira coluna -->
-                        <% for (var tick in tickets) { %>
-                            <% if(tick.status == 2) { %>
+                        <% for (var i=0; i < tickets.length; i++){ %>
+                            <% if(tickets[i].STATUS == 2) { %>
                             <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4">
-                                <div><img src="assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
+                                <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6"></div>
                                 <div>
-                                    <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tick.ID_TICKET%> </p>
+                                    <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900"> TICKET <%=tickets[i].ID_TICKET%> </p>
                                     <!--Negado-->
                                     <div class="px-2 py-1 bg-status-red rounded-lg"><p class="text-xs text-white-50">Negado</p></div>
-                                    <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tick.ID_TABELA %>"><%= tick.ID_TABELA %></a></p>
+                                    <p class="text-xs flex items-center break-all"><a href="/tabelas/informacoes?id_tabela=<%= tickets[i].ID_TABELA %>"><%= tickets[i].ID_TABELA %></a></p>
                                 </div>
                             </div>
                             <% } %>
@@ -78,5 +87,69 @@
         </section>
     </section>
 </div>
+</div>
+<!--Modal Visão Governança-->
+<div id="infoticket" class="hidden flex items-center justify-center fixed mt-0 w-full h-full bg-black bg-opacity-50">
+    <div class="bg-white-50 rounded-lg mx-auto my-auto p-5 w-3/4 py-4  dark:bg-colorDark-fundo">
+        <div class="relative">
+            <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50 w-8 absolute right-0" onclick="fecharTicket()">
+        </div>
+        <div class="flex flex-row p-4 text-center justify-around mt-4">
+            <div class="h-[80vh] w-[30vw] bg-white-100 rounded-2xl shadow-neomorphic_inset flex flex-col py-4 px-6">
+                <div class="mt-4 mb-4">
+                    <p class="text-left font-semibold">Alterações sugeridas:</p>
+                </div>
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-2"><p class="text-sm font-semibold">TB_ADQUIRENCIA_WHITE_CD_CLIENTE</p></div>
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between">
+                    <input type="checkbox" class="form-checkbox">
+                    <p class="text-sm">Owner</p>
+                    <p class="text-sm text-status-blue">Samir Migliani</p>
+                </div>
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between">
+                    <input type="checkbox" class="form-checkbox">
+                    <p class="text-sm">Campo</p>
+                    <p class="text-sm text-status-blue">Boolean</p>
+                </div>
+            </div>
+            <div class="flex flex-col justify-between">
+                <div class="h-[55vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic flex flex-col text-left py-4 px-6">
+                    <div class="mt-4">
+                        <p class="text-left font-semibold">Informações</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm font-semibold">Usuário:</p>
+                        <p class="text-sm">Paula</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm font-semibold">Tabelas:</p>
+                        <p class="text-sm">TB_ADQUIRENCIA_WHITE_CD_CLIENTE</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm font-semibold">Tipo de alteração:</p>
+                        <p class="text-sm">Informações</p>
+                    </div>
+                </div>
+                <div class="h-[20vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic p-4 flex flex-col">
+                    <div class="p-2">
+                        <p class="text-left font-semibold">Mudar status para:</p>
+                    </div>
+                    <div class="flex flex-row justify-around mt-2">
+                        <div class="bg-colorDark-50 px-2 py-1 h-7 text-center rounded-lg">
+                            <p class="text-white-50 text-sm">Abertos</p>
+                        </div>
+                        <div class="bg-status-yellow px-2 py-1 h-7 text-center rounded-lg">
+                            <p class="text-white-50 text-sm">Em Análise  </p>
+                        </div>
+                        <div class="bg-status-green px-2 py-1 h-7 text-center rounded-lg">
+                            <p class="text-white-50 text-sm">Analisado </p>
+                        </div>
+                        <div class="bg-status-red px-2 py-1 h-7 text-center rounded-lg">
+                            <p class="text-white-50 text-sm">Negado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>

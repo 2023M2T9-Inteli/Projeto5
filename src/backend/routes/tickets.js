@@ -46,6 +46,7 @@ router.get('/', (req, res) => {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
+                console.log(rows);
                 //Renderiza a página de resultados, passando de parâmetro o resultado da busca no banco de dados
                 res.render("index/ticketGov", {tickets:rows, title: titulo, iconeTitulo: icone });
             });
