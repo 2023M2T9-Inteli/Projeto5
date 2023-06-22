@@ -25,7 +25,14 @@
                                 <b>Ticket <%=tickets[i].ID_TICKET%></b>
                                 <p class="italic"><%= tickets[i].ID_TABELA %></p>
                             </div>
-                            <p class="my-2 break-all"><b>Descrição:</b> Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque venenatis erat nulla, sit amet aliquam lectus bibendum eget. Fusce venenatis tempor augue nec commodo. Nulla facilisi.</p>
+                            <p class="my-2 break-all dark:text-white-50">
+                                <b>
+                                    Alterações: <br>
+                                </b>
+                                Database: <%= tickets[i].DATABASE %> <br>
+                                Id tabela: <%= tickets[i].TABELA %> <br>
+                                Caminho: <%= tickets[i].CAMINHO %>
+                            </p>
                         </div>
                         <div class="w-1/4 flex flex-col items-center justify-center">
                             <!-- Status dos Tickets -->
