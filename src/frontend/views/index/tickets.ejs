@@ -18,14 +18,14 @@
                     <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2 dark:shadow-neomorphic_dark dark:bg-colorDark-50 dark:text-white-50"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
                     <!-- Ticket será dividido em 3 colunas (ícone, info e status) -->
                     <% for (var i=0; i < tickets.length; i++){ %>   
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4 dark:bg-colorDark-fundo dark:shadow-dark text-white-50">
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4 dark:bg-colorDark-fundo dark:shadow-dark dark:text-white-50">
                         <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/creditoAzul.svg"></div>
                         <div class="flex flex-col w-2/4 px-4">
-                            <div class="flex flex-row justify-around">  
+                            <div class="text-colorDark-50 flex flex-col justify-between dark:text-white-50">  
                                 <b>Ticket <%=tickets[i].ID_TICKET%></b>
                                 <p class="italic"><%= tickets[i].ID_TABELA %></p>
                             </div>
-                            <p class="my-2 break-all dark:text-white-50">
+                            <p class="my-2 break-all text-colorDark-50 dark:text-white-50">
                                 <b>
                                     Alterações: <br>
                                 </b>
