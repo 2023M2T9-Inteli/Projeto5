@@ -71,11 +71,11 @@
         </div>
     <!--Caso os resultados tenham menos de dez, será executado um loop com o tamanho do resultado-->
     <% } if (atual > 1) { %>
-        <button class="border border-1 bottom-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]"><a href="/tabelas/pesquisa?<%= search %>&formPage=<%=  atual - 1 %>">Previous</a></button>
+        <a href="/tabelas/pesquisa?<%= search %>&formPage=<%=  atual - 1 %>"><button class="border border-1 bottom-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]">Previous</button></a>
         <% } %>
 
         <% if (atual < total) { %>
-        <button class="border border-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]"><a href="/tabelas/pesquisa?<%= search %>&formPage=<%= parseInt(atual) + 1 %>">Next</a></button>
+            <a href="/tabelas/pesquisa?<%= search %>&formPage=<%= parseInt(atual) + 1 %>"><button class="border border-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]">Next</button></a>
         <% } %> 
 
     <% } else{ %>
