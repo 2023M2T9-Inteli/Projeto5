@@ -15,11 +15,11 @@
                 <section class="mt-8 p-8"><p class="text-3xl dark:text-white-50">Encontrou erros em alguma tabela?</p><br><p class="text-xl dark:text-white-50">Crie um ticket ou visualize abaixo os abertos ;)</p></section>
                 <section class="flex flex-col items-center justify-center w-full">
                     <!-- Demarcadores da Tabela -->
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2 dark:shadow-neomorphic_dark dark:bg-colorDark-fundo dark:text-white-50"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-2 dark:shadow-neomorphic_dark dark:bg-colorDark-50 dark:text-white-50"><b>Categoria</b><b>Nome</b><b>Tabela</b><b>Status</b></div>
                     <!-- Ticket será dividido em 3 colunas (ícone, info e status) -->
                     <% for (var i=0; i < tickets.length; i++){ %>   
-                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4">
-                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/iconecredito.svg"></div>
+                    <div class="rounded-lg shadow-neomorphic bg-white-50 my-4 w-full flex flex-row justify-around p-4 dark:bg-colorDark-fundo dark:shadow-dark text-white-50">
+                        <div class="w-1/4  flex items-center justify-center"><img src="/public/assets/creditoAzul.svg"></div>
                         <div class="flex flex-col w-2/4 px-4">
                             <div class="flex flex-row justify-around">  
                                 <b>Ticket <%=tickets[i].ID_TICKET%></b>
@@ -42,7 +42,7 @@
                                     <p class="text-white-50">Abertos</p>                                    
                                 </div>
                             <% } %>
-                            <p class="italic text-colorDark-50 text-xs mt-2">Solicitado em 20/04/23</p>
+                            <p class="italic text-colorDark-50 text-xs mt-2 dark:text-white-50">Solicitado em 20/04/23</p>
                         </div>
                     </div>                    
                     <% } %>                   

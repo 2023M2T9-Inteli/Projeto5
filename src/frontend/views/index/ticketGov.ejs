@@ -9,12 +9,12 @@
     }
 </script>
 <div class="flex-1">
-    <header class="flex items-center p-4 text-semibold shadow-neomorphic mx-8 mt-8 rounded-lg">
+    <header class="flex items-center p-4 text-semibold shadow-neomorphic mx-8 mt-8 rounded-lg dark:shadow-neomorphic_dark">
         <div class="flex flex-row w-full">
-            <h3 id="headerTitulo" class="text-colorDark-50 text-2xl font w-10/12">Tickets - Governança</h3>
+            <h3 id="headerTitulo" class="text-colorDark-50 text-2xl font w-10/12 dark:text-white-50">Tickets - Governança</h3>
             <div class="flex flex-row space-x-4 justify-end mr-6 w-2/12">
-                <img src="/public/assets/sino.svg" alt="Sino de notificações" class="w-6">
-                <img src="/public/assets/ajuda.svg" alt="Símbolo de Ajuda" class="w-6">
+                <img src="/public/assets/sino.svg" alt="Sino de notificações" class="w-6 dark:grayscale dark:invert">
+                <img src="/public/assets/ajuda.svg" alt="Símbolo de Ajuda" class="w-6 dark:grayscale dark:invert">
             </div>
         </div>
     </header>
@@ -25,19 +25,19 @@
         <!-- 3 descrições das colunas do Kanban -->
         <section class=" w-full h-[648px] m-16 flex flex-row justify-evenly">
             <div class="h-full w-72 flex flex-col">
-                <div class="bg-colorDark-50 h-10 p-2 text-center rounded-lg">
+                <div class="bg-colorDark-50 h-10 p-2 text-center rounded-lg dark:shadow-dark">
                     <p class="text-white-50">Abertos</p>
                 </div>
-                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
+                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
                     <!-- Tickets primeira coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <%console.log(tickets[i])%>
                         <% if(tickets[i].STATUS == 0) { %>
-                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4" onclick="verTicket()">
+                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4 dark:bg-colorDark-fundo" onclick="verTicket()">
                             <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6" onclick="verTicket()"></div>
                             <div>
-                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900" onclick="verTicket()"> TICKET <%=tickets[i].ID_TICKET%> </p>
-                                <p onclick="verTicket()" class="text-xs flex items-center break-all"><%= tickets[i].ID_TABELA %></p>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900 dark:text-status-blue" onclick="verTicket()"> TICKET <%=tickets[i].ID_TICKET%> </p>
+                                <p onclick="verTicket()" class="text-xs text-white-50 flex items-center break-all"><%= tickets[i].ID_TABELA %></p>
                             </div>
                         </div>
                         <% } %>
@@ -45,10 +45,10 @@
                 </div>
             </div>
             <div class="h-full w-72 flex flex-col">
-                <div class="bg-status-yellow h-10 p-2 text-center rounded-lg">
+                <div class="bg-status-yellow h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                     <p class="text-white-50">Em Análise  </p>
                 </div>
-                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
+                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
                     <!-- Tickets segunda coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <% if(tickets[i].STATUS == 1) { %>
@@ -64,10 +64,10 @@
                 </div>
             </div>
             <div class="h-full w-72 flex flex-col">    
-                    <div class="bg-status-green h-10 p-2 text-center rounded-lg">
+                    <div class="bg-status-green h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                         <p class="text-white-50">Analisado </p>
                     </div>
-                    <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4">
+                    <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
                         <!-- Tickets terceira coluna -->
                         <% for (var i=0; i < tickets.length; i++){ %>
                             <% if(tickets[i].STATUS == 2) { %>
@@ -94,25 +94,25 @@
         <div class="relative">
             <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50 w-8 absolute right-0" onclick="fecharTicket()">
         </div>
-        <div class="flex flex-row p-4 text-center justify-around mt-4">
-            <div class="h-[80vh] w-[30vw] bg-white-100 rounded-2xl shadow-neomorphic_inset flex flex-col py-4 px-6">
+        <div class="flex flex-row p-4 text-center justify-around mt-4  dark:text-white-50">
+            <div class="h-[80vh] w-[30vw] bg-white-100 rounded-2xl shadow-neomorphic_inset flex flex-col py-4 px-6 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
                 <div class="mt-4 mb-4">
                     <p class="text-left font-semibold">Alterações sugeridas:</p>
                 </div>
-                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-2"><p class="text-sm font-semibold">TB_ADQUIRENCIA_WHITE_CD_CLIENTE</p></div>
-                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between">
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-2 dark:bg-colorDark-fundo dark:shadow-dark"><p class="text-sm font-semibold">TB_ADQUIRENCIA_WHITE_CD_CLIENTE</p></div>
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between dark:bg-colorDark-fundo dark:shadow-dark">
                     <input type="checkbox" class="form-checkbox">
                     <p class="text-sm">Owner</p>
                     <p class="text-sm text-status-blue">Samir Migliani</p>
                 </div>
-                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between">
+                <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between dark:bg-colorDark-fundo dark:shadow-dark">
                     <input type="checkbox" class="form-checkbox">
                     <p class="text-sm">Campo</p>
                     <p class="text-sm text-status-blue">Boolean</p>
                 </div>
             </div>
             <div class="flex flex-col justify-between">
-                <div class="h-[55vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic flex flex-col text-left py-4 px-6">
+                <div class="h-[55vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic flex flex-col text-left py-4 px-6 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark  dark:text-white-50">
                     <div class="mt-4">
                         <p class="text-left font-semibold">Informações</p>
                     </div>
@@ -129,9 +129,9 @@
                         <p class="text-sm">Informações</p>
                     </div>
                 </div>
-                <div class="h-[20vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic p-4 flex flex-col">
+                <div class="h-[20vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic p-4 flex flex-col dark:shadow-neomorphic_dark dark:bg-colorDark-fundo">
                     <div class="p-2">
-                        <p class="text-left font-semibold">Mudar status para:</p>
+                        <p class="text-left font-semibold dark:text-white-50">Mudar status para:</p>
                     </div>
                     <div class="flex flex-row justify-around mt-2">
                         <div class="bg-colorDark-50 px-2 py-1 h-7 text-center rounded-lg">
