@@ -24,13 +24,13 @@
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <%console.log(tickets[i])%>
                         <% if(tickets[i].STATUS == 0) { %>
-                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4 dark:bg-colorDark-fundo cursor-pointer mb-2" onclick="verTicket('<%= tickets[i].ID_TABELA %>')">
+                        <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4 dark:bg-colorDark-fundo cursor-pointer mb-2" onclick="verTicket('<%= tickets[i].ID_TICKET %>')">
                             <div>
-                                <img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6" onclick="verTicket()">
+                                <img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6">
                             </div>
                             <div>
-                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900 dark:text-status-blue" onclick="verTicket()"> TICKET <%=tickets[i].ID_TICKET%> </p>
-                                <p onclick="verTicket()" class="text-xs text-white-50 flex items-center break-all"><%= tickets[i].ID_TABELA %></p>
+                                <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900 dark:text-status-blue"> TICKET <%=tickets[i].ID_TICKET%> </p>
+                                <p" class="text-xs text-white-50 flex items-center break-all"><%= tickets[i].ID_TABELA %></p>
                             </div>
                         </div>
                         <% } %>
@@ -103,10 +103,12 @@
                 </div>
                 <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between dark:bg-colorDark-fundo dark:shadow-dark">
                     <input type="checkbox" class="form-checkbox">
-                    <p class="text-sm">Database</p>
-                    <p id="databaseTicket" class="text-sm text-status-blue">
-                        Samir Migliani
-                    </p>
+                    <div class="flex flex-col">
+                        <p class="text-sm mx-2">Database</p><br>
+                        <p id="databaseTicket" class="text-sm text-status-blue">
+                            Samir Migliani
+                        </p>
+                    </div>
                 </div>
                 <div class="bg-white-50 shadow-neomorphic rounded-2xl my-3 py-2 px-4 flex flex-row justify-between dark:bg-colorDark-fundo dark:shadow-dark">
                     <input type="checkbox" class="form-checkbox">
@@ -127,7 +129,7 @@
                     </div>
                     <div class="mt-4">
                         <p class="text-sm font-semibold">Tabela:</p>
-                        <p id="tabelaTicket" class="text-sm">
+                        <p id="tabelaTicket" class="text-sm w-[200px] break-words">
                             TB_ADQUIRENCIA_WHITE_CD_CLIENTE
                         </p>
                     </div>
@@ -141,17 +143,13 @@
                         <p class="text-left font-semibold dark:text-white-50">Mudar status para:</p>
                     </div>
                     <div class="flex flex-row justify-around mt-2">
-                        <div class="bg-colorDark-50 px-2 py-1 h-7 text-center rounded-lg cursor-pointer">
-                            <p class="text-white-50 text-sm">Abertos</p>
+                        <div class="bg-colorDark-50 px-2 py-1 h-7 text-center rounded-lg cursor-pointer" id="ticketAberto">
                         </div>
-                        <div class="bg-status-yellow px-2 py-1 h-7 text-center rounded-lg cursor-pointer">
-                            <p class="text-white-50 text-sm">Em Análise  </p>
+                        <div class="bg-status-yellow px-2 py-1 h-7 text-center rounded-lg cursor-pointer" id="ticketEmAnalise">
                         </div>
-                        <div class="bg-status-green px-2 py-1 h-7 text-center rounded-lg cursor-pointer">
-                            <p class="text-white-50 text-sm">Analisado </p>
+                        <div class="bg-status-green px-2 py-1 h-7 text-center rounded-lg cursor-pointer" id="ticketAnalisado">
                         </div>
-                        <div class="bg-status-red px-2 py-1 h-7 text-center rounded-lg cursor-pointer">
-                            <p class="text-white-50 text-sm">Negado</p>
+                        <div class="bg-status-red px-2 py-1 h-7 text-center rounded-lg cursor-pointer" id="ticketNegado">
                         </div>
                     </div>
                 </div>
@@ -162,17 +160,35 @@
 <script>
     function verTicket(ticketID) {
         console.log(ticketID)
-        document.getElementById('infoticket').classList.remove('hidden');
+        let url = `/tickets/modal-tickets?id_ticket=${ticketID}`;
+        console.log("Teste");
+        // Perform the fetch request
+        fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then(data => {
+                var tickets = data;
 
-         // Atualize as informações no modal com base no ID do ticket selecionado
-        const ticketInfo = tickets.find(ticket => ticket.ID_TICKET === ticketId);
-        if (ticketInfo) {
-            // Atualize as informações no modal usando ticketInfo
-            document.getElementById('tituloTicket').innerText = ticketInfo.ID_TICKET;
-            document.getElementById('databaseTicket').innerText = ticketInfo.DATABASE;
-            document.getElementById('idTabelaTicket').innerText = ticketInfo.TABELA;
-            document.getElementById('tabelaTicket').innerText = ticketInfo.ID_TABELA;
-        }
+                document.getElementById('tituloTicket').innerHTML = `Ticket ${tickets[0].ID_TICKET}`;
+                document.getElementById('databaseTicket').innerHTML = tickets[0].DATABASE;
+                document.getElementById('idTabelaTicket').innerHTML = tickets[0].TABELA;
+                document.getElementById('tabelaTicket').innerHTML = tickets[0].ID_TABELA;
+                
+                document.getElementById('ticketAberto').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=0&aprovado=0"><p class="text-white-50 text-xs">Aberto</p></a>`;
+                document.getElementById('ticketEmAnalise').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=1&aprovado=0"><p class="text-white-50 text-xs">Em Analise</p></a>`;
+                document.getElementById('ticketAnalisado').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=2&aprovado=1" ><p class="text-white-50 text-xs">Analisado</p></a>`;
+                document.getElementById('ticketNegado').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=2&aprovado=0" ><p class="text-white-50 text-xs">Negado</p></a>`;
+                
+                    // Process the retrieved data
+                console.log(tickets);
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the fetch request
+                console.log(error);
+            });
+
+            document.getElementById('infoticket').classList.remove('hidden');
     }
     function fecharTicket() {
         document.getElementById('infoticket').classList.add('hidden');

@@ -88,12 +88,12 @@ router.post("/criar-ticket", urlencodedParser,(req, res) => {
             });
 }});
 
-router.post("/status", urlencodedParser,(req, res) => {
+router.get("/modal-tickets", urlencodedParser,(req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
-        if(req.session.id_user==1){
-            var id = req.body.id_ticket;
-            var status = req.body.status;
+        if(req.session.acesso==1){
+            //ID do ticket vindo
+            var id = req.query.id_ticket;
             //Garantir que a requisição tem código inicial correto
             res.statusCode = 200;
             //Define o cabeçalho da requisição
@@ -101,24 +101,74 @@ router.post("/status", urlencodedParser,(req, res) => {
             //Inicializa o banco de dados
             var db = new sqlite3.Database(DBPATH); 
             //Comando sql a ser executado
-            var sql = `UPDATE Tickets SET STATUS = ${status} WHERE Tickets = ${id}`;
+            var sql = `SELECT * FROM Tickets WHERE ID_TICKET = ${id}`;
             db.all(sql,[],(err,rows)=>{
                 if (err) {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
-                res.redirect("/ticket");
+                res.json(rows);
+            });
+            db.close();
+        }
+    }
+});
+
+router.get("/status", urlencodedParser,(req, res) => {
+    //Verifica se o usuário está logado
+    if (req.session.autenticado) {
+        if(req.session.acesso==1){
+            var id = req.query.id_ticket;
+            var status = req.query.status;
+            var aprovado = ""
+            if(req.query.aprovado != undefined){
+                aprovado = `, APROVADO = ${req.query.aprovado}`;
+            }
+            //Garantir que a requisição tem código inicial correto
+            res.statusCode = 200;
+            //Define o cabeçalho da requisição
+            res.setHeader('Acess-Control-Allow-Origin', '*');
+            //Inicializa o banco de dados
+            var db = new sqlite3.Database(DBPATH); 
+            //Comando sql a ser executado
+            
+            var sql = `UPDATE Tickets SET STATUS = ${status} ${aprovado}  WHERE ID_TICKET = ${id}`;
+            console.log(sql)
+            db.all(sql,[],(err,rows)=>{
+                if (err) {
+                    //Joga o erro pro console, impedindo acontecer um travamento geral
+                    throw err;
+                }
+                if(status == 2 && aprovado == 1){
+                    var sqlTicket = `SELECT * FROM Tickets WHERE ID_TICKET = ${id}`;
+                    db.all(sqlTicket,[],(err,rows)=>{
+                        if (err) {
+                            //Joga o erro pro console, impedindo acontecer um travamento geral
+                            throw err;
+                        }
+                        var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"`
+                        db.run(atualizar,[],err=>{
+                            if (err) {
+                                //Joga o erro pro console, impedindo acontecer um travamento geral
+                                throw err;
+                            }  
+                            res.redirect("/ticket");
+                            db.close();
+                        })
+                    })
+                }
+                res.redirect("/tickets");
                 db.close();
             });
         }
 }});
 
-router.post("/aprovado",urlencodedParser, (req, res) => {
+router.get("/aprovado",urlencodedParser, (req, res) => {
     //Verifica se o usuário está logado
     if (req.session.autenticado) {
         if(req.session.id_user==1){
-            var id = req.body.id_ticket;
-            var aprovado = req.body.aprovado;
+            var id = req.query.id_ticket;
+            var aprovado = req.query.aprovado;
             //Garantir que a requisição tem código inicial correto
             res.statusCode = 200;
             //Define o cabeçalho da requisição
