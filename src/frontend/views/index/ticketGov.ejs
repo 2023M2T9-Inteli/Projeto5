@@ -70,11 +70,11 @@
                                     <p class="italic font-normal text-xs leading-[130.52%] md:text-lg md:leading-[23px] flex items-center text-blue-900 dark:text-status-blue"> TICKET <%=tickets[i].ID_TICKET%> </p>
                                     <!--Negado ou aprovado-->
                                     <% if(tickets[i].APROVADO == 0) { %>
-                                        <div class="px-2 py-1 bg-status-red rounded-lg my-2">
+                                        <div class="px-2 py-1 bg-status-red rounded-lg my-1">
                                             <p class="text-xs text-white-50">Negado</p>
                                         </div>
                                     <% } else { %>
-                                        <div class="px-2 py-1 bg-status-green rounded-lg my-2">
+                                        <div class="px-2 py-1 bg-status-green rounded-lg my-1">
                                             <p class="text-xs text-white-50">Aprovado</p>
                                         </div>
                                     <% } %>
@@ -99,7 +99,7 @@
 <div id="infoticket" class="hidden flex items-center justify-center fixed mt-0 w-full h-full bg-black bg-opacity-50">
     <div class="bg-white-50 rounded-lg mx-auto my-auto p-5 w-3/4 py-4  dark:bg-colorDark-fundo">
         <div class="relative">
-            <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50 w-8 absolute right-0" onclick="fecharTicket()">
+            <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50 w-8 absolute right-0 cursor-pointer" onclick="fecharTicket()">
         </div>
         <div class="flex flex-row p-4 text-center justify-around mt-4  dark:text-white-50">
             <div class="h-[80vh] w-[30vw] bg-white-100 rounded-2xl shadow-neomorphic_inset flex flex-col py-4 px-6 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">

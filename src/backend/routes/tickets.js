@@ -84,7 +84,6 @@ router.post("/criar-ticket", urlencodedParser,(req, res) => {
                     //Joga o erro pro console, impedindo acontecer um travamento geral
                     throw err;
                 }
-                res.end();
                 db.close();
             });
 }});
