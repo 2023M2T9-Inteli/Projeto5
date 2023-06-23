@@ -1,5 +1,7 @@
 <%- include("../sidebar") %>
+<!--Div responsável por englobar todo site e manter uma responsividade-->
 <div class="flex-1">
+    <!--Header contendo o nome da página e os símbolos de notificações e ajuda-->
     <header class="flex items-center p-4 text-semibold shadow-neomorphic mx-8 mt-8 rounded-lg dark:shadow-neomorphic_dark">
         <div class="flex flex-row w-full">
             <h3 id="headerTitulo" class="text-colorDark-50 text-2xl font w-10/12 dark:text-white-50">Tickets - Governança</h3>
@@ -22,7 +24,7 @@
                 <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
                     <!-- Tickets primeira coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
-                        <%console.log(tickets[i])%>
+                        <!--Verifica se o ticket realmente perntence aquela coluna-->
                         <% if(tickets[i].STATUS == 0) { %>
                         <div class="bg-white-100 min-h-fit rounded-lg flex flex-row p-4 dark:bg-colorDark-fundo cursor-pointer mb-2" onclick="verTicket('<%= tickets[i].ID_TICKET %>')">
                             <div>
@@ -37,6 +39,7 @@
                     <% } %>
                 </div>
             </div>
+            <!--Segunda coluna Kanban-->
             <div class="h-full w-72 flex flex-col">
                 <div class="bg-status-yellow h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                     <p class="text-white-50">Em Análise  </p>
@@ -45,6 +48,7 @@
                     <!-- Tickets segunda coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <% if(tickets[i].STATUS == 1) { %>
+                        <!--Verifica se o ticket realmente perntence aquela coluna-->
                         <div class="dark:bg-colorDark-fundo bg-white-100 min-h-fit rounded-lg flex flex-row p-4 cursor-pointer mb-2" onclick="verTicket('<%= tickets[i].ID_TICKET %>')">
                             <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6 dark:invert dark:grayscale"></div>
                             <div>
@@ -56,6 +60,7 @@
                     <% } %>
                 </div>
             </div>
+            <!--Terceira coluna do kanban-->
             <div class="h-full w-72 flex flex-col">    
                     <div class="bg-status-green h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                         <p class="text-white-50">Analisado </p>
@@ -63,6 +68,7 @@
                     <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
                         <!-- Tickets terceira coluna -->
                         <% for (var i=0; i < tickets.length; i++){ %>
+                            <!--Verifica se o ticket realmente perntence aquela coluna-->
                             <% if(tickets[i].STATUS == 2) { %>
                             <div class="dark:bg-colorDark-fundo bg-white-100 min-h-fit rounded-lg flex flex-row p-4 cursor-pointer mb-2" onclick="verTicket('<%= tickets[i].ID_TICKET %>')">
                                 <div><img src="public/assets/euro.svg" alt="Simbolo de Euro Ticket" class="min-h-fit min-w-fit mr-6 dark:invert dark:grayscale"></div>
@@ -91,16 +97,19 @@
                 </div>
         </section>
     </section>
-    
 </div>
+<!--Inclui o ticket na página-->
 <%- include("../footer") %>
 </div>
+
+
 <!--Modal Visão Governança-->
 <div id="infoticket" class="hidden flex items-center justify-center fixed mt-0 w-full h-full bg-black bg-opacity-50">
     <div class="bg-white-50 rounded-lg mx-auto my-auto p-5 w-3/4 py-4  dark:bg-colorDark-fundo">
         <div class="relative">
             <img src="/public/assets/fechar.svg" class="dark:grayscale dark:invert scale-50 w-8 absolute right-0 cursor-pointer" onclick="fecharTicket()">
         </div>
+        <!--Coluna responsável por conter as alterações-->
         <div class="flex flex-row p-4 text-center justify-around mt-4  dark:text-white-50">
             <div class="h-[80vh] w-[30vw] bg-white-100 rounded-2xl shadow-neomorphic_inset flex flex-col py-4 px-6 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark">
                 <div class="mt-4 mb-4">
@@ -151,6 +160,7 @@
                     </div>
                 </div>
             </div>
+            <!--Coluna responsável por ter as informações do ticket e seus botões-->
             <div class="flex flex-col justify-between">
                 <div class="h-[55vh] w-[30vw] bg-white-50 rounded-2xl shadow-neomorphic flex flex-col text-left py-4 px-6 dark:bg-colorDark-fundo dark:shadow-neomorphic_dark  dark:text-white-50">
                     <div class="mt-4">
@@ -191,19 +201,21 @@
     </div>
 </div>
 <script>
+    //Função responsável por abrir o modal de tickets
     function verTicket(ticketID) {
-        console.log(ticketID)
+        //console.log(ticketID)
         let url = `/tickets/modal-tickets?id_ticket=${ticketID}`;
-        console.log("Teste");
-        // Perform the fetch request
+        // Executa a url responsável por trazer as informações dos tickets
         fetch(url)
             .then((response) => {
                 return response.json();
             })
             .then(data => {
+                //Atribui a variável tickets, o resultado da pesquisa e a variável link, o link da tabela que tem uma alteração pendente
                 var tickets = data;
                 var link = tickets[0].ID_TABELA;
 
+                //ADiciona no modal as informações necessárias sobre o ticket
                 document.getElementById('tituloTicket').innerHTML = `Ticket ${tickets[0].ID_TICKET}`;
                 document.getElementById('databaseTicket').innerHTML = tickets[0].DATABASE;
                 document.getElementById('idTabelaTicket').innerHTML = tickets[0].TABELA;
@@ -211,6 +223,7 @@
                 document.getElementById('tabelaTicket').href = `/tabelas/informacoes?id_tabela=${link}`;
                 document.getElementById('caminhoTicket').innerHTML = tickets[0].CAMINHO;
                 
+                //Adiciona no modal os botões para a execução de uma alteração no status do ticket
                 document.getElementById('ticketAberto').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=0&aprovado=0"><p class="text-white-50 text-xs">Aberto</p></a>`;
                 document.getElementById('ticketEmAnalise').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=1&aprovado=0"><p class="text-white-50 text-xs">Em Analise</p></a>`;
                 document.getElementById('ticketAnalisado').innerHTML = `<a href="/tickets/status?id_ticket=${tickets[0].ID_TICKET}&status=2&aprovado=1" ><p class="text-white-50 text-xs">Analisado</p></a>`;
@@ -223,9 +236,10 @@
                 // Handle any errors that occurred during the fetch request
                 console.log(error);
             });
-
+            //Faz o modal aparecer
             document.getElementById('infoticket').classList.remove('hidden');
     }
+    //Faz o modal fechar
     function fecharTicket() {
         document.getElementById('infoticket').classList.add('hidden');
     }

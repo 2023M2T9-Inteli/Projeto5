@@ -18,6 +18,7 @@ const router = express.Router();
 router.get('/',(req,res)=>{
     //Verifica se o usuário está logado
     if(req.session.autenticado){
+        //Variaveis que definem o titulo e imagem da página a ser carregada
         var titulo = "Favoritos";
         var icone = "/public/assets/logoPanpediaReduzida.svg";
         //Garantir que a requisição tem código inicial correto
@@ -32,7 +33,6 @@ router.get('/',(req,res)=>{
         INNER JOIN Pastas on Tabelas_salvas.ID_PASTA = Pastas.ID_PASTA
         INNER JOIN Usuarios on Pastas.ID_USER = Usuarios.ID_USER
         WHERE Usuarios.ID_USER = ${req.session.id_user}`;
-        console.log(sql);
         //Executa o sql, passando como parametros a sentença já definida, nenhum parametro para ser substituido na sentença sql, e duas variáveis, uma para
         //erros e outra para resposta
         db.all(sql,[],(err,rows)=>{
@@ -57,7 +57,7 @@ router.get('/',(req,res)=>{
 })
 
 //TABELA Tabelas_salvas
-//Read
+//Requisição para devolver as tabelas salvas em uma determinada pasta
 router.get('/pastas-tabela',(req,res)=>{
     //Garantir que a requisição tem código inicial correto
     res.statusCode = 200;
@@ -77,7 +77,7 @@ router.get('/pastas-tabela',(req,res)=>{
     db.close();
 });
 
-//Create
+//Requisição utilizada para adicionar uma tabela a uma determinada pasta de um usuário
 router.post('/adicionar-pasta',urlencodedParser,(req,res)=>{
     //Garantir que a requisição tem código inicial correto
     res.statusCode = 200;

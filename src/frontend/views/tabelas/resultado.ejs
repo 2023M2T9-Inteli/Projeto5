@@ -27,8 +27,7 @@
     </h2>
     <!--Variável que verifica o tamanho da resposta-->
     <% var tamanho = tabelas.length %>
-    <!--Loop for que percorre os resultados até o décimo, caso existam mais de dez resultados-->
-    <!--Futuramente será implementado o esquema de paginação-->
+    <!--Loop for que percorre os resultados caso exista-->
     <% if(tamanho >= 1){ for(let i = 0; i< tamanho; i+=2){ %>
         <!--Div que contém dois cards do resultado-->
         <div class="flex mx-auto my-8 justify-evenly w-11/12">
@@ -69,7 +68,7 @@
                     <p class="mb-3 font-extralight text-gray-500 text-clip h-3/6 overflow-hidden overflow-y-auto dark:text-white-100"><%= tabelas[i+1].CONTEUDO_TABELA %></p>
                 </div>
         </div>
-    <!--Caso os resultados tenham menos de dez, será executado um loop com o tamanho do resultado-->
+    <!--Paginação, verifica se existem página de anterior e página de próxima-->
     <% } if (atual > 1) { %>
         <a href="/tabelas/pesquisa?<%= search %>&formPage=<%=  atual - 1 %>"><button class="border border-1 bottom-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]">Previous</button></a>
         <% } %>
@@ -78,6 +77,7 @@
             <a href="/tabelas/pesquisa?<%= search %>&formPage=<%= parseInt(atual) + 1 %>"><button class="border border-1 rounded-xl text-white-100 bg-colorDark-50 text-[14px] py-2 w-[12vw]">Next</button></a>
         <% } %> 
 
+    <!--Caso não exista nenhum resultado-->
     <% } else{ %>
         <h4 class="ml-32 font-montserrat italic font-light text-xl leading-7 text-blue-900"> Não tem Resultados!</h4>
     <% } %>
