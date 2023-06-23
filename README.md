@@ -33,7 +33,7 @@ O Panpedia é um catálogo web para pesquisa de metadados do Banco Pan. Nosso pr
 
 ## 📝 LINK
 
-Clique <a href="https://www.linkedin.com/in/victorbarq/">AQUI</a> para ver o projeto funcionando.
+Clique <a href="https://kfqd3h-3000.csb.app/">AQUI</a> para ver o projeto funcionando.
   
 ## 📁 Estrutura de pastas
 
