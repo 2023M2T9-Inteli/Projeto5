@@ -21,7 +21,7 @@
                 <div class="bg-colorDark-50 h-10 p-2 text-center rounded-lg dark:shadow-dark">
                     <p class="text-white-50">Abertos</p>
                 </div>
-                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
+                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark overflow-y-auto">
                     <!-- Tickets primeira coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <!--Verifica se o ticket realmente perntence aquela coluna-->
@@ -44,7 +44,7 @@
                 <div class="bg-status-yellow h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                     <p class="text-white-50">Em Análise  </p>
                 </div>
-                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
+                <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark overflow-y-auto">
                     <!-- Tickets segunda coluna -->
                     <% for (var i=0; i < tickets.length; i++){ %>
                         <% if(tickets[i].STATUS == 1) { %>
@@ -65,7 +65,7 @@
                     <div class="bg-status-green h-10 p-2 text-center rounded-lg dark:shadow-dark"">
                         <p class="text-white-50">Analisado </p>
                     </div>
-                    <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark">
+                    <div class="bg-white-50 h-full mt-10 shadow-neomorphic rounded-lg p-4 dark:bg-colorDark-cinzaclaro dark:shadow-dark overflow-y-auto">
                         <!-- Tickets terceira coluna -->
                         <% for (var i=0; i < tickets.length; i++){ %>
                             <!--Verifica se o ticket realmente perntence aquela coluna-->
