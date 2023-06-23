@@ -30,21 +30,21 @@
                                     Alterações: <br>
                                 </b>
                                 Database: <%= tickets[i].DATABASE %> <br>
-                                Id tabela: <%= tickets[i].TABELA %> <br>
+                                Id tabela: <%= tickets[i].TABELA %> <br>q
                                 Caminho: <%= tickets[i].CAMINHO %>
                             </p>
                         </div>
                         <div class="w-1/4 flex flex-col items-center justify-center">
                             <!-- Status dos Tickets -->
-                            <% if(tickets[0].status == 1) { %>
+                            <% if (tickets[i].STATUS == 1) { %>
                             <div class="bg-status-yellow h-10 p-2 text-center rounded-3xl px-4">                
                                 <p class="text-white-50">Em Análise</p>                              
                             </div>
-                            <% } else if(tickets[0].status == 2) { %>
+                            <% } else if(tickets[i].STATUS == 2) { %>
                                 <div class="bg-status-green h-10 p-2 text-center rounded-3xl px-4">                              
                                     <p class="text-white-50">Analisado</p>                                  
                                 </div>                           
-                            <% } else if(tickets[0].status == 0) { %>
+                            <% } else if(tickets[i].STATUS == 0) { %>
                                 <div class="bg-colorDark-50 h-10 p-2 text-center rounded-3xl px-4">                               
                                     <p class="text-white-50">Abertos</p>                                    
                                 </div>
