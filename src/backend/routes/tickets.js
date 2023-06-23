@@ -157,7 +157,7 @@ router.get("/status", urlencodedParser,(req, res) => {
                             throw err;
                         }
                         //Atualiza os valores do ticket na tabela de catalogo de dados
-                        var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"   WHERE ID ="${rows[0].ID_TABELA}"`
+                        var atualizar = `UPDATE Catalogo_Dados_Tabelas SET DATABASE = "${rows[0].DATABASE}", ID_TABELA = "${rows[0].TABELA}", CAMINHO = "${rows[0].CAMINHO}"   WHERE ID ="${rows[0].ID_TABELA}"`
                         //console.log(atualizar);
                         db.run(atualizar,[],err=>{
                             if (err) {
